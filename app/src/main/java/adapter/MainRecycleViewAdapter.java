@@ -132,15 +132,15 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
     }
     public void removeData(int position,MainRecycleViewItem classess){
         classess.setHeight(100);
-        list.remove(position);
         list.add(classess);
+        list.remove(position);
+
         notifyItemRemoved(position);
     }
     public void removeData(MainRecycleViewItem classess){
-        flag =false;
         classess.setHeight(220);
-        list.remove(list.size()-1);
         list.add(classess);
+        list.remove(0);
         notifyItemRemoved(0);
     }
     public interface OnItemClickLitener

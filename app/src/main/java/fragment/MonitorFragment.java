@@ -97,7 +97,6 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
         momitor_btn_stop = (Button) view.findViewById(R.id.momitor_btn_stop);
         momitor_btn_stop.setOnTouchListener(this);
         momitor_btn_start.setOnTouchListener(this);
-
         mainRecycleView1.setOnItemClickLitener(new MainRecycleViewAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
