@@ -36,7 +36,7 @@
         <!-- <activity android:name="activity.TestActivity" -->
         <!-- android:screenOrientation="landscape" -->
         <!-- android:configChanges="orientation|keyboardHidden"/> -->
-        <service android:name="bean.Services" />
+        <service android:name="service.Services" />
     </application>
 
 </manifest>

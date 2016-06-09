@@ -2,196 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00c2eb">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/tairui_logo"
-            android:layout_marginLeft="20px"
-            android:layout_marginTop="20px"/>
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="运行监控"
-            android:textColor="#ffffff"
-            android:textSize="36px"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30px"/>
-    </RelativeLayout>
+    android:background="#EFEFEF">
     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="1">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recycleview_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recycleview_big"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46px"
-        android:layout_marginLeft="20px"
-        android:gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="氧气压力"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-        <TextView
-            android:id="@+id/momitor_tv_pressure"
-            android:layout_width="134px"
-            android:layout_height="48px"
-            android:background="@mipmap/momitor_tv_background"
-            android:layout_marginLeft="20px"
-            android:text="90.0"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:lines="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14px"
-            android:text="kg/cm²"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="累积流量"
-            android:layout_marginLeft="66px"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-        <TextView
-            android:id="@+id/momitor_tv_totalflow"
-            android:layout_width="198px"
-            android:layout_height="48px"
-            android:background="@mipmap/momitor_tv_flow_background"
-            android:layout_marginLeft="20px"
-            android:text="9000000000.0000"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:lines="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:text="m³"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48px"
-        android:layout_marginLeft="20px"
-        android:gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="氧气流量"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-        <TextView
-            android:id="@+id/momitor_tv_flow"
-            android:layout_width="134px"
-            android:layout_height="48px"
-            android:background="@mipmap/momitor_tv_background"
-            android:layout_marginLeft="20px"
-            android:text="90.00"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:lines="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14px"
-            android:text="L/min"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="氧气浓度"
-            android:layout_marginLeft="80px"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-        <TextView
-            android:id="@+id/momitor_tv_concentration"
-            android:layout_width="134px"
-            android:layout_height="48px"
-            android:background="@mipmap/momitor_tv_background"
-            android:layout_marginLeft="20px"
-            android:text="90.00"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:lines="1"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14px"
-            android:text="%"
-            android:textColor="#ffffff"
-            android:textSize="24px" />
-    </LinearLayout>
+        android:layout_weight="1">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="86px"
-        >
-        <Button
-            android:id="@+id/momitor_btn_machine_a"
-            android:layout_marginLeft="190px"
-            android:layout_width="86px"
-            android:layout_height="36px"
-            android:clickable="false"
-            android:text="A机"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:background="@drawable/momitor_btn_machine_a_selector"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20px">
-        <Button
-            android:id="@+id/momitor_btn_start"
-            android:layout_width="98px"
-            android:layout_height="46px"
-            android:layout_marginLeft="134px"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:background="@drawable/momitor_btn_bacground_selector"
-            android:layout_gravity="center"
-            android:text="启动"
-            />
-        <Button
-            android:id="@+id/momitor_btn_stop"
-            android:layout_width="98px"
-            android:layout_height="46px"
-            android:textColor="#ffffff"
-            android:textSize="24px"
-            android:layout_gravity="center"
-            android:layout_marginLeft="18px"
-            android:background="@drawable/momitor_btn_bacground_selector"
-            android:text="停止"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:layout_marginTop="70dp">
-        <Button
-            android:id="@+id/monitor_btn_back"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/status_background">
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/btn_back"
-            android:layout_marginRight="20px"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/momitor_btn_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="24px"
+                android:background="@drawable/momitor_btn_bacground_selector"
+                android:layout_gravity="center"
+                android:text="启动" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/momitor_btn_machine_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:text="A机"
+                android:textColor="#ffffff"
+                android:textSize="24px"
+                android:background="@drawable/amachinestatu_btn_selector" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/momitor_btn_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="24px"
+                android:layout_gravity="center"
+                android:background="@drawable/momitor_btn_bacground_selector"
+                android:text="停止"
+                />
+        </LinearLayout>
+
     </LinearLayout>
+
 
 </LinearLayout>

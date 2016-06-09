@@ -1,16 +1,9 @@
-package bean;
+package service;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.renderscript.Sampler;
 import android.support.annotation.Nullable;
-import android.util.Log;
-
-import java.util.List;
 
 /**
  * Created by zuheng.lv on 2016/6/2.

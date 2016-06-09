@@ -1,40 +1,40 @@
-package activity;
+package fragment;
 
-
-
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Logger;
-
-import com.hitek.serial.R;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.Service;
-import android.content.Intent;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
+import com.hitek.serial.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Logger;
+
+import activity.MyApplication;
+import adapter.MainRecycleViewAdapter;
+import bean.GLayoutManager;
+import bean.MainRecycleViewItem;
 import utils.Constants;
 
 /**
- * qa���м��ҳ��
- * Created by zuheng.lv on 2016/4/26.
+ * Created by zuheng.lv on 2016/6/9.
  */
-public class MonitorActivity extends android.support.v4.app.Fragment implements View.OnClickListener, View.OnTouchListener {
-
-
+public class MonitorFragment extends Fragment implements  View.OnTouchListener {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -42,22 +42,10 @@ public class MonitorActivity extends android.support.v4.app.Fragment implements 
             switch (msg.what) {
                 case 1:
                     /**����дUI���º���*/
-
-                    if(msg.getData().getString("i1")!=null){
-
-                        momitor_tv_pressure.setText( msg.getData().getString("i1").toString());
-                    }
-                    if(msg.getData().getString("j1")!=null){
-                        momitor_tv_totalflow.setText( msg.getData().getString("j1").toString());
-                    }
-                    if(msg.getData().getString("k1")!=null){
-                        momitor_tv_flow.setText( msg.getData().getString("k1").toString());
-                    }
-                    if(msg.getData().getString("l1")!=null){
-
-                        momitor_tv_concentration.setText( msg.getData().getString("l1").toString());
-                    }
-
+                    pressureData =  msg.getData().getString("i1");
+                    concentrationData =  msg.getData().getString("j1");
+                    flowData =  msg.getData().getString("k1");
+                    totalflowData =  msg.getData().getString("l1");
                     momitor_btn_machine_a.setSelected(msg.getData().getBoolean("m11"));
                     break;
 
@@ -71,17 +59,20 @@ public class MonitorActivity extends android.support.v4.app.Fragment implements 
 
     //ѭ����־
     private boolean flag = true;
-    private TextView momitor_tv_pressure, momitor_tv_totalflow, momitor_tv_flow, momitor_tv_concentration;
     private Button momitor_btn_machine_a,momitor_btn_start,momitor_btn_stop;
-    private Button monitor_btn_back;
     private View view;
+    private MainRecycleViewAdapter mainRecycleView1,mainRecycleView2;
+    private RecyclerView recyclerView1,recyclerView2;
+    private List<MainRecycleViewItem> list1;
+    private List<MainRecycleViewItem> list2;
+    private String pressureData,concentrationData,flowData,totalflowData;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.monitor_layout,container,false);
-        initView();
         initData();
+        initView();
         setData();
         return view;
     }
@@ -92,36 +83,87 @@ public class MonitorActivity extends android.support.v4.app.Fragment implements 
      * �ؼ���ʼ��
      */
     public void initView() {
-        monitor_btn_back = (Button) view.findViewById(R.id.monitor_btn_back);
-        monitor_btn_back.setOnClickListener(this);
-        //����ѹ��
-        momitor_tv_pressure = (TextView) view.findViewById(R.id.momitor_tv_pressure);
-        //����ͳ��
-        momitor_tv_totalflow = (TextView) view.findViewById(R.id.momitor_tv_totalflow);
-        //��������
-        momitor_tv_flow = (TextView) view.findViewById(R.id.momitor_tv_flow);
-        // ����Ũ��
-        momitor_tv_concentration = (TextView) view.findViewById(R.id.momitor_tv_concentration);
-
+        recyclerView1 = (RecyclerView) view.findViewById(R.id.main_recycleview_normal);
+        recyclerView2 = (RecyclerView) view.findViewById(R.id.main_recycleview_big);
+        recyclerView1.setLayoutManager(new GLayoutManager(getContext(),3));
+        recyclerView2.setLayoutManager(new GLayoutManager(getContext(),1));
+        mainRecycleView1 = new MainRecycleViewAdapter(getContext(),list1,true);
+        mainRecycleView2 = new MainRecycleViewAdapter(getContext(),list2,false);
+        recyclerView1.setAdapter(mainRecycleView1);
+        recyclerView2.setAdapter(mainRecycleView2);
 
         momitor_btn_machine_a = (Button) view.findViewById(R.id.momitor_btn_machine_a);
         momitor_btn_start= (Button) view.findViewById(R.id.momitor_btn_start);
         momitor_btn_stop = (Button) view.findViewById(R.id.momitor_btn_stop);
         momitor_btn_stop.setOnTouchListener(this);
         momitor_btn_start.setOnTouchListener(this);
+
+        mainRecycleView1.setOnItemClickLitener(new MainRecycleViewAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                List<MainRecycleViewItem> saveList = new ArrayList<MainRecycleViewItem>();
+                saveList.add(list2.get(0));
+                saveList.add(list1.get(position));
+                mainRecycleView2.removeData(saveList.get(1));
+                mainRecycleView1.removeData(position, saveList.get(0));
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
     }
 
     /**
      * ���ݳ�ʼ��
      */
+
     public void initData() {
-
-
+        list1 = new ArrayList<MainRecycleViewItem>();
+        list2 = new ArrayList<MainRecycleViewItem>();
+        MainRecycleViewItem mPressure = new MainRecycleViewItem();
+        MainRecycleViewItem mConcentration = new MainRecycleViewItem();
+        MainRecycleViewItem mFlow = new MainRecycleViewItem();
+        MainRecycleViewItem mTotalFlow = new MainRecycleViewItem();
+        mPressure.setBackground(getResources().getDrawable(R.drawable.pressure_normal));
+        mPressure.setBackgroundBig(getResources().getDrawable(R.drawable.pressure_big));
+        mPressure.setType("当前压力");
+        mPressure.setData("1111");
+        mPressure.setUnit("kg/cm²");
+        mPressure.setStr("212");
+        mPressure.setHeight(100);
+        mConcentration.setBackground(getResources().getDrawable(R.drawable.concentration_normal));
+        mConcentration.setBackgroundBig(getResources().getDrawable(R.drawable.concentration_big));
+        mConcentration.setType("当前浓度");
+        mConcentration.setData("2222");
+        mConcentration.setStr("%");
+        mConcentration.setHeight(100);
+        mConcentration.setStr("244");
+        mFlow.setBackground(getResources().getDrawable(R.drawable.flow_normal));
+        mFlow.setBackgroundBig(getResources().getDrawable(R.drawable.flow_normal));
+        mFlow.setType("当前流量");
+        mFlow.setData("333");
+        mFlow.setStr("L/min");
+        mFlow.setHeight(100);
+        mFlow.setStr("228");
+        mTotalFlow.setBackground(getResources().getDrawable(R.drawable.totalflow_nromal));
+        mTotalFlow.setBackgroundBig(getResources().getDrawable(R.drawable.totalflow_big));
+        mTotalFlow.setType("累积流量");
+        mTotalFlow.setData("4444");
+        mTotalFlow.setStr("m³");
+        mTotalFlow.setHeight(220);
+        mTotalFlow.setStr("264");
+        list1.add(mPressure);
+        list1.add(mConcentration);
+        list1.add(mFlow);
+        list2.add(mTotalFlow);
     }
 
     /**
      * ���ݻ�ȡ
      */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void getData() {
 
     }
@@ -181,45 +223,10 @@ public class MonitorActivity extends android.support.v4.app.Fragment implements 
         }).start();
     }
 
-
-
-    /**
-     * �����������
-     */
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            /**���ذ���*/
-            case R.id.monitor_btn_back:
-//                Intent intent = new Intent(MonitorActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                finish();
-                break;
-        }
-    }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        view.getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         flag=false;
-
     }
 
     @Override
@@ -276,8 +283,6 @@ public class MonitorActivity extends android.support.v4.app.Fragment implements 
                     MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,b,101,1);
                 }
                 break;
-
-
         }
         return false;
     }

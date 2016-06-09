@@ -1,6 +1,5 @@
-package bean;
+package service;
 
-import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

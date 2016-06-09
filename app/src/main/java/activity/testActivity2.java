@@ -1,24 +1,18 @@
 package activity;
 
 import android.annotation.TargetApi;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 import com.hitek.serial.R;
 
-import bean.Services;
+import fragment.MonitorFragment;
+import service.Services;
 import utils.Utils;
-import view.AlarmLamp;
 
 /**
  * Created by zuheng.lv on 2016/6/3.
@@ -43,14 +37,14 @@ public class testActivity2 extends FragmentActivity implements View.OnClickListe
         analogActivity = new AnalogActivity();
         alarmActivity = new AlarmActivity();
         aMachineStatusActivity = new AMachineStatusActivity();
-        Utils.replace(getSupportFragmentManager(), R.id.main_fragment, AlarmActivity.class);
+        Utils.replace(getSupportFragmentManager(), R.id.main_fragment, MonitorFragment.class);
         startService(new Intent(this, Services.class));
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.main_btn:
-                Utils.replace(getSupportFragmentManager(),R.id.main_fragment,MonitorActivity.class);
+                Utils.replace(getSupportFragmentManager(),R.id.main_fragment, MonitorFragment.class);
                 break;
             case R.id.main_btn2:
                 Utils.replace(getSupportFragmentManager(),R.id.main_fragment,AnalogActivity.class);

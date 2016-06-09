@@ -1,4 +1,4 @@
-package bean;
+package service;
 
 /**
  * Created by zuheng.lv on 2016/6/2.

@@ -1,4 +1,4 @@
-package bean;
+package service;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -11,7 +11,7 @@ import com.hitek.serial.R;
 
 import java.util.List;
 
-import bean.HistoryData;
+import service.HistoryData;
 
 /**
  * Created by zuheng.lv on 2016/6/3.

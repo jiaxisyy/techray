@@ -4,19 +4,14 @@ package activity;
 
 import com.hitek.serial.R;
 
-import android.app.Service;
 import android.content.Intent;
-import android.media.tv.TvContract.Channels.Logo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import bean.Services;
 
 
 /**
@@ -71,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.main_btn_monitor:
-                intent = new Intent(MainActivity.this,MonitorActivity.class);
-                startActivity(intent);
+//                intent = new Intent(MainActivity.this,MonitorActivity.class);
+//                startActivity(intent);
 //                finish();
                 break;
             case R.id.main_btn_parameter:
