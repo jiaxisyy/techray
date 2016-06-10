@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.hitek.serial.R;
 
+import fragment.AnimationFragment;
 import fragment.MonitorFragment;
 import service.Services;
 import utils.Utils;
@@ -47,7 +48,7 @@ public class testActivity2 extends FragmentActivity implements View.OnClickListe
                 Utils.replace(getSupportFragmentManager(),R.id.main_fragment, MonitorFragment.class);
                 break;
             case R.id.main_btn2:
-                Utils.replace(getSupportFragmentManager(),R.id.main_fragment,AnalogActivity.class);
+                Utils.replace(getSupportFragmentManager(),R.id.main_fragment, AnimationFragment.class);
                 break;
             case R.id.main_btn3:
                 Utils.replace(getSupportFragmentManager(),R.id.main_fragment,testActivity3.class);
