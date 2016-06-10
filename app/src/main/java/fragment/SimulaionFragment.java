@@ -129,7 +129,7 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
     private TextView analog_et_oxy_max,analog_et_flow_max,analog_et_concentration_max,analog_et_temp_max;
     private TextView analog_et_oxy_min,analog_et_flow_min,analog_et_concentration_min,analog_et_temp_min;
     private TextView analog_et_oxy_correction,analog_et_flow_correction,analog_et_concentration_correction,analog_et_temp_correction;
-    private LinearLayout simulaion_layout_pressure;
+    private LinearLayout simulaion_layout_pressure,simulaion_layout_flow,simulaion_layout_temp,simulaion_layout_concentration;
     private boolean flag=true;
     private int[] local,str;
     private View view;
@@ -188,6 +188,9 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
 //        analog_et_temp_correction.setOnClickListener(this);
 
         simulaion_layout_pressure = (LinearLayout) view.findViewById(R.id.simulaion_layout_pressure);
+        simulaion_layout_flow = (LinearLayout) view.findViewById(R.id.simulaion_layout_flow);
+        simulaion_layout_temp = (LinearLayout) view.findViewById(R.id.simulaion_layout_temp);
+        simulaion_layout_concentration = (LinearLayout) view.findViewById(R.id.simulaion_layout_concentration);
 
         simulaion_btn_pressure = (Button) view.findViewById(R.id.simulaion_btn_pressure);
         simulaion_btn_flow = (Button) view.findViewById(R.id.simulaion_btn_flow);
@@ -334,16 +337,16 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.simulaion_btn_pressure:
-                rAnimation(v);
+                rAnimation(simulaion_layout_pressure);
                 break;
             case R.id.simulaion_btn_flow:
-                rAnimation(v);
+                rAnimation(simulaion_layout_flow);
                 break;
             case R.id.simulaion_btn_temp:
-                rAnimation(v);
+                rAnimation(simulaion_layout_temp);
                 break;
             case R.id.simulaion_btn_concentration:
-                rAnimation(v);
+                rAnimation(simulaion_layout_concentration);
                 break;
             case R.id.analog_et_oxy_max:
                 local=new int[2];
