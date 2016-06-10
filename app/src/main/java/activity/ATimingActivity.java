@@ -109,7 +109,7 @@ public class ATimingActivity extends android.support.v4.app.Fragment implements 
     private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.atimming_layout,container,false);
+        view = inflater.inflate(R.layout.time_layout,container,false);
         initView();
         initData();
         setData();
@@ -120,7 +120,7 @@ public class ATimingActivity extends android.support.v4.app.Fragment implements 
      * �ؼ���ʼ��
      */
     public void initView() {
-        time_btn_back = (Button) view.findViewById(R.id.time_btn_back);
+        time_btn_back = (Button) view.findViewById(R.id.time_btn_change);
         time_btn_back.setOnClickListener(this);
         ATiming_1 = (TextView) view.findViewById(R.id.ATiming_1);
         ATiming_2 = (TextView) view.findViewById(R.id.ATiming_2);
@@ -232,7 +232,7 @@ public class ATimingActivity extends android.support.v4.app.Fragment implements 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.time_btn_back:
+            case R.id.time_btn_change:
 //                Intent intent = new Intent(ATimingActivity.this, MainActivity.class);
 //                startActivity(intent);
 //                finish();

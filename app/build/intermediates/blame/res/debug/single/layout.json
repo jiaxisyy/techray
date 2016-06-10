@@ -1,11 +1,283 @@
 [
     {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\analog_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\analog_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\flow_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\flow_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_recycleview_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\main_recycleview_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ed_dialog.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\ed_dialog.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\run_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\run_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\history_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\history_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout2.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\test_layout2.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alarm_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\alarm_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\test_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avalve_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\avalve_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\second_fragment_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\second_fragment_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_recycleview_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\main_recycleview_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\parameter_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\parameter_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\recycle_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\recycle_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_login_succeed.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_login_succeed.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_parent.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\layout_parent.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pressure_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\pressure_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\amachinestatus_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\amachinestatus_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\analog_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\analog_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\second_fragment_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\second_fragment_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avalve_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\avalve_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\flow_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\flow_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\recycle_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\recycle_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pressure_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\pressure_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -32,10 +304,6 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\analog_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\analog_layout.xml"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_search_view.xml"
     },
@@ -44,44 +312,32 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_layout.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_dialog_title_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_login.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_login.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_login.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_login.xml"
     },
     {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\monitor_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\monitor_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_parent.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\layout_parent.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_activity_chooser_view.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\run_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\run_layout.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout2.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\test_layout2.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_layout.xml",
@@ -92,24 +348,36 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout2.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\test_layout2.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_children.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\layout_children.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alarm_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\alarm_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\second_main_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\second_main_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\test_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\test_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\parameter_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\parameter_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_alert_dialog_material.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_search_view.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\amachinestatus_layout.xml",
@@ -124,52 +392,44 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_radio.xml"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_recycleview_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\main_recycleview_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\run_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\run_layout.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_lines.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_icon.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_login_succeed.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_login_succeed.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\recycle_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\recycle_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\main_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\animation_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\animation_layout.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ed_dialog.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\ed_dialog.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_content_include.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
@@ -188,16 +448,8 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pressure_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\pressure_layout.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_select_dialog_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_multichoice_material.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\monitor_layout.xml",
@@ -212,32 +464,36 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_item_material.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_media.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_media.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\second_fragment_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\second_fragment_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\welcome_activity.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\welcome_activity.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avalve_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\avalve_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_item_material.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_toolbar.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alarm_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\alarm_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\flow_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\flow_layout.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\time_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\time_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\atimming_layout.xml",
@@ -248,7 +504,7 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_media_action.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media_narrow.xml"
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_select_dialog_material.xml"
     }
 ]

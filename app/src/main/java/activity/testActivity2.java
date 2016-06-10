@@ -48,7 +48,7 @@ public class testActivity2 extends FragmentActivity implements View.OnClickListe
                 Utils.replace(getSupportFragmentManager(),R.id.main_fragment, MonitorFragment.class);
                 break;
             case R.id.main_btn2:
-                Utils.replace(getSupportFragmentManager(),R.id.main_fragment, AnimationFragment.class);
+                Utils.replace(getSupportFragmentManager(),R.id.main_fragment, ATimingActivity.class);
                 break;
             case R.id.main_btn3:
                 Utils.replace(getSupportFragmentManager(),R.id.main_fragment,testActivity3.class);
