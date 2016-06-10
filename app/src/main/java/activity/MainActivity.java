@@ -26,6 +26,7 @@ import java.util.Map;
 
 import adapter.MainExpandableListViewAdapter;
 import bean.LoginErrorInfo;
+import fragment.AnimationFragment;
 import fragment.MonitorFragment;
 import utils.CacheUtils;
 import utils.Constants;
@@ -54,8 +55,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, MonitorFragment.class);
+        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AnimationFragment.class);
         setContentView(R.layout.main_layout);
+
 
 
         initialize();

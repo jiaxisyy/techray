@@ -1,5 +1,7 @@
 package bean;
 
+import android.os.Bundle;
+
 /**
  * Created by zuheng.lv on 2016/6/9.
  */
@@ -7,6 +9,7 @@ public class Circle {
     private int x;
     private int y;
     private int flag;
+    private Boolean LINE;
 
     public int getX() {
         return x;
@@ -30,5 +33,13 @@ public class Circle {
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public Boolean getLINE() {
+        return LINE;
+    }
+
+    public void setLINE(Boolean LINE) {
+        this.LINE = LINE;
     }
 }
