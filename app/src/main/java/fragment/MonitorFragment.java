@@ -1,14 +1,14 @@
 package fragment;
 
 import android.annotation.TargetApi;
-import android.content.Context;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +48,6 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                     totalflowData =  msg.getData().getString("l1");
                     momitor_btn_machine_a.setSelected(msg.getData().getBoolean("m11"));
                     break;
-
             }
         }
     };
@@ -67,7 +66,7 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
     private List<MainRecycleViewItem> list2;
     private String pressureData,concentrationData,flowData,totalflowData;
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.monitor_layout,container,false);
