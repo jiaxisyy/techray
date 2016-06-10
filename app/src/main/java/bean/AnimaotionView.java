@@ -27,11 +27,10 @@ public class AnimaotionView extends View {
     public AnimaotionView(Context context, AttributeSet attrs) {
         super(context,attrs);
         paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(Color.BLACK);
+//        paint.setStyle(Paint.Style.STROKE);
+        paint.setColor(Color.WHITE);
         list = new ArrayList<Circle>();
         list.clear();
-        born =1;
         circle = new Circle();
         circle.setX(100);
         circle.setY(185);
@@ -43,16 +42,17 @@ public class AnimaotionView extends View {
             public void run() {
                 while (true){
                     try {
-                        Thread.sleep(10);
+                        Thread.sleep(50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    if(list.get(0).getX()>getWidth()){
-                        born =0;
+                    if(list.size()>1&&list.get(0).getX()>getWidth() ){
+                       list.remove(0);
                     }
-                    if(list.get(list.size()-1).getX()>=125 && born ==1) {
+                    if(list.get(list.size()-1).getX()>=110 ) {
                         initData();
                     }
+                    System.out.println(list.size());
                     for (int i =0;i<list.size();i++){
                         if(list.get(i).getLINE()){
                             loopDraw(i);
