@@ -1,6 +1,7 @@
 package activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -27,7 +28,11 @@ import java.util.Map;
 import adapter.MainExpandableListViewAdapter;
 import bean.LoginErrorInfo;
 import fragment.AnimationFragment;
+import fragment.HistoryFragment;
+import fragment.IntroduceFragment;
 import fragment.MonitorFragment;
+import fragment.SimulaionFragment;
+import service.Services;
 import utils.CacheUtils;
 import utils.Constants;
 import utils.Httputils;
@@ -55,10 +60,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AnimationFragment.class);
+        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
         setContentView(R.layout.main_layout);
 
-
+        startService(new Intent(this, Services.class));
 
         initialize();
         initData();

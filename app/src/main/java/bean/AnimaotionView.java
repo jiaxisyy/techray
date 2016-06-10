@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -42,7 +41,8 @@ public class AnimaotionView extends View {
             public void run() {
                 while (true){
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(50
+                        );
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

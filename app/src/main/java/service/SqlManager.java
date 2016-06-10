@@ -66,7 +66,7 @@ public class SqlManager extends DataBaseHelper{
      * 查询历史记录
      */
     public List<HistoryData> searchHistory(){
-        Cursor cursor =  db.query("history",null,null,null,null,null,"date");
+        Cursor cursor =  db.query("history",null,null,null,null,null,"historyID desc");
         List<HistoryData> list = new ArrayList<>();
         if(cursor.moveToFirst()){
             do{
