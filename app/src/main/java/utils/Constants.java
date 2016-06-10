@@ -27,6 +27,10 @@ public class Constants {
 
         int OP_REAL_D =30;
         int OP_REAL_R =31;
+        //保存登陆用户名
+        String IS_LOGIN_USER_REMEMBER="is_login_user_remember";
+        //保存的用户名
+        String LOGIN_USERNAME="login_username";
 
     }
 }

@@ -23,4 +23,10 @@
         <item name="android:windowEnterAnimation">@anim/window_pop_anim</item>
         <item name="android:windowExitAnimation">@anim/popup_window_exit</item>
     </style>
+
+    <style name="AnimationPreview">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
 </resources>
