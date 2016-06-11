@@ -93,7 +93,6 @@ public class PressureActivity extends android.support.v4.app.Fragment implements
         pressure_et_max2.setOnClickListener(this);
         pressure_et_min1.setOnClickListener(this);
         pressure_et_min2.setOnClickListener(this);
-
     }
     /**���ݳ�ʼ��*/
     public void initData(){
@@ -141,7 +140,6 @@ public class PressureActivity extends android.support.v4.app.Fragment implements
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-
             case R.id.pressure_et_max1:
                 local=new int[2];
                 v.getLocationInWindow(local);

@@ -61,7 +61,7 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pressure_layout,container,false);
+         view = inflater.inflate(R.layout.systemsetting_layout,container,false);
         initView();
         initData();
         setData();
