@@ -19,9 +19,6 @@ public class UpdadeService extends Service {
     public void onCreate() {
         super.onCreate();
         UpdateApp.updateApk();
-
-
-
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
