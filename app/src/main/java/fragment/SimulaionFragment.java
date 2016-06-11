@@ -326,10 +326,17 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
             }
         }).start();
     }
-    private void rAnimation(View view){
-        RotateAnimation rotateAnimation  = new RotateAnimation(0,100,1.0f,1.5f);
-        rotateAnimation.setDuration(500);
-        view.startAnimation(rotateAnimation);
+    private void rAnimation(View view,int flag){
+        TranslateAnimation translateAnimation;
+        if(flag==0){
+            translateAnimation  = new TranslateAnimation(1.0f,1.0f,1.0f,500.0f);
+            translateAnimation.setDuration(500);
+        }else {
+            translateAnimation  = new TranslateAnimation(1.0f,1.0f,1.0f,-500.0f);
+            translateAnimation.setDuration(500);
+        }
+
+        view.startAnimation(translateAnimation);
     }
 
     /**�����������*/
@@ -337,16 +344,16 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.simulaion_btn_pressure:
-                rAnimation(simulaion_layout_pressure);
+                rAnimation(simulaion_layout_pressure,1);
                 break;
             case R.id.simulaion_btn_flow:
-                rAnimation(simulaion_layout_flow);
+                rAnimation(simulaion_layout_flow,1);
                 break;
             case R.id.simulaion_btn_temp:
-                rAnimation(simulaion_layout_temp);
+                rAnimation(simulaion_layout_temp,0);
                 break;
             case R.id.simulaion_btn_concentration:
-                rAnimation(simulaion_layout_concentration);
+                rAnimation(simulaion_layout_concentration,0);
                 break;
             case R.id.analog_et_oxy_max:
                 local=new int[2];

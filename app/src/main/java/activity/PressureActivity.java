@@ -66,7 +66,6 @@ public class PressureActivity extends android.support.v4.app.Fragment implements
     };
 
 
-    private Button pressure_btn_back;
     private TextView pressure_et_max1,pressure_et_max2,pressure_et_min1,pressure_et_min2;
     private boolean flag=true;
     private  Thread myThread;
@@ -90,12 +89,10 @@ public class PressureActivity extends android.support.v4.app.Fragment implements
         pressure_et_max2 = (TextView)view.findViewById(R.id.pressure_et_max2);
         pressure_et_min1 = (TextView)view.findViewById(R.id.pressure_et_min1);
         pressure_et_min2 = (TextView)view.findViewById(R.id.pressure_et_min2);
-        pressure_btn_back = (Button) view.findViewById(R.id.pressure_btn_back);
         pressure_et_max1.setOnClickListener(this);
         pressure_et_max2.setOnClickListener(this);
         pressure_et_min1.setOnClickListener(this);
         pressure_et_min2.setOnClickListener(this);
-        pressure_btn_back.setOnClickListener(this);
     }
     /**���ݳ�ʼ��*/
     public void initData(){
@@ -143,10 +140,6 @@ public class PressureActivity extends android.support.v4.app.Fragment implements
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.pressure_btn_back:
-//                Intent intent = new Intent(PressureActivity.this,MainActivity.class);
-//                startActivity(intent);
-                break;
             case R.id.pressure_et_max1:
                 local=new int[2];
                 v.getLocationInWindow(local);

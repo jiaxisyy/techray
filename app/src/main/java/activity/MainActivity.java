@@ -32,6 +32,7 @@ import fragment.HistoryFragment;
 import fragment.IntroduceFragment;
 import fragment.MonitorFragment;
 import fragment.SimulaionFragment;
+import fragment.SystemSettingFragment;
 import service.Services;
 import utils.CacheUtils;
 import utils.Constants;
@@ -60,7 +61,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
+        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SystemSettingFragment.class);
         setContentView(R.layout.main_layout);
 
         startService(new Intent(this, Services.class));
