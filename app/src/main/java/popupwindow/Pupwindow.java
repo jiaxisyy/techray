@@ -27,6 +27,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
     private int type;
     private int[] address;
 
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public Pupwindow(Context context, View view, float x, float y, int type, int[] address){
         this.type = type;

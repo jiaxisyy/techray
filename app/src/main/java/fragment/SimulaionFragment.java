@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.hitek.serial.R;
 
 import activity.MyApplication;
+import popupwindow.PopupForSimulaion;
 import utils.Constants;
 import popupwindow.Pupwindow;
 
@@ -343,6 +344,7 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
         switch (v.getId()){
             case R.id.simulaion_btn_pressure:
                 rAnimation(simulaion_layout_pressure,1);
+                PopupForSimulaion popupForSimulaion = new PopupForSimulaion(getContext(),v);
                 break;
             case R.id.simulaion_btn_flow:
                 rAnimation(simulaion_layout_flow,1);

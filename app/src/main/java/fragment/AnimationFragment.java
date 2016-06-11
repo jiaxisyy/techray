@@ -58,6 +58,11 @@ public class AnimationFragment extends Fragment{
                     bundle.putString("1",str[0]);
                     Message msg = new Message();
                     msg.setData(bundle);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();
