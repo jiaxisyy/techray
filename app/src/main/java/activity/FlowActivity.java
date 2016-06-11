@@ -7,29 +7,19 @@ import java.util.TimerTask;
 
 import com.hitek.serial.R;
 
-import android.R.integer;
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.text.format.Time;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import utils.Constants;
-import utils.PopUtils;
-import utils.Pupwindow;
+import popupwindow.Pupwindow;
 
 
 /**

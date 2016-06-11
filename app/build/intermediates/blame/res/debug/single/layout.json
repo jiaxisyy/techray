@@ -168,6 +168,10 @@
         "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\second_fragment_layout.xml"
     },
     {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alarmrecord_recycleview_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\alarmrecord_recycleview_layout.xml"
+    },
+    {
         "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_radio.xml"
     },
@@ -182,6 +186,10 @@
     {
         "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\animation_single_layout.xml",
         "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\animation_single_layout.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alarmrecord_layout.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\layout\\alarmrecord_layout.xml"
     },
     {
         "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\parameter_layout.xml",

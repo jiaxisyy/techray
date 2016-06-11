@@ -27,6 +27,7 @@ import java.util.Map;
 
 import adapter.MainExpandableListViewAdapter;
 import bean.LoginErrorInfo;
+import fragment.AlarmRecordFragment;
 import fragment.AnimationFragment;
 import fragment.HistoryFragment;
 import fragment.IntroduceFragment;
@@ -61,7 +62,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AnimationFragment.class);
+        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AlarmRecordFragment.class);
         setContentView(R.layout.main_layout);
 
         startService(new Intent(this, Services.class));

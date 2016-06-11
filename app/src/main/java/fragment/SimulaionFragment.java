@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,7 +17,7 @@ import com.hitek.serial.R;
 
 import activity.MyApplication;
 import utils.Constants;
-import utils.Pupwindow;
+import popupwindow.Pupwindow;
 
 /**
  * Created by zuheng.lv on 2016/6/10.

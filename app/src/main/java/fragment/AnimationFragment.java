@@ -39,6 +39,8 @@ public class AnimationFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          view = inflater.inflate(R.layout.animation_single_layout,container,false);
+        initView();
+        setData();
         return view;
     }
     private void initView(){

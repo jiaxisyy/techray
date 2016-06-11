@@ -5,29 +5,19 @@ package activity;
 
 import com.hitek.serial.R;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import java.util.zip.Inflater;
-
 import utils.Constants;
-import utils.PopUtils;
-import utils.Pupwindow;
+import popupwindow.Pupwindow;
 import utils.ReadAndWrite;
 
 /**

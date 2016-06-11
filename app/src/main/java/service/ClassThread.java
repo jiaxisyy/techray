@@ -1,10 +1,12 @@
 package service;
 
+import SQL.SqlManager;
+
 /**
  * Created by zuheng.lv on 2016/6/2.
  */
 public class ClassThread {
-    private  SqlManager sqlManager;
+    private SqlManager sqlManager;
     public ClassThread(SqlManager sqlManager){
         this.sqlManager = sqlManager;
     }

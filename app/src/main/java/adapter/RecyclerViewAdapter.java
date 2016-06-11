@@ -11,7 +11,7 @@ import com.hitek.serial.R;
 
 import java.util.List;
 
-import service.HistoryData;
+import bean.HistoryData;
 
 /**
  * Created by zuheng.lv on 2016/6/3.
@@ -24,8 +24,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         super();
         this.list =list;
         this.context = context;
-        System.out.println(list.size());
-
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
