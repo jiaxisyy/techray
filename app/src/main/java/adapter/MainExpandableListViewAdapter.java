@@ -1,10 +1,12 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hitek.serial.R;
@@ -20,14 +22,20 @@ public class MainExpandableListViewAdapter extends BaseExpandableListAdapter {
     private Map<String, List<String>> map;
     private List<String> parent;
     private Context context;
+    private Drawable drawable;
 
 
+    public MainExpandableListViewAdapter(Map<String, List<String>> map, List<String> parent, Context context,Drawable drawable) {
+        this.context = context;
+        this.map = map;
+        this.parent = parent;
+        this.drawable=drawable;
+    }
     public MainExpandableListViewAdapter(Map<String, List<String>> map, List<String> parent, Context context) {
         this.context = context;
         this.map = map;
         this.parent = parent;
     }
-
     //得到子item需要关联的数据
     @Override
     public Object getChild(int groupPosition, int childPosition) {
@@ -94,6 +102,7 @@ public class MainExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView tv = (TextView) convertView
                 .findViewById(R.id.parent_textview);
         tv.setText(this.parent.get(groupPosition));
+
         return tv;
     }
 

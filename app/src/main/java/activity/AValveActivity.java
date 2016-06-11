@@ -4,12 +4,11 @@ package activity;
 
 import com.hitek.serial.R;
 
-import android.app.Activity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -57,9 +56,9 @@ public class AValveActivity extends android.support.v4.app.Fragment implements V
     private Boolean flag = true;
     private View view;
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.avalve_layout,container,false);
         return view;
     }

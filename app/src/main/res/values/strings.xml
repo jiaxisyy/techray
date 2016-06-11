@@ -8,5 +8,11 @@
     <string name="PP_login_remember">记住用户名</string>
     <string name="PP_login_succeed">恭喜你，登陆成功！</string>
     <string name="PP_login_go_home">返回主页</string>
+    <string name="time_series_revise">累计流量校正</string>
+    <string name="time_series_protect">流量控制保护</string>
+    <string name="time_series_coverage">确认覆盖</string>
+    <string name="time_series_off_or_on">开/关</string>
+    <string name="time_series_affirm">确认</string>
+    <string name="time_series_time">时间</string>
 
 </resources>

@@ -15,8 +15,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.text.format.Time;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -67,7 +66,7 @@ public class FlowActivity extends android.support.v4.app.Fragment implements Vie
     private boolean flag = true;
     private View view;
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.flow_layout,container,false);

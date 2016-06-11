@@ -41,7 +41,7 @@ public class AnimaotionView extends View {
             public void run() {
                 while (true){
                     try {
-                        Thread.sleep(50
+                        Thread.sleep(25
                         );
                     } catch (InterruptedException e) {
                         e.printStackTrace();

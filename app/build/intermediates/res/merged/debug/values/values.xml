@@ -231,6 +231,12 @@
     <string name="main_state">状态</string>
     <string name="pp_login_affirm">确认</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="time_series_affirm">确认</string>
+    <string name="time_series_coverage">确认覆盖</string>
+    <string name="time_series_off_or_on">开/关</string>
+    <string name="time_series_protect">流量控制保护</string>
+    <string name="time_series_revise">累计流量校正</string>
+    <string name="time_series_time">时间</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -1204,7 +1210,7 @@
         <item name="android:scaleType">center</item>
     </style>
     <style name="DialogStyle" parent="@android:style/Theme.Dialog">
-    <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
 
 
     </style>
@@ -1306,6 +1312,14 @@
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
     <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Spinner"/>
+    <style name="PlcTimeSetting">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#4E91EC</item>
+        <item name="android:textSize">22px</item>
+
+
+    </style>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="Base.DialogWindowTitle.AppCompat">
     </style>
     <style name="RtlOverlay.Widget.AppCompat.ActionBar.TitleItem" parent="android:Widget">
@@ -1553,6 +1567,6 @@
         <item name="android:windowExitAnimation">@anim/popup_window_exit</item>
     </style>
     <style name="run_checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
-    <item name="android:button">@drawable/momitor_btn_bacground_selector</item>
+        <item name="android:button">@drawable/momitor_btn_bacground_selector</item>
     </style>
 </resources>

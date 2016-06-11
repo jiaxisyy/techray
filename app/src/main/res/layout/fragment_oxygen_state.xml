@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFEFEF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10px"
+        android:background="@drawable/oxygen_state_background"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/solenoid_valve_red_arrows" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/solenoid_valve_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="135dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="135dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="135dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/solenoid_valve_green_arrows" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="135dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="135dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+                <CheckBox
+                    android:id="@+id/ck_solenoid_valve10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/solenoid_valve_green_arrows" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

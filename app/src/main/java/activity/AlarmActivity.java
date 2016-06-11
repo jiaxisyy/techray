@@ -9,16 +9,14 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
+
+
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -72,7 +70,7 @@ public class AlarmActivity extends android.support.v4.app.Fragment implements Vi
         }
     };
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          view  = inflater.inflate(R.layout.alarm_layout,container,false);
