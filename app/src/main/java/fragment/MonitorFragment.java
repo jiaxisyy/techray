@@ -30,12 +30,14 @@ import adapter.MainRecycleViewAdapter;
 import bean.GLayoutManager;
 import bean.MainRecycleViewItem;
 import utils.Constants;
+import utils.ReadAndWrite;
 
 /**
  * Created by zuheng.lv on 2016/6/9.
  */
 public class MonitorFragment extends Fragment implements  View.OnTouchListener {
     private Handler handler = new Handler() {
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -46,7 +48,13 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                     concentrationData =  msg.getData().getString("j1");
                     flowData =  msg.getData().getString("k1");
                     totalflowData =  msg.getData().getString("l1");
-                    momitor_btn_machine_a.setSelected(msg.getData().getBoolean("m11"));
+                    if(msg.getData().getString("d700").equals("0")){
+                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
+                    }else if(msg.getData().getString("d700").equals("1")){
+                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
+                    }else if(msg.getData().getString("d700").equals("2")){
+                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
+                    }
                     break;
             }
         }
@@ -194,20 +202,16 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                         float[] l = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 244, 1);
                         float l1 = (float) (Math.round(l[0] * 100)) / 100;
                         //A������״̬
-                        byte[]m11 =  MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_M,11,1);
 
+                      String[] D700=  ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{700});
                         Bundle bundle = new Bundle();
 
                         bundle.putString("i1", String.valueOf(i1));
                         bundle.putString("j1", String.valueOf(j1));
                         bundle.putString("k1", String.valueOf(k1));
                         bundle.putString("l1", String.valueOf(l1));
+                        bundle.putString("d700",D700[0]);
 
-                        if(m11[0] == 1){
-                            bundle.putBoolean("m11",true);
-                        }else{
-                            bundle.putBoolean("m11",false);
-                        }
                         Message msg = new Message();
                         msg.what = 1;
                         msg.setData(bundle);

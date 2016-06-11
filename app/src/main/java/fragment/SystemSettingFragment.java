@@ -128,7 +128,7 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.systemsetting_btn_change:
-                popupForSystemSetting.stopPopupWindow();
+                popupForSystemSetting.showPopupWindow();
                 break;
         }
     }

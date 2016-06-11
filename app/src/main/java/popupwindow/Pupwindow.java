@@ -3,6 +3,7 @@ package popupwindow;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.util.Log;
@@ -26,14 +27,15 @@ public class Pupwindow extends Activity implements View.OnClickListener {
     private EditText pup_et;
     private int type;
     private int[] address;
-
+    private View view;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public Pupwindow(Context context, View view, float x, float y, int type, int[] address){
+    public Pupwindow(Context context, View view, int type, int[] address){
+        this.view = view;
         this.type = type;
         this.address = address;
         contentView =LayoutInflater.from(context).inflate(R.layout.popupwindow_layout, null);
-        popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,false);
+        popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,false);
         if(popupWindow.isShowing()){
             popupWindow.dismiss();
         }
@@ -42,17 +44,24 @@ public class Pupwindow extends Activity implements View.OnClickListener {
         int[] location = new int[2];
         view.getLocationOnScreen(location);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        popupWindow.setAnimationStyle(R.style.AnimationPreview);
         pup_et = (EditText) contentView.findViewById(R.id.pup_et);
-        pup_et.setWidth(view.getWidth());
-        pup_et.setHeight(view.getHeight());
-        pup_et.setBackground(view.getBackground());
         Button pup_comfirm = (Button)contentView.findViewById(R.id.pup_comfirm);
         Button pup_cancel = (Button)contentView.findViewById(R.id.pup_cancel);
-        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, (int) x, (int) y);
         pup_comfirm.setOnClickListener(this);
         pup_cancel.setOnClickListener(this);
     }
+    public void showPopupWindow(){
+        if(!popupWindow.isShowing()){
+            popupWindow.showAtLocation(contentView,Gravity.FILL,0,0);
+        }
+    }
+    public void stopPopupWindow(){
 
+        if(popupWindow.isShowing()){
+            popupWindow.dismiss();
+        }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){

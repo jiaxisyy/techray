@@ -106,7 +106,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SystemSettingFragment.class);
+        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
         setContentView(R.layout.main_layout);
         initialize();
         initData();
