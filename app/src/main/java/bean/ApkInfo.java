@@ -19,6 +19,9 @@ public class ApkInfo {
     private String version;
     private int versionCode;
 
+
+
+
     public String getFileName() {
         return fileName;
     }

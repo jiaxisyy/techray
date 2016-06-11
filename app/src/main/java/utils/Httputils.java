@@ -217,6 +217,7 @@ public class Httputils {
      * @param url ：访问网络的url地址
      * @return byte[]
      * 用户获取手机验证码
+     *
      */
     public static byte[] loadByteFromURL(String url, Context context) {
         HttpURLConnection httpConn = null;

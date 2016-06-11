@@ -279,6 +279,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void showLoginPopupWindow() {
 
 
+
+
+
+
         popupWindow = getPopupWindow(R.layout.popupwindow_login);
         popupWindow.setAnimationStyle(R.style.AnimationPreview);
 

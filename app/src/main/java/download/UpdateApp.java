@@ -58,6 +58,8 @@ public class UpdateApp {
 
 
 
+
+
               /*  final ProgressDialog progressDialog = new ProgressDialog(context);
                 progressDialog.show();
                 //需要更新

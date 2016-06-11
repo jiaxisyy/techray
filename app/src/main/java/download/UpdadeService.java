@@ -21,6 +21,7 @@ public class UpdadeService extends Service {
         UpdateApp.updateApk();
 
 
+
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
