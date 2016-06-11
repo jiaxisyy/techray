@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,6 +29,7 @@ import java.util.Map;
 
 import adapter.MainExpandableListViewAdapter;
 import bean.LoginErrorInfo;
+import download.UpdateApp;
 import fragment.AnimationFragment;
 import fragment.HistoryFragment;
 import fragment.IntroduceFragment;
@@ -207,6 +207,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 5:
                         //检测更新
+                        UpdateApp updateApp = new UpdateApp(this);
+                        updateApp.updateApk();
+
                         break;
                 }
 
@@ -318,7 +321,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        loginInfo = Httputils.submitPostData(LOGIN_URL, user, "UTF-8");
+                        Httputils httputils = new Httputils(getApplicationContext());
+                        loginInfo = httputils.submitPostData(LOGIN_URL, user, "UTF-8");
                         Gson gson = new Gson();
                         if (loginInfo != null) {
                             if (!loginInfo.contains("\"error\"")) {

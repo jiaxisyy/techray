@@ -4,12 +4,12 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
@@ -164,12 +164,12 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\logo.png",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable-hdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
