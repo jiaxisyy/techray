@@ -28,8 +28,10 @@ import java.util.List;
 import java.util.Map;
 
 import adapter.MainExpandableListViewAdapter;
+import bean.AlarmRecordData;
 import bean.LoginErrorInfo;
 import download.UpdateApp;
+import fragment.AlarmRecordFragment;
 import fragment.AnimationFragment;
 import fragment.HistoryFragment;
 import fragment.IntroduceFragment;
@@ -37,6 +39,8 @@ import fragment.MonitorFragment;
 import fragment.OxygenStateFragment;
 import fragment.SimulaionFragment;
 import fragment.SystemSettingFragment;
+import fragment.TimeSeriesFragment;
+import fragment.TimeSettingFragment;
 import service.Services;
 import utils.CacheUtils;
 import utils.Constants;
@@ -190,6 +194,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 switch (childPosition) {
                     case 0:
                         //时序设置
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
                         break;
                     case 1:
                         //模拟量设置
@@ -197,6 +202,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 2:
                         //历史报警记录
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AlarmRecordFragment.class);
                         break;
                     case 3:
                         //系统设置
@@ -204,6 +210,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 4:
                         //特殊控制
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSeriesFragment.class);
                         break;
                     case 5:
                         //检测更新
