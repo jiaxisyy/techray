@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hitek.serial.R;
 
+import popupwindow.PopupForSystemSetting;
 import utils.Constants;
 import popupwindow.Pupwindow;
 import utils.ReadAndWrite;
@@ -51,12 +53,13 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
 
 
     private Button systemsetting_btn_change;
-    private TextView pressure_et_max1,pressure_et_max2,pressure_et_min1,pressure_et_min2;
+    private EditText pressure_et_max1,pressure_et_max2,pressure_et_min1,pressure_et_min2;
     private boolean flag=true;
     private  Thread myThread;
     private int[] local;
     private int[] str;
     private View view;
+    private PopupForSystemSetting popupForSystemSetting;
 
     @Nullable
     @Override
@@ -65,20 +68,17 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
         initView();
         initData();
         setData();
+        popupForSystemSetting = new PopupForSystemSetting(getContext(),view,Constants.Define.OP_REAL_D,new int[]{330,334,338,342});
         myThread.start();
         return view;
     }
     /**�ؼ���ʼ��*/
     public void initView(){
-        pressure_et_max1 = (TextView)view.findViewById(R.id.pressure_et_max1);
-        pressure_et_max2 = (TextView)view.findViewById(R.id.pressure_et_max2);
-        pressure_et_min1 = (TextView)view.findViewById(R.id.pressure_et_min1);
-        pressure_et_min2 = (TextView)view.findViewById(R.id.pressure_et_min2);
+        pressure_et_max1 = (EditText)view.findViewById(R.id.pressure_et_max1);
+        pressure_et_max2 = (EditText)view.findViewById(R.id.pressure_et_max2);
+        pressure_et_min1 = (EditText)view.findViewById(R.id.pressure_et_min1);
+        pressure_et_min2 = (EditText)view.findViewById(R.id.pressure_et_min2);
         systemsetting_btn_change = (Button) view.findViewById(R.id.systemsetting_btn_change);
-        pressure_et_max1.setOnClickListener(this);
-        pressure_et_max2.setOnClickListener(this);
-        pressure_et_min1.setOnClickListener(this);
-        pressure_et_min2.setOnClickListener(this);
         systemsetting_btn_change.setOnClickListener(this);
     }
     /**���ݳ�ʼ��*/
@@ -128,34 +128,15 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.systemsetting_btn_change:
-//                Intent intent = new Intent(PressureActivity.this,MainActivity.class);
-//                startActivity(intent);
-                break;
-            case R.id.pressure_et_max1:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{330};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
-                break;
-            case R.id.pressure_et_max2:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{338};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
-                break;
-            case R.id.pressure_et_min1:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{334};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
-                break;
-            case R.id.pressure_et_min2:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{342};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSystemSetting.stopPopupWindow();
                 break;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        popupForSystemSetting.stopPopupWindow();
     }
 
     @Override

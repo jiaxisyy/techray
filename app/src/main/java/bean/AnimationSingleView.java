@@ -32,7 +32,7 @@ public class AnimationSingleView extends View{
         list = new ArrayList<Circle>();
         list.clear();
         initData();
-        unThread();
+
     }
 
     private void unThread(){
