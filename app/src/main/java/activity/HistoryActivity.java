@@ -14,8 +14,8 @@ import com.hitek.serial.R;
 import java.util.List;
 
 import adapter.RecyclerViewAdapter;
-import service.HistoryData;
-import service.SqlManager;
+import bean.HistoryData;
+import SQL.SqlManager;
 
 /**
  * Created by zuheng.lv on 2016/6/3.

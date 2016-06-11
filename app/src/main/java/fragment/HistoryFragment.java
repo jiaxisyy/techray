@@ -2,7 +2,6 @@ package fragment;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,9 +18,9 @@ import com.hitek.serial.R;
 import java.util.List;
 
 import adapter.RecyclerViewAdapter;
-import service.DataBaseHelper;
-import service.HistoryData;
-import service.SqlManager;
+import SQL.DataBaseHelper;
+import bean.HistoryData;
+import SQL.SqlManager;
 
 /**
  * Created by zuheng.lv on 2016/6/10.
@@ -67,6 +66,5 @@ public class HistoryFragment extends Fragment{
         history_stopdate.setText(cursor2.getString(0));
         history_stoptime.setText(cursor2.getString(1));
     }
-
     }
 }

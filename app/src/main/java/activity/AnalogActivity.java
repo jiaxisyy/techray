@@ -4,22 +4,18 @@ package activity;
 
 import com.hitek.serial.R;
 
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import android.widget.TextView;
 
-
 import utils.Constants;
-
-import utils.Pupwindow;
+import popupwindow.Pupwindow;
 
 
 /**
@@ -133,7 +129,7 @@ public class AnalogActivity extends android.support.v4.app.Fragment implements V
     private boolean flag=true;
     private int[] local,str;
     private View view;
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.analog_layout,container,false);

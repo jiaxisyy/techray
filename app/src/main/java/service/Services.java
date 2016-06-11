@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import SQL.SqlManager;
+
 /**
  * Created by zuheng.lv on 2016/6/2.
  */
 public class Services extends Service{
 
-    private  SqlManager sqlManager;
+    private SqlManager sqlManager;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
