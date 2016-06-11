@@ -51,6 +51,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:clickable="true"
                 android:text="确定"
                 android:textSize="30sp" />
 
@@ -66,6 +67,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="取消"
+                android:clickable="true"
                 android:textSize="30sp" />
 
 

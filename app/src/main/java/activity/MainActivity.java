@@ -22,7 +22,9 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.hitek.serial.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +38,7 @@ import fragment.IntroduceFragment;
 import fragment.MonitorFragment;
 import fragment.OxygenStateFragment;
 import fragment.SimulaionFragment;
+import fragment.SpecialControlsFragment;
 import fragment.SystemSettingFragment;
 import service.Services;
 import utils.CacheUtils;
@@ -60,10 +63,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private String LOGIN_URL = "http://10.199.198.55:58010/userconsle/login";
     private final static int MSG_LOGIN_SUCCEED = 1;
     private final static int MSG_LOGIN_ERROR = 2;
+    private final int TIME = 3;
+
     private ExpandableListView elv_mian_state;
     private View view, newView;
     private String loginInfo;
-    private String errorInfo;
+    private String errorInfo, str;
     private Handler handler = new Handler() {
 
         @Override
@@ -75,14 +80,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 case MSG_LOGIN_SUCCEED:
                     //登录成功
                     popupWindow.dismiss();
-                    Log.d("JIAXI", "pop0");
-//                    //创建新的弹窗
-//                    newPopupWindow = getPopupWindow(R.layout.popupwindow_login_succeed);
-//
-//                    newPopupWindow.setAnimationStyle(R.style.AnimationPreview);
-//
-//                    newView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.popupwindow_login_succeed, null);
-//                    newPopupWindow.showAsDropDown(newView);
                     Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                     updataMainActivity();
 
@@ -91,6 +88,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 case MSG_LOGIN_ERROR:
                     //登录失败
                     Toast.makeText(getApplicationContext(), errorInfo == null ? "登录失败" : errorInfo, Toast.LENGTH_SHORT).show();
+                    break;
+                case TIME:
+                    tv_main_time.setText(str);
                     break;
             }
 
@@ -128,7 +128,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         elv_mian_state.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                switch (groupPosition){
+                switch (groupPosition) {
                     //主页
                     case 0:
 
@@ -142,7 +142,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
 
                 }
-
 
 
                 return false;
@@ -190,6 +189,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 switch (childPosition) {
                     case 0:
                         //时序设置
+
                         break;
                     case 1:
                         //模拟量设置
@@ -204,11 +204,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 4:
                         //特殊控制
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SpecialControlsFragment.class);
                         break;
                     case 5:
                         //检测更新
                         UpdateApp updateApp = new UpdateApp(this);
                         updateApp.updateApk();
+
 
                         break;
                 }
@@ -237,6 +239,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         map.put("状态", list2);
         List<String> list3 = new ArrayList<String>();
         map.put("介绍", list3);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm ");
+                        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+                        str = formatter.format(curDate);
+                        Message obtain = Message.obtain();
+                        obtain.what = TIME;
+                        handler.sendMessage(obtain);
+                        Thread.sleep(1000 * 60);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
 
     }
 
@@ -279,10 +299,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void showLoginPopupWindow() {
 
 
-
-
-
-
         popupWindow = getPopupWindow(R.layout.popupwindow_login);
         popupWindow.setAnimationStyle(R.style.AnimationPreview);
 
@@ -299,7 +315,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         pp_tv_login_cancel = (TextView) view.findViewById(R.id.pp_tv_login_cancel);
         if (CacheUtils.getBoolean(this, Constants.Define.IS_LOGIN_USER_REMEMBER, false)) {
-            pp_et_username.setText(Constants.Define.LOGIN_USERNAME);
+            pp_et_username.setText(CacheUtils.getString(this, Constants.Define.LOGIN_USERNAME));
         }
         popupWindow.showAsDropDown(view);
 

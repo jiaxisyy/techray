@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -32,11 +33,12 @@ public class UpdateApp {
 
     private static String localUrl = "http://10.199.198.161:8081/JavaWebApp/ver.json";
     private static String url = "http://10.199.198.55:58010/userconsle/clientApps/aaa";
-    private static String fileUrl = "http://10.199.198.55:58010:58010/userconsle/clientApps/aaa/file";
+    private static String fileUrl = "http://10.199.198.55:58010/userconsle/clientApps/aaa/file";
     private static String filePath;
     private static Context context;
     private static int NEW = 1;
     private static int OLD = 2;
+    private static PopupWindow upPopupWindow;
 
     private static Handler handler = new Handler() {
 
@@ -50,51 +52,31 @@ public class UpdateApp {
 
             }
             if (msg.what == OLD) {
+                View newView = LayoutInflater.from(context).inflate(R.layout.popupwindow_update, null);
+                final PopupWindow upPopupWindow = new PopupWindow(newView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
+                upPopupWindow.showAsDropDown(newView);
+                upPopupWindow.setAnimationStyle(R.style.AnimationPreview);
+                upPopupWindow.showAsDropDown(newView);
+                final TextView affirm = (TextView) newView.findViewById(R.id.pp_btn_update_affirm);
+                final TextView cancel = (TextView) newView.findViewById(R.id.pp_btn_update_cancel);
 
-                View view = LayoutInflater.from(context).inflate(R.layout.popupwindow_update, null);
-                PopupWindow popupWindow = new PopupWindow(view, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
-                popupWindow.setAnimationStyle(R.style.AnimationPreview);
-                popupWindow.showAsDropDown(view);
-
-
-
-
-
-              /*  final ProgressDialog progressDialog = new ProgressDialog(context);
-                progressDialog.show();
-                //需要更新
-                new Thread(new Runnable() {
+                //确定更新
+                affirm.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void run() {
-
-
-                        Ion.with(context)
-                                .load(fileUrl)
-//// have a ProgressBar get updated automatically with the percent
-//                                .progressBar(progressBar)
-// and a ProgressDialog
-
-                                .progressDialog(progressDialog)
-// can also use a custom callback
-                                .progress(new ProgressCallback() {
-                                    @Override
-                                    public void onProgress(long downloaded, long total) {
-                                        System.out.println("" + downloaded + " / " + total);
-                                    }
-                                })
-                                .write(new File(Environment.getExternalStorageDirectory() + filePath))
-                                .setCallback(new FutureCallback<File>() {
-                                    @Override
-                                    public void onCompleted(Exception e, File file) {
-                                        // download done...
-                                        // do stuff with the File or error
-                                        progressDialog.dismiss();
-                                        Log.d("*************", "*****************ok");
-                                    }
-                                });
+                    public void onClick(View v) {
+                        update();
+                        upPopupWindow.dismiss();
 
                     }
-                }).start();*/
+                });
+                //取消
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        upPopupWindow.dismiss();
+
+                    }
+                });
 
 
             }
@@ -102,6 +84,49 @@ public class UpdateApp {
 
         }
     };
+
+    private static void update() {
+
+
+        final ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.show();
+        //需要更新
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+
+                Ion.with(context)
+                        .load(fileUrl)
+//// have a ProgressBar get updated automatically with the percent
+//                                .progressBar(progressBar)
+// and a ProgressDialog
+
+                        .progressDialog(progressDialog)
+// can also use a custom callback
+                        .progress(new ProgressCallback() {
+                            @Override
+                            public void onProgress(long downloaded, long total) {
+                                System.out.println("" + downloaded + " / " + total);
+                            }
+                        })
+                        .write(new File(Environment.getExternalStorageDirectory() + filePath))
+                        .setCallback(new FutureCallback<File>() {
+                            @Override
+                            public void onCompleted(Exception e, File file) {
+                                // download done...
+                                // do stuff with the File or error
+                                progressDialog.dismiss();
+                                Log.d("*************",file.getAbsolutePath()+"");
+
+
+                            }
+                        });
+
+            }
+        }).start();
+    }
+
 
     public UpdateApp(Context context) {
         this.context = context;
