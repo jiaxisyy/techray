@@ -28,6 +28,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
     private int type;
     private int[] address;
     private View view;
+    private boolean flag;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public Pupwindow(Context context, View view, int type, int[] address){
@@ -36,6 +37,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
         this.address = address;
         contentView =LayoutInflater.from(context).inflate(R.layout.popupwindow_layout, null);
         popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,false);
+        flag = true;
         if(popupWindow.isShowing()){
             popupWindow.dismiss();
         }
@@ -58,8 +60,10 @@ public class Pupwindow extends Activity implements View.OnClickListener {
     }
     public void stopPopupWindow(){
 
-        if(popupWindow.isShowing()){
-            popupWindow.dismiss();
+        if(flag){
+            if(popupWindow.isShowing()){
+                popupWindow.dismiss();
+            }
         }
     }
     @Override
