@@ -33,10 +33,16 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            for (int i =0;i<=list.size()-1;i++){
-                list.get(i).setData(msg.getData().get(list.get(i).getStr()).toString());
+            switch (msg.what){
+                case 1:
+                    for (int i =0;i<=list.size()-1;i++){
+                    list.get(i).setData(msg.getData().get(list.get(i).getStr()).toString());
+
+                }
+                    notifyDataSetChanged();
+                    break;
             }
-            notifyDataSetChanged();
+
         }
     };
     public MainRecycleViewAdapter(Context context, List<MainRecycleViewItem> list,boolean flag){
@@ -66,7 +72,6 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
            holder.main_recycleview_data.setBackground(list.get(position).getBackgroundBig());
        }
         holder.main_recycleview_data.setHeight(list.get(position).getHeight());
-        System.out.println(list.get(position).getType().toString());
         if (mOnItemClickLitener != null)
         {
             holder.itemView.setOnClickListener(new View.OnClickListener()
@@ -92,11 +97,11 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
         }
     }
     public void onRefresh(){
+
       new Thread(new Runnable() {
           @Override
           public void run() {
               while (true){
-
                       int[] str = new int[list.size()];
                       for (int i =0;i<=list.size()-1;i++) {
                           str[i]=Integer.parseInt(list.get(i).getStr());
@@ -107,7 +112,9 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
                           bundle.putString(list.get(i).getStr(),strings[i]);
                       }
                   Message msg = new Message();
+                  msg.what =1;
                   msg.setData(bundle);
+                  handler.sendMessage(msg);
                   try {
                       Thread.sleep(1000);
                   } catch (InterruptedException e) {
