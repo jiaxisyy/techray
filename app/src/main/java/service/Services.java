@@ -25,6 +25,7 @@ public class Services extends Service{
         sqlManager = new SqlManager(getApplicationContext(),"history.db",null,1);
         ClassThread thread = new ClassThread(sqlManager);
         thread.historySave();
+        thread.saveAlarmRecord();
 //        thread.historyDelete();
 //        UpDateCloud upDateCloud = new UpDateCloud("");
 //        upDateCloud.upDateData();

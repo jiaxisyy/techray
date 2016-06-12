@@ -52,18 +52,7 @@ public class SqlManager extends DataBaseHelper {
         db.delete("history","date<?",new String[]{"Select CONVERT(varchar(100), dateadd(day,-30,GETDATE()), 24)"});
         System.out.println("delete");
     }
-    /**
-     * 存储报警记录
-     */
-    public void insertAlarm(){
 
-    }
-    /**
-     * 删除报警记录
-     */
-    public void deleteAlarm(){
-
-    }
     /**
      * 查询历史记录
      */
@@ -116,5 +105,27 @@ public class SqlManager extends DataBaseHelper {
             }while (cursor.moveToNext());
         }
         return list;
+    }
+    /**
+     * 存储报警记录
+     */
+    public long insertAlarmRecord(String type,String data,String explain ){
+        ContentValues values = new ContentValues();
+        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+        values.put("date", df1.format(new Date()));
+        values.put("time", df2.format(new Date()));
+        values.put("type",type);
+        values.put("data",data);
+        values.put("explain",explain);
+        long ID = db.insert("alarm",null,values);
+        return ID;
+    }
+    public void upDateAlarmRecord(long ID){
+        ContentValues values = new ContentValues();
+        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+        values.put("cancel", df1.format(new Date())+df2.format(new Date()));
+        db.update("alarm",values,"alarmID =?",new String[]{String.valueOf(ID)});
     }
 }
