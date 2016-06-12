@@ -32,6 +32,7 @@ import java.util.Map;
 import adapter.MainExpandableListViewAdapter;
 import bean.LoginErrorInfo;
 import download.UpdateApp;
+import fragment.AlarmRecordFragment;
 import fragment.AnimationFragment;
 import fragment.HistoryFragment;
 import fragment.IntroduceFragment;
@@ -40,10 +41,12 @@ import fragment.OxygenStateFragment;
 import fragment.SimulaionFragment;
 import fragment.SpecialControlsFragment;
 import fragment.SystemSettingFragment;
+import fragment.TimeSettingFragment;
 import service.Services;
 import utils.CacheUtils;
 import utils.Constants;
 import utils.Httputils;
+import utils.ReadAndWrite;
 import utils.Utils;
 
 
@@ -64,7 +67,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private final static int MSG_LOGIN_SUCCEED = 1;
     private final static int MSG_LOGIN_ERROR = 2;
     private final int TIME = 3;
-
+    private List<Integer> ions;
     private ExpandableListView elv_mian_state;
     private View view, newView;
     private String loginInfo;
@@ -81,17 +84,23 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     //登录成功
                     popupWindow.dismiss();
                     Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                    btn_main_login.setText("注销");
                     updataMainActivity();
                     btn_main_login.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             btn_main_login.setText("登录");
-                            showLoginPopupWindow();
                             parent.clear();
                             map.clear();
-                            icons.clear();
+                            ions.clear();
                             initData();
-                            elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, totalparent, getApplicationContext(),icons));
+                            MainExpandableListViewAdapter mainExpandableListViewAdapter = new MainExpandableListViewAdapter(map, parent, getApplicationContext(), ions);
+                            elv_mian_state.setAdapter(mainExpandableListViewAdapter);
+                            showLoginPopupWindow();
+
+
+                        }
+                    });
 
 
                     break;
@@ -117,7 +126,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initialize();
         initData();
         startService(new Intent(this, Services.class));
-        elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this));
+        elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
         //取消线
 //        elv_mian_state.setDivider(null);
         //去掉箭头
@@ -169,6 +178,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (groupPosition) {
             //选择组
             case 0:
+
+//                Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, MonitorFragment.class);
                 break;
             //************************
             case 1:
@@ -199,7 +210,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 switch (childPosition) {
                     case 0:
                         //时序设置
-
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
                         break;
                     case 1:
                         //模拟量设置
@@ -207,6 +218,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 2:
                         //历史报警记录
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AlarmRecordFragment.class);
                         break;
                     case 3:
                         //系统设置
@@ -249,6 +261,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         map.put("状态", list2);
         List<String> list3 = new ArrayList<String>();
         map.put("介绍", list3);
+        ions = new ArrayList<>();
+        ions.add(R.drawable.main_icon_home);
+        ions.add(R.drawable.main_icon_status);
+        ions.add(R.drawable.main_icon_introduce);
+     //    readWarning();
+        updataMainActivity();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -270,12 +288,51 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
+    /**
+     * 读取报警信息
+     */
+    private void readWarning() {
+        final int[] ints = new int[]{50, 51, 52, 53, 54, 55};
+        final String[] strings = new String[]{"氧气压力过高;", "氧气压力过低;", "氧气浓度过低;", "氧气流量过高;", "露点/温度过高;", "露点/温度过低;"};
+        final StringBuffer stringBuffer = new StringBuffer();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                while (true) {
+                    try {
+                        Thread.sleep(5000);
+                        String[] str = ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M, ints);
+                        if (str != null) {
+                            int length = str.length;
+                            for (int i = 0; i < length; i++) {
+                                int index = Integer.parseInt(str[i]);
+                                if (index == 1) {
+                                    stringBuffer.append(strings[i]);
+                                }
+
+
+                            }
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+            }
+        }).start();
+
+
+    }
+
     private void initialize() {
 
         tv_main_time = (TextView) findViewById(R.id.tv_main_time);
         btn_main_login = (TextView) findViewById(R.id.btn_main_login);
         elv_mian_state = (ExpandableListView) findViewById(R.id.elv_mian_state);
         btn_main_login.setOnClickListener(this);
+
 
     }
 
@@ -402,7 +459,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         list4.add("特殊控制");
         list4.add("检测更新");
         map.put("设置", list4);
-        elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this));
+        ions.add(R.drawable.main_icon_setting);
+        elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
         Log.d("JIAXI", "updataMainActivity");
     }
 

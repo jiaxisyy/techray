@@ -34,7 +34,6 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
                     /**����дUI���º���*/
                     if(msg.getData().getString("0")!=null && !msg.getData().getString("0").equals("")){
                         pressure_et_max1.setText(msg.getData().getString("0"));
-                        Log.d("*****************",msg.getData().getString("0"));
                     }
                     if(msg.getData().getString("1")!=null && !msg.getData().getString("1").equals("")){
                         pressure_et_min1.setText(msg.getData().getString("1"));

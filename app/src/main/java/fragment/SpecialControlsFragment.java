@@ -37,18 +37,18 @@ public class SpecialControlsFragment extends Fragment {
 
         return view;
     }
-    private void initialize() {
-
-        tvidrevise = (TextView) view.findViewById(R.id.tv_id_revise);
-        edsystemsettingrevise = (EditText) view.findViewById(R.id.ed_system_setting_revise);
-        tvidprotect = (TextView) view.findViewById(R.id.tv_id_protect);
-        edsystemsettingprotect = (EditText) view.findViewById(R.id.ed_system_setting_protect);
-        tvplcyear = (TextView) view.findViewById(R.id.tv_plc_year);
-        tvplcmonth = (TextView) view.findViewById(R.id.tv_plc_month);
-        tvplcday = (TextView) view.findViewById(R.id.tv_plc_day);
-        tvplchour = (TextView) view.findViewById(R.id.tv_plc_hour);
-        tvplcminute = (TextView) view.findViewById(R.id.tv_plc_minute);
-        tvplcsecond = (TextView) view.findViewById(R.id.tv_plc_second);
-        btntimeseriesaffirm = (Button) view.findViewById(R.id.btn_time_series_affirm);
-    }
+//    private void initialize() {
+//
+//        tvidrevise = (TextView) view.findViewById(R.id.tv_id_revise);
+//        edsystemsettingrevise = (EditText) view.findViewById(R.id.ed_system_setting_revise);
+//        tvidprotect = (TextView) view.findViewById(R.id.tv_id_protect);
+//        edsystemsettingprotect = (EditText) view.findViewById(R.id.ed_system_setting_protect);
+//        tvplcyear = (TextView) view.findViewById(R.id.tv_plc_year);
+//        tvplcmonth = (TextView) view.findViewById(R.id.tv_plc_month);
+//        tvplcday = (TextView) view.findViewById(R.id.tv_plc_day);
+//        tvplchour = (TextView) view.findViewById(R.id.tv_plc_hour);
+//        tvplcminute = (TextView) view.findViewById(R.id.tv_plc_minute);
+//        tvplcsecond = (TextView) view.findViewById(R.id.tv_plc_second);
+//        btntimeseriesaffirm = (Button) view.findViewById(R.id.btn_time_series_affirm);
+//    }
 }

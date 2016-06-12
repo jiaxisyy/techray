@@ -28,6 +28,8 @@ import java.io.File;
 import java.net.ConnectException;
 
 import bean.ApkInfo;
+import utils.CacheUtils;
+import utils.Constants;
 import utils.Httputils;
 
 /**
@@ -35,7 +37,6 @@ import utils.Httputils;
  */
 public class UpdateApp {
     private static String appName = "techray-coic";
-
     private static String localUrl = "http://10.199.198.161:8081/JavaWebApp/ver.json";
     private static String localFileUrl = "http://10.199.198.161:8081/JavaWebApp/techray-coic.apk";
     private static String url = "http://10.199.198.55:58010/userconsle/clientApps/" + appName;
@@ -45,9 +46,7 @@ public class UpdateApp {
     private static int NEW = 1;
     private static int OLD = 2;
     private static int INTERNETERROR = 3;
-
     private static PopupWindow upPopupWindow;
-
     private static Handler handler = new Handler() {
 
         @Override
@@ -56,8 +55,6 @@ public class UpdateApp {
             if (msg.what == NEW) {
                 //为最新,不需要更新
                 Toast.makeText(context, "当前版本为最新版本", Toast.LENGTH_SHORT).show();
-
-
             }
             if (msg.what == OLD) {
                 View newView = LayoutInflater.from(context).inflate(R.layout.popupwindow_update, null);
@@ -88,10 +85,9 @@ public class UpdateApp {
 
 
             }
-            if (msg.what==INTERNETERROR){
+            if (msg.what == INTERNETERROR) {
                 //网络异常
                 Toast.makeText(context, "网络异常", Toast.LENGTH_SHORT).show();
-
 
 
             }
@@ -112,11 +108,12 @@ public class UpdateApp {
 
 
                 Ion.with(context)
+
                         .load("http://10.199.198.55:58010/userconsle/clientApps/techray-coic/file")
 //// have a ProgressBar get updated automatically with the percent
 //                                .progressBar(progressBar)
 // and a ProgressDialog
-
+                        .addHeader("Cookie",CacheUtils.getString(context,"ID"))
                         .progressDialog(progressDialog)
 // can also use a custom callback
                         .progress(new ProgressCallback() {
@@ -125,7 +122,7 @@ public class UpdateApp {
                                 System.out.println("" + downloaded + " / " + total);
                             }
                         })
-                        .write(new File(Environment.getExternalStorageDirectory() +"/Download/techray-coic.apk"))
+                        .write(new File(Environment.getExternalStorageDirectory() + "/Download/techray-coic.apk"))
                         .setCallback(new FutureCallback<File>() {
                             @Override
                             public void onCompleted(Exception e, File file) {
@@ -155,38 +152,36 @@ public class UpdateApp {
     /**
      * 更新apk文件
      */
-    public static void updateApk() throws ConnectException{
+    public static void updateApk() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Httputils httputils = new Httputils(context);
-                    byte[] bytes = httputils.loadByteFromURL(url, context);
+                byte[] bytes = httputils.loadByteFromURL(url, context);
 
-                    if (bytes != null) {
-                        String s = new String(bytes);
-                        Gson gson = new Gson();
-                        ApkInfo apkInfo = gson.fromJson(s, ApkInfo.class);
+                if (bytes != null) {
+                    String s = new String(bytes);
+                    Gson gson = new Gson();
+                    ApkInfo apkInfo = gson.fromJson(s, ApkInfo.class);
 
-                        filePath = apkInfo.getFilePath();
-                        int verCode = getVerCode(context);
-                        int versionCode = apkInfo.getVersionCode();
-                        if (versionCode > verCode) {
-                            //需要更新
-                            Message obtain = Message.obtain();
-                            obtain.what = OLD;
-                            handler.sendMessage(obtain);
+                    filePath = apkInfo.getFilePath();
+                    int verCode = getVerCode(context);
+                    int versionCode = apkInfo.getVersionCode();
+                    if (versionCode > verCode) {
+                        //需要更新
+                        Message obtain = Message.obtain();
+                        obtain.what = OLD;
+                        handler.sendMessage(obtain);
 
-                        } else {
-                            //提示不需要更新,是最新版本
-                            Message obtain = Message.obtain();
-                            obtain.what = NEW;
-                            handler.sendMessage(obtain);
-                        }
+                    } else {
+                        //提示不需要更新,是最新版本
+                        Message obtain = Message.obtain();
+                        obtain.what = NEW;
+                        handler.sendMessage(obtain);
                     }
-
+                }
             }
         }).start();
-
 
     }
 

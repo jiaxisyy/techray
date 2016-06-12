@@ -19,6 +19,8 @@ import android.widget.Button;
 
 import com.hitek.serial.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -44,20 +46,18 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
             switch (msg.what) {
                 case 1:
                     /**����дUI���º���*/
-                    pressureData =  msg.getData().getString("i1");
-                    concentrationData =  msg.getData().getString("j1");
-                    flowData =  msg.getData().getString("k1");
-                    totalflowData =  msg.getData().getString("l1");
-                    if(msg.getData().getString("d700")!=null){
+                    if(String.valueOf(msg.getData().getShort("d700"))!=null){
                         if(msg.getData().getString("d700").equals("0")){
+                            Log.d("TAG",msg.getData().getString("d700"));
                             momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
                         }else if(msg.getData().getString("d700").equals("1")){
+                            Log.d("TAG",msg.getData().getString("d700"));
                             momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
                         }else if(msg.getData().getString("d700").equals("2")){
+                            Log.d("TAG",msg.getData().getString("d700"));
                             momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                         }
                     }
-
                     break;
             }
         }
@@ -75,7 +75,6 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
     private RecyclerView recyclerView1,recyclerView2;
     private List<MainRecycleViewItem> list1;
     private List<MainRecycleViewItem> list2;
-    private String pressureData,concentrationData,flowData,totalflowData;
 
 
     @Override
@@ -192,34 +191,17 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                 Log.d("TAG", "run");
                 while (flag) {
                     try {
-                        //����ѹ��ֵ
-                        float[] i = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 212, 1);
-                        float i1 = (float) (Math.round(i[0] * 10)) / 10;
-                        //����ͳ��
-                        float[] j = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 264, 1);
-                        float j1 = (float) (Math.round(j[0] * 100)) / 100;
-                        //��������
-                        float[] k = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 228, 1);
-                        float k1 = (float) (Math.round(k[0] * 10000)) / 10000;
-                        //����Ũ��
-                        float[] l = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 244, 1);
-                        float l1 = (float) (Math.round(l[0] * 100)) / 100;
-                        //A������״̬
-
-                      String[] D700=  ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{700});
+                        short[] d700 =    MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 700, 1);
                         Bundle bundle = new Bundle();
-
-                        bundle.putString("i1", String.valueOf(i1));
-                        bundle.putString("j1", String.valueOf(j1));
-                        bundle.putString("k1", String.valueOf(k1));
-                        bundle.putString("l1", String.valueOf(l1));
-                        bundle.putString("d700",D700[0]);
+                        if(d700.length>0){
+                            bundle.putShort("d700",d700[0]);
+                        }
 
                         Message msg = new Message();
                         msg.what = 1;
                         msg.setData(bundle);
                         handler.sendMessage(msg);
-                        Thread.sleep(300);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

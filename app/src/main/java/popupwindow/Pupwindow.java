@@ -35,7 +35,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
         this.view = view;
         this.type = type;
         this.address = address;
-        contentView =LayoutInflater.from(context).inflate(R.layout.popupwindow_layout, null);
+        contentView =LayoutInflater.from(context).inflate(R.layout.pp_input, null);
         popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,false);
         flag = true;
         if(popupWindow.isShowing()){

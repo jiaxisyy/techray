@@ -25,7 +25,7 @@ android:background="@drawable/time_background">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="开机排空"
+        android:text="开机吹洗"
         android:textSize="20px"
         android:layout_marginLeft="192dp"
         android:layout_marginTop="36dp"
