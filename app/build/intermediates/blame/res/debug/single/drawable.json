@@ -100,6 +100,10 @@
         "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_ratingbar_full_material.xml"
     },
     {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\drawable\\wheel_bg.xml"
+    },
+    {
         "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
         "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_tab_indicator_material.xml"
     },
@@ -142,6 +146,10 @@
     {
         "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
         "source": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_val.xml",
+        "source": "D:\\ANDROID1\\serial5.0\\app\\src\\main\\res\\drawable\\wheel_val.xml"
     },
     {
         "merged": "D:\\ANDROID1\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\momitor_btn_bacground_selector.xml",
