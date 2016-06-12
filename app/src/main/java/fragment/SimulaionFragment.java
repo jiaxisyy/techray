@@ -118,7 +118,33 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
 
                         analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d256")[0]));
                     }
+                    if(String.valueOf(msg.getData().getFloatArray("d280")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d280")[0]).equals("")){
+
+                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d280")[0]));
+                    }
+                    if(String.valueOf(msg.getData().getFloatArray("d284")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d284")[0]).equals("")){
+
+                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d284")[0]));
+                    }
+                    if(String.valueOf(msg.getData().getFloatArray("d296")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d296")[0]).equals("")){
+
+                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d296")[0]));
+                    }
+                    if(String.valueOf(msg.getData().getFloatArray("d300")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d300")[0]).equals("")){
+
+                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d300")[0]));
+                    }
+                    if(String.valueOf(msg.getData().getFloatArray("d304")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d304")[0]).equals("")){
+
+                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d304")[0]));
+                    }
+                    if(String.valueOf(msg.getData().getFloatArray("d308")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d308")[0]).equals("")){
+
+                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d308")[0]));
+                    }
                     break;
+
+
             }
         }
     };
@@ -128,10 +154,12 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
     private TextView analog_et_oxy_max,analog_et_flow_max,analog_et_concentration_max,analog_et_temp_max;
     private TextView analog_et_oxy_min,analog_et_flow_min,analog_et_concentration_min,analog_et_temp_min;
     private TextView analog_et_oxy_correction,analog_et_flow_correction,analog_et_concentration_correction,analog_et_temp_correction;
+    private TextView analog_et_oxy_alarm_max,analog_et_oxy_alarm_min,analog_et_flow_alarm_min,analog_et_concentration_alarm_max,analog_et_concentration_alarm_min,analog_et_temp_alarm_min;
     private LinearLayout simulaion_layout_pressure,simulaion_layout_flow,simulaion_layout_temp,simulaion_layout_concentration;
     private boolean flag=true;
     private int[] local,str;
     private View view;
+    private PopupForSimulaion popupForSimulaion;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -146,6 +174,13 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
 
     /**�ؼ���ʼ��*/
     public void initView(){
+        analog_et_oxy_alarm_max=(TextView)view.findViewById(R.id.analog_et_oxy_alarm_max);
+        analog_et_oxy_alarm_min=(TextView)view.findViewById(R.id.analog_et_oxy_alarm_min);
+        analog_et_flow_alarm_min=(TextView)view.findViewById(R.id.analog_et_flow_alarm_min);
+        analog_et_concentration_alarm_max=(TextView)view.findViewById(R.id.analog_et_concentration_alarm_max);
+        analog_et_concentration_alarm_min=(TextView)view.findViewById(R.id.analog_et_concentration_alarm_min);
+        analog_et_temp_alarm_min=(TextView)view.findViewById(R.id.analog_et_temp_alarm_min);
+
         analog_et_oxy_original=(TextView)view.findViewById(R.id.analog_et_oxy_original);
         analog_et_flow_original=(TextView)view.findViewById(R.id.analog_et_flow_original);
         analog_et_concentration_original=(TextView)view.findViewById(R.id.analog_et_concentration_original);
@@ -171,34 +206,33 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
         analog_et_concentration_correction=(TextView)view.findViewById(R.id.analog_et_concentration_correction);
         analog_et_temp_correction=(TextView)view.findViewById(R.id.analog_et_temp_correction);
 
-//        analog_et_oxy_max.setOnClickListener(this);
-//        analog_et_flow_max.setOnClickListener(this);
-//        analog_et_concentration_max.setOnClickListener(this);
-//        analog_et_temp_max.setOnClickListener(this);
-//
-//        analog_et_oxy_min.setOnClickListener(this);
-//        analog_et_flow_min.setOnClickListener(this);
-//        analog_et_concentration_min.setOnClickListener(this);
-//        analog_et_temp_min.setOnClickListener(this);
-//
-//        analog_et_oxy_correction.setOnClickListener(this);
-//        analog_et_flow_correction.setOnClickListener(this);
-//        analog_et_concentration_correction.setOnClickListener(this);
-//        analog_et_temp_correction.setOnClickListener(this);
+        analog_et_oxy_max.setOnClickListener(this);
+        analog_et_flow_max.setOnClickListener(this);
+        analog_et_concentration_max.setOnClickListener(this);
+        analog_et_temp_max.setOnClickListener(this);
+
+        analog_et_oxy_min.setOnClickListener(this);
+        analog_et_flow_min.setOnClickListener(this);
+        analog_et_concentration_min.setOnClickListener(this);
+        analog_et_temp_min.setOnClickListener(this);
+
+        analog_et_oxy_correction.setOnClickListener(this);
+        analog_et_flow_correction.setOnClickListener(this);
+        analog_et_concentration_correction.setOnClickListener(this);
+        analog_et_temp_correction.setOnClickListener(this);
+
+        analog_et_oxy_alarm_max.setOnClickListener(this);
+        analog_et_oxy_alarm_min.setOnClickListener(this);
+        analog_et_flow_alarm_min.setOnClickListener(this);
+        analog_et_concentration_alarm_max.setOnClickListener(this);
+        analog_et_concentration_alarm_min.setOnClickListener(this);
+        analog_et_temp_alarm_min.setOnClickListener(this);
 
         simulaion_layout_pressure = (LinearLayout) view.findViewById(R.id.simulaion_layout_pressure);
         simulaion_layout_flow = (LinearLayout) view.findViewById(R.id.simulaion_layout_flow);
         simulaion_layout_temp = (LinearLayout) view.findViewById(R.id.simulaion_layout_temp);
         simulaion_layout_concentration = (LinearLayout) view.findViewById(R.id.simulaion_layout_concentration);
 
-        simulaion_btn_pressure = (Button) view.findViewById(R.id.simulaion_btn_pressure);
-        simulaion_btn_flow = (Button) view.findViewById(R.id.simulaion_btn_flow);
-        simulaion_btn_temp = (Button) view.findViewById(R.id.simulaion_btn_temp);
-        simulaion_btn_concentration = (Button) view.findViewById(R.id.simulaion_btn_concentration);
-        simulaion_btn_pressure.setOnClickListener(this);
-        simulaion_btn_flow.setOnClickListener(this);
-        simulaion_btn_temp.setOnClickListener(this);
-        simulaion_btn_concentration.setOnClickListener(this);
     }
     /**���ݳ�ʼ��*/
     public void initData(){
@@ -238,7 +272,21 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
                         //温度最小值
                         float[] d252 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 252, 1);
                         //温度修正值
+
+
                         float[] d256 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 256, 1);
+                        //氧气压力上限值
+                        float[]d280 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 280, 1);
+                        //氧气压力下限值
+                        float[]d284 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 284, 1);
+                        //氧气浓度下限值
+                        float[]d296 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 296, 1);
+                        //氧气流量上限值
+                        float[]d300 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 300, 1);
+                        //温度上限值
+                        float[]d304 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 304, 1);
+                        //温度下限值
+                        float[]d308 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 308, 1);
 
                         Bundle bundle = new Bundle();
                         bundle.putFloatArray("d200", d200);
@@ -253,6 +301,12 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
                         bundle.putFloatArray("d248", d248);
                         bundle.putFloatArray("d252", d252);
                         bundle.putFloatArray("d256", d256);
+                        bundle.putFloatArray("d280", d280);
+                        bundle.putFloatArray("d284", d284);
+                        bundle.putFloatArray("d296", d296);
+                        bundle.putFloatArray("d300", d300);
+                        bundle.putFloatArray("d304", d304);
+                        bundle.putFloatArray("d308", d308);
                         Message msg = new Message();
                         msg.setData(bundle);
                         msg.what = 2;
@@ -325,114 +379,146 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
             }
         }).start();
     }
-    private void rAnimation(View view,int flag){
-        TranslateAnimation translateAnimation;
-        if(flag==0){
-            translateAnimation  = new TranslateAnimation(1.0f,1.0f,1.0f,500.0f);
-            translateAnimation.setDuration(500);
-        }else {
-            translateAnimation  = new TranslateAnimation(1.0f,1.0f,1.0f,-500.0f);
-            translateAnimation.setDuration(500);
-        }
-
-        view.startAnimation(translateAnimation);
-    }
-
     /**�����������*/
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.simulaion_btn_pressure:
-                rAnimation(simulaion_layout_pressure,1);
-                PopupForSimulaion popupForSimulaion = new PopupForSimulaion(getContext(),v);
-                break;
-            case R.id.simulaion_btn_flow:
-                rAnimation(simulaion_layout_flow,1);
-                break;
-            case R.id.simulaion_btn_temp:
-                rAnimation(simulaion_layout_temp,0);
-                break;
-            case R.id.simulaion_btn_concentration:
-                rAnimation(simulaion_layout_concentration,0);
-                break;
             case R.id.analog_et_oxy_max:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{200};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_flow_max:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{216};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_concentration_max:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{232};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_temp_max:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{248};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_oxy_min:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{204};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_flow_min:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{220};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_concentration_min:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{236};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_temp_min:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{252};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id. analog_et_oxy_correction:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{208};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_flow_correction:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{224};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_concentration_correction:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{240};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
             case R.id.analog_et_temp_correction:
                 local=new int[2];
                 v.getLocationInWindow(local);
                 str = new int[]{256};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
+                break;
+            case R.id.analog_et_oxy_alarm_max:
+                local=new int[2];
+                v.getLocationInWindow(local);
+                str = new int[]{280};
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
+                break;
+            case R.id.analog_et_oxy_alarm_min:
+                local=new int[2];
+                v.getLocationInWindow(local);
+                str = new int[]{284};
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
+                break;
+            case R.id.analog_et_flow_alarm_min:
+                local=new int[2];
+                v.getLocationInWindow(local);
+                str = new int[]{296};
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
+                break;
+            case R.id.analog_et_concentration_alarm_max:
+                local=new int[2];
+                v.getLocationInWindow(local);
+                str = new int[]{300};
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
+                break;
+            case R.id.analog_et_concentration_alarm_min:
+                local=new int[2];
+                v.getLocationInWindow(local);
+                str = new int[]{304};
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
+                break;
+            case R.id.analog_et_temp_alarm_min:
+                local=new int[2];
+                v.getLocationInWindow(local);
+                str = new int[]{308};
+                popupForSimulaion =  new PopupForSimulaion(view.getContext(),v,local[0],local[1],Constants.Define.OP_REAL_D,str);
+                popupForSimulaion.showPopupWindow();
                 break;
         }
     }
+
     @Override
+    public void onPause() {
+        super.onPause();
+        popupForSimulaion.stopPopupWindow();
+    }
 
-
-
+    @Override
     public void onDestroy() {
         super.onDestroy();
         flag = false;

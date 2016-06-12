@@ -70,11 +70,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="原始值:"
+            android:text="修正值:"
+
             android:textSize="22px"
             android:textColor="#B4B6C7"/>
         <TextView
-            android:id="@+id/analog_et_oxy_original"
+            android:id="@+id/analog_et_oxy_correction"
+
             android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -85,11 +87,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
-            android:text="修正值:"
+            android:text="原始值:"
             android:textSize="22px"
             android:textColor="#B4B6C7"/>
         <TextView
-            android:id="@+id/analog_et_oxy_correction"
+            android:id="@+id/analog_et_oxy_original"
             android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -107,6 +109,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:text="上限值:"
+            android:textSize="22px"
+            android:textColor="#B4B6C7"/>
+        <TextView
+            android:id="@+id/analog_et_oxy_alarm_max"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="00.00"
+            android:textSize="22px"
+            android:textColor="#B4B6C7"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text="下限值:"
+            android:textSize="22px"
+            android:textColor="#B4B6C7"/>
+        <TextView
+            android:id="@+id/analog_et_oxy_alarm_min"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="00.00"
+            android:textSize="22px"
+            android:textColor="#B4B6C7"
+            android:layout_marginRight="15dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="显示值:"
             android:textSize="22px"
             android:textColor="#B4B6C7"/>
@@ -118,32 +156,8 @@
             android:text="00.00"
             android:textSize="22px"
             android:textColor="#B4B6C7"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:text="报警值:"
-            android:textSize="22px"
-            android:textColor="#B4B6C7"/>
-        <TextView
-            android:layout_width="74dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="00.00"
-            android:textSize="22px"
-            android:textColor="#B4B6C7"
-            android:layout_marginRight="15dp"/>
     </LinearLayout>
-    <Button
-        android:id="@+id/simulaion_btn_pressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="修改"
-        android:textSize="20px"
-        android:textColor="#ffffff"
-        android:background="@drawable/momitor_btn_bacground_selector"
-        android:layout_gravity="center"/>
+
 </LinearLayout>
     <LinearLayout
         android:id="@+id/simulaion_layout_flow"
@@ -207,11 +221,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="原始值:"
+                android:text="修正值:"
+
                 android:textSize="22px"
                 android:textColor="#B4B6C7"/>
             <TextView
-                android:id="@+id/analog_et_flow_original"
+                android:id="@+id/analog_et_flow_correction"
+
                 android:layout_width="74dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -222,11 +238,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
-                android:text="修正值:"
+                android:text="原始值:"
                 android:textSize="22px"
                 android:textColor="#B4B6C7"/>
             <TextView
-                android:id="@+id/analog_et_flow_correction"
+                android:id="@+id/analog_et_flow_original"
                 android:layout_width="74dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -259,7 +275,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
-                android:text="报警值:"
+                android:text="上限值:"
                 android:textSize="22px"
                 android:textColor="#B4B6C7"/>
             <TextView
@@ -268,19 +284,11 @@
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
                 android:textSize="22px"
+                android:id="@+id/analog_et_flow_alarm_min"
                 android:textColor="#B4B6C7"
                 android:layout_marginRight="15dp"/>
         </LinearLayout>
-        <Button
-            android:id="@+id/simulaion_btn_flow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="修改"
-            android:textSize="20px"
-            android:textColor="#ffffff"
-            android:background="@drawable/momitor_btn_bacground_selector"
-            android:layout_gravity="center"/>
+
     </LinearLayout>
 </LinearLayout>
     <LinearLayout
@@ -302,7 +310,7 @@
                 android:textColor="#ffffff"
                 android:textSize="22px"
                 android:layout_marginTop="8dp"
-                android:text="温度"
+                android:text="浓度"
                 android:layout_gravity="center_horizontal"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -350,11 +358,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="原始值:"
+                    android:text="修正值:"
+
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
-                    android:id="@+id/analog_et_concentration_original"
+                    android:id="@+id/analog_et_concentration_correction"
+
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -365,11 +375,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
-                    android:text="修正值:"
+                    android:text="原始值:"
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
-                    android:id="@+id/analog_et_concentration_correction"
+                    android:id="@+id/analog_et_concentration_original"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -387,11 +397,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="显示值:"
+                    android:text="上限值:"
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
-                    android:id="@+id/analog_et_concentration_current"
+                    android:id="@+id/analog_et_concentration_alarm_max"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -402,10 +412,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
-                    android:text="报警值:"
+                    android:text="下限值:"
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
+                    android:id="@+id/analog_et_concentration_alarm_min"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -414,16 +425,26 @@
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
-            <Button
-                android:id="@+id/simulaion_btn_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="修改"
-                android:textSize="20px"
-                android:textColor="#ffffff"
-                android:background="@drawable/momitor_btn_bacground_selector"
-                android:layout_gravity="center"/>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:gravity="center">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="显示值:"
+          android:textSize="22px"
+          android:textColor="#B4B6C7"/>
+      <TextView
+          android:id="@+id/analog_et_concentration_current"
+          android:layout_width="74dp"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="5dp"
+          android:text="00.00"
+          android:textSize="22px"
+          android:textColor="#B4B6C7"/>
+  </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/simulaion_layout_concentration"
@@ -439,7 +460,7 @@
                 android:textColor="#ffffff"
                 android:textSize="22px"
                 android:layout_marginTop="8dp"
-                android:text="氧气浓度"
+                android:text="温度"
                 android:layout_gravity="center_horizontal"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -487,11 +508,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="原始值:"
+                    android:text="修正值:"
+
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
-                    android:id="@+id/analog_et_temp_original"
+                    android:id="@+id/analog_et_temp_correction"
+
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -502,11 +525,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
-                    android:text="修正值:"
+                    android:text="原始值:"
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
-                    android:id="@+id/analog_et_temp_correction"
+                    android:id="@+id/analog_et_temp_original"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -539,10 +562,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
-                    android:text="报警值:"
+                    android:text="下限值:"
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
+                    android:id="@+id/analog_et_temp_alarm_min"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -551,16 +575,7 @@
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
-            <Button
-                android:id="@+id/simulaion_btn_concentration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="修改"
-                android:textSize="20px"
-                android:textColor="#ffffff"
-                android:background="@drawable/momitor_btn_bacground_selector"
-                android:layout_gravity="center"/>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -25,6 +25,8 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
 
     private TextView ATiming_1, ATiming_2, ATiming_3, ATiming_4, ATiming_5, ATiming_6, ATiming_7, ATiming_8, ATiming_9, ATiming_10, ATiming_11, ATiming_12, ATiming_13;
     private int[] local,str;
+    private Button time_btn_change;
+    private Pupwindow pupwindow;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -216,83 +218,89 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ATiming_1:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{400};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{400});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_2:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{402};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{402});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_3:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{404};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{404});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_4:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{406};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{406});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_5:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{408};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{408});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_6:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{410};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{410});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_7:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{412};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{412});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_8:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{414};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{414});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_9:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{416};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{416});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_10:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{418};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{418});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_11:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{420};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{420});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_12:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{422};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{422});
+                pupwindow.showPopupWindow();
                 break;
             case R.id.ATiming_13:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{424};
-                new Pupwindow(view.getContext(),v,local[0],local[1],Constants.Define.OP_WORD_D,str);
+                pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{424});
+                pupwindow.showPopupWindow();
                 break;
+
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        pupwindow.stopPopupWindow();
     }
 }
