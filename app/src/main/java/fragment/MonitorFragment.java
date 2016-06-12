@@ -206,14 +206,16 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                         float l1 = (float) (Math.round(l[0] * 100)) / 100;
                         //A������״̬
 
-                      String[] D700=  ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{700});
+                        String[] D700=  ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{700});
+                        short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_REAL_D, 244, 1);
+                        System.out.println(d700[0]);
                         Bundle bundle = new Bundle();
 
                         bundle.putString("i1", String.valueOf(i1));
                         bundle.putString("j1", String.valueOf(j1));
                         bundle.putString("k1", String.valueOf(k1));
                         bundle.putString("l1", String.valueOf(l1));
-                        bundle.putString("d700",D700[0]);
+                        bundle.putString("d700",String.valueOf(d700[0]));
 
                         Message msg = new Message();
                         msg.what = 1;

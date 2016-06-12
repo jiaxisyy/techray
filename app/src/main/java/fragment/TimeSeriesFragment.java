@@ -31,6 +31,7 @@ import activity.MyApplication;
 import popupwindow.Pupwindow;
 import utils.CacheUtils;
 import utils.Constants;
+import utils.ReadAndWrite;
 import wheel.StrericWheelAdapter;
 import wheel.WheelView;
 
@@ -52,6 +53,15 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     if(String.valueOf(msg.getData().getInt("d272"))!=null && !String.valueOf(msg.getData().getInt("d272")).equals("")){
                         flow_tv_safe.setText(String.valueOf(msg.getData().getInt("d272")));
                     }
+                    if(msg.getData().getStringArray("data").length>0){
+                        series_year.setText(msg.getData().getShortArray("data")[0]);
+                        series_month.setText(msg.getData().getShortArray("data")[1]);
+                        series_day.setText(msg.getData().getShortArray("data")[2]);
+                        series_hour.setText(msg.getData().getShortArray("data")[3]);
+                        series_minute.setText(msg.getData().getShortArray("data")[4]);
+                        series_second.setText(msg.getData().getShortArray("data")[5]);
+                        series_week.setText(msg.getData().getShortArray("data")[6]);
+                    }
                     break;
                 case 2:
 
@@ -61,21 +71,12 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         }
     };
 
-    private Button flow_btn_confirm,flow_btn_clean;
+    private Button flow_btn_confirm,flow_btn_clean,btn_time_series_affirm,flow_btn_open,flow_btn_close;
     private TextView flow_tv_totalflow,flow_tv_safe;
-    private TextView flow_et_totalflow_correct,tv_plc_year;
+    private TextView series_year,series_month,series_day,series_hour,series_minute,series_second,series_week;
     private boolean flag = true;
     private View view;
     private Pupwindow popupWindow;
-    private TextView plc_setting;
-    //时间选择器
-    private WheelView yearWheel,monthWheel,dayWheel,hourWheel,minuteWheel,secondWheel;
-    public static String[] yearContent=null;
-    public static String[] monthContent=null;
-    public static String[] dayContent=null;
-    public static String[] hourContent = null;
-    public static String[] minuteContent=null;
-    public static String[] secondContent=null;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -84,8 +85,6 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         initData();
         setData();
         getData();
-        initTimeParaData();
-        initContent();
         return view;
     }
 
@@ -94,11 +93,32 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         flow_tv_totalflow= (TextView)view.findViewById(R.id.flow_tv_totalflow);
         flow_tv_safe=(TextView) view.findViewById(R.id.flow_tv_safe);
         flow_btn_confirm =(Button)view.findViewById(R.id.flow_btn_confirm);
-        plc_setting = (TextView) view.findViewById(R.id.plc_setting);
+        btn_time_series_affirm = (Button) view.findViewById(R.id.btn_time_series_affirm);
+        flow_btn_open=(Button)view.findViewById(R.id.flow_btn_open);
+        flow_btn_close=(Button)view.findViewById(R.id.flow_btn_close);
+
+        series_year = (TextView) view.findViewById(R.id.series_year);
+        series_month = (TextView) view.findViewById(R.id.series_month);
+        series_day = (TextView) view.findViewById(R.id.series_day);
+        series_hour = (TextView) view.findViewById(R.id.series_hour);
+        series_minute = (TextView) view.findViewById(R.id.series_minute);
+        series_second = (TextView) view.findViewById(R.id.series_second);
+        series_week = (TextView) view.findViewById(R.id.series_week);
+
+        series_year.setOnTouchListener(this);
+        series_month.setOnTouchListener(this);
+        series_day.setOnTouchListener(this);
+        series_hour.setOnTouchListener(this);
+        series_minute.setOnTouchListener(this);
+        series_second.setOnTouchListener(this);
+        series_week.setOnTouchListener(this);
 
         flow_tv_safe.setOnClickListener(this);
         flow_tv_totalflow.setOnClickListener(this);
         flow_btn_confirm.setOnTouchListener(this);
+        btn_time_series_affirm.setOnTouchListener(this);
+        flow_btn_open.setOnClickListener(this);
+        flow_btn_close.setOnClickListener(this);
     }
     /**���ݳ�ʼ��*/
     public void initData(){
@@ -126,8 +146,11 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     try {
                         float[] d264 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 264, 1);
                         int[] d272 = MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D, 272, 1);
+                        String[] data = ReadAndWrite.ReadJni(Constants.Define.OP_DWORD_D,new int[]{610,611,612,613,614,615,616});
+
                         Bundle bundle = new Bundle();
                         Message msg = new Message();
+                        bundle.putStringArray("data",data);
                         bundle.putFloat("d264", d264[0]);
                         bundle.putInt("d272", d272[0]);
                         msg.setData(bundle);
@@ -157,6 +180,47 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                 popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_DWORD_D,ste);
                 popupWindow.showPopupWindow();
                 break;
+            case R.id.series_year:
+                int[] year = {600};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,year);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.series_month:
+                int[] month = {601};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,month);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.series_day:
+                int[] day = {602};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,day);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.series_hour:
+                int[] hour = {603};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,hour);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.series_minute:
+                int[] minute = {604};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,minute);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.series_second:
+                int[] second = {605};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,second);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.series_week:
+                int[] week = {606};
+                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,week);
+                popupWindow.showPopupWindow();
+                break;
+            case R.id.flow_btn_open:
+                MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,new byte[]{1},58,1);
+                break;
+            case R.id.flow_btn_close:
+                MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,new byte[]{0},58,1);
+                break;
         }
     }
     @Override
@@ -180,23 +244,24 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     time.schedule(timerTask, 500);
                 }
                 break;
-//            case R.id.flow_btn_clean:
-//                if(event.getAction()== MotionEvent.ACTION_DOWN){
-//                    byte[] m117 = {1};
-//                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m117,117,1);
-//                }else if(event.getAction()== MotionEvent.ACTION_UP){
-//                    TimerTask timerTask = new TimerTask() {
-//                        @Override
-//                        public void run() {
-//                            // TODO Auto-generated method stub
-//                            byte[] m117 = {0};
-//                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m117,117,1);
-//                        }
-//                    };
-//                    Timer time = new Timer();
-//                    time.schedule(timerTask, 500);
-//                }
-//                break;
+            case R.id.btn_time_series_affirm:
+                if(event.getAction()== MotionEvent.ACTION_DOWN){
+                    byte[] m56 = {1};
+                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m56,56,1);
+                }else if(event.getAction()== MotionEvent.ACTION_UP){
+                    TimerTask timerTask = new TimerTask() {
+
+                        @Override
+                        public void run() {
+                            // TODO Auto-generated method stub
+                            byte[] m56 = {0};
+                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m56,56,1);
+                        }
+                    };
+                    Timer time = new Timer();
+                    time.schedule(timerTask, 500);
+                }
+                break;
         }
         return false;
     }
@@ -210,141 +275,5 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     public void onDestroy() {
         super.onDestroy();
         flag=false;
-    }
-
-
-    public void initTimeParaData(){
-        plc_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = ((LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.time_picker, null);
-                Calendar calendar = Calendar.getInstance();
-                int curYear = calendar.get(Calendar.YEAR);
-                int curMonth= calendar.get(Calendar.MONTH)+1;
-                int curDay = calendar.get(Calendar.DAY_OF_MONTH);
-                int curHour = calendar.get(Calendar.HOUR_OF_DAY);
-                int curMinute = calendar.get(Calendar.MINUTE);
-                int curSecond = calendar.get(Calendar.SECOND);
-
-                yearWheel = (WheelView)view.findViewById(R.id.yearwheel);
-                monthWheel = (WheelView)view.findViewById(R.id.monthwheel);
-                dayWheel = (WheelView)view.findViewById(R.id.daywheel);
-                hourWheel = (WheelView)view.findViewById(R.id.hourwheel);
-                minuteWheel = (WheelView)view.findViewById(R.id.minutewheel);
-                secondWheel = (WheelView)view.findViewById(R.id.secondwheel);
-
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setView(view);
-
-                yearWheel.setAdapter(new StrericWheelAdapter(yearContent));
-                yearWheel.setCurrentItem(curYear-2013);
-                yearWheel.setCyclic(true);
-                yearWheel.setInterpolator(new AnticipateOvershootInterpolator());
-
-
-                monthWheel.setAdapter(new StrericWheelAdapter(monthContent));
-
-                monthWheel.setCurrentItem(curMonth-1);
-
-                monthWheel.setCyclic(true);
-                monthWheel.setInterpolator(new AnticipateOvershootInterpolator());
-
-                dayWheel.setAdapter(new StrericWheelAdapter(dayContent));
-                dayWheel.setCurrentItem(curDay-1);
-                dayWheel.setCyclic(true);
-                dayWheel.setInterpolator(new AnticipateOvershootInterpolator());
-
-                hourWheel.setAdapter(new StrericWheelAdapter(hourContent));
-                hourWheel.setCurrentItem(curHour);
-                hourWheel.setCyclic(true);
-                hourWheel.setInterpolator(new AnticipateOvershootInterpolator());
-
-                minuteWheel.setAdapter(new StrericWheelAdapter(minuteContent));
-                minuteWheel.setCurrentItem(curMinute);
-                minuteWheel.setCyclic(true);
-                minuteWheel.setInterpolator(new AnticipateOvershootInterpolator());
-
-                secondWheel.setAdapter(new StrericWheelAdapter(secondContent));
-                secondWheel.setCurrentItem(curSecond);
-                secondWheel.setCyclic(true);
-                secondWheel.setInterpolator(new AnticipateOvershootInterpolator());
-
-                builder.setTitle("123");
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        StringBuffer sb = new StringBuffer();
-                        sb.append(yearWheel.getCurrentItemValue()).append("-")
-                                .append(monthWheel.getCurrentItemValue()).append("-")
-                                .append(dayWheel.getCurrentItemValue());
-
-                        sb.append(" ");
-                        sb.append(hourWheel.getCurrentItemValue())
-                                .append(":").append(minuteWheel.getCurrentItemValue())
-                                .append(":").append(secondWheel.getCurrentItemValue());
-                        plc_setting.setText(sb);
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
-            }
-        });
-    }
-    public void initContent()
-    {
-        yearContent = new String[10];
-        for(int i=0;i<10;i++)
-            yearContent[i] = String.valueOf(i+2013);
-
-        monthContent = new String[12];
-        for(int i=0;i<12;i++)
-        {
-            monthContent[i]= String.valueOf(i+1);
-            if(monthContent[i].length()<2)
-            {
-                monthContent[i] = "0"+monthContent[i];
-            }
-        }
-
-        dayContent = new String[31];
-        for(int i=0;i<31;i++)
-        {
-            dayContent[i]=String.valueOf(i+1);
-            if(dayContent[i].length()<2)
-            {
-                dayContent[i] = "0"+dayContent[i];
-            }
-        }
-        hourContent = new String[24];
-        for(int i=0;i<24;i++)
-        {
-            hourContent[i]= String.valueOf(i);
-            if(hourContent[i].length()<2)
-            {
-                hourContent[i] = "0"+hourContent[i];
-            }
-        }
-
-        minuteContent = new String[60];
-        for(int i=0;i<60;i++)
-        {
-            minuteContent[i]=String.valueOf(i);
-            if(minuteContent[i].length()<2)
-            {
-                minuteContent[i] = "0"+minuteContent[i];
-            }
-        }
-        secondContent = new String[60];
-        for(int i=0;i<60;i++)
-        {
-            secondContent[i]=String.valueOf(i);
-            if(secondContent[i].length()<2)
-            {
-                secondContent[i] = "0"+secondContent[i];
-            }
-        }
     }
 }
