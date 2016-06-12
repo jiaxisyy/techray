@@ -71,7 +71,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         }
     };
 
-    private Button flow_btn_confirm,flow_btn_clean,btn_time_series_affirm,flow_btn_open,flow_btn_close;
+    private Button flow_btn_confirm,btn_time_series_affirm,flow_btn_open,flow_btn_close;
     private TextView flow_tv_totalflow,flow_tv_safe;
     private TextView series_year,series_month,series_day,series_hour,series_minute,series_second,series_week;
     private boolean flag = true;
