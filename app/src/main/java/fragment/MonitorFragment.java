@@ -162,8 +162,8 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
         mTotalFlow.setStr("264");
         list1.add(mPressure);
         list1.add(mConcentration);
-        list1.add(mFlow);
-        list2.add(mTotalFlow);
+        list1.add(mTotalFlow);
+        list2.add(mFlow);
     }
 
     /**

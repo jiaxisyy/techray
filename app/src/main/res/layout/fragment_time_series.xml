@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="420dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -26,34 +26,33 @@
                     android:id="@+id/tv_id_revise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="200dp"
+                    android:layout_marginTop="180dp"
                     android:gravity="center_horizontal"
                     android:paddingRight="120dp"
                     android:text="@string/time_series_revise"
                     android:textColor="#FFFFFF"
                     android:textSize="20px" />
 
-                <EditText
-                    android:id="@+id/ed_time_series_revise"
+                <TextView
+                    android:id="@+id/flow_tv_totalflow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_id_revise"
-                    android:layout_marginTop="5dp"
                     android:background="@null"
                     android:gravity="center_horizontal"
                     android:paddingRight="120dp"
                     android:text="0.00000"
                     android:textColor="#FFFFFF"
                     android:textSize="20px"
-
                     />
 
                 <Button
+                    android:id="@+id/flow_btn_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ed_time_series_revise"
-                    android:layout_marginLeft="110dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/flow_tv_totalflow"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="40dp"
                     android:background="@drawable/btn_time_series_selector"
                     android:gravity="center"
                     android:text="@string/time_series_coverage"
@@ -78,19 +77,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="100dp"
-                        android:layout_marginTop="200dp"
+                        android:layout_marginTop="180dp"
                         android:gravity="center_horizontal"
                         android:text="@string/time_series_protect"
                         android:textColor="#FFFFFF"
                         android:textSize="20px" />
 
-                    <EditText
-                        android:id="@+id/ed_time_series_protect"
+                    <TextView
+                        android:id="@+id/flow_tv_safe"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_id_protect"
                         android:layout_marginLeft="100dp"
-                        android:layout_marginTop="5dp"
                         android:background="@null"
                         android:gravity="center_horizontal"
                         android:text="0.00000"
@@ -100,17 +98,30 @@
                         />
 
                     <Button
-                        android:layout_width="wrap_content"
+                        android:id="@+id/flow_btn_open"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ed_time_series_protect"
-                        android:layout_marginLeft="220dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_below="@+id/flow_tv_safe"
+                        android:layout_marginLeft="150dp"
+                        android:layout_marginTop="40dp"
                         android:background="@drawable/btn_time_series_selector"
                         android:gravity="center"
-                        android:text="@string/time_series_off_or_on"
+                        android:text="开始"
                         android:textColor="#FFFFFF"
                         android:textSize="24px" />
-
+                    <Button
+                        android:id="@+id/flow_btn_close"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/flow_tv_safe"
+                        android:layout_toRightOf="@+id/flow_btn_open"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/btn_time_series_selector"
+                        android:gravity="center"
+                        android:text="关闭"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24px" />
 
                 </RelativeLayout>
 
