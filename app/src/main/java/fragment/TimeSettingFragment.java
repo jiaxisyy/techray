@@ -218,7 +218,6 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ATiming_1:
-
                 pupwindow= new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,new int[]{400});
                 pupwindow.showPopupWindow();
                 break;

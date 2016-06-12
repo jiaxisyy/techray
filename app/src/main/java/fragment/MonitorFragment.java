@@ -48,13 +48,16 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                     concentrationData =  msg.getData().getString("j1");
                     flowData =  msg.getData().getString("k1");
                     totalflowData =  msg.getData().getString("l1");
-                    if(msg.getData().getString("d700").equals("0")){
-                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
-                    }else if(msg.getData().getString("d700").equals("1")){
-                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
-                    }else if(msg.getData().getString("d700").equals("2")){
-                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
+                    if(msg.getData().getString("d700")!=null){
+                        if(msg.getData().getString("d700").equals("0")){
+                            momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
+                        }else if(msg.getData().getString("d700").equals("1")){
+                            momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
+                        }else if(msg.getData().getString("d700").equals("2")){
+                            momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
+                        }
                     }
+
                     break;
             }
         }
@@ -138,27 +141,27 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
         mPressure.setData("1111");
         mPressure.setUnit("kg/cm²");
         mPressure.setStr("212");
-        mPressure.setHeight(100);
+
         mConcentration.setBackground(getResources().getDrawable(R.drawable.concentration_normal));
         mConcentration.setBackgroundBig(getResources().getDrawable(R.drawable.concentration_big));
         mConcentration.setType("当前浓度");
         mConcentration.setData("2222");
         mConcentration.setUnit("%");
-        mConcentration.setHeight(100);
+
         mConcentration.setStr("244");
         mFlow.setBackground(getResources().getDrawable(R.drawable.flow_normal));
         mFlow.setBackgroundBig(getResources().getDrawable(R.drawable.flow_normal));
         mFlow.setType("当前流量");
         mFlow.setData("333");
         mFlow.setUnit("L/min");
-        mFlow.setHeight(100);
+
         mFlow.setStr("228");
         mTotalFlow.setBackground(getResources().getDrawable(R.drawable.totalflow_nromal));
         mTotalFlow.setBackgroundBig(getResources().getDrawable(R.drawable.totalflow_big));
         mTotalFlow.setType("累积流量");
         mTotalFlow.setData("4444");
         mTotalFlow.setUnit("m³");
-        mTotalFlow.setHeight(220);
+
         mTotalFlow.setStr("264");
         list1.add(mPressure);
         list1.add(mConcentration);
