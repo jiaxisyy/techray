@@ -13,5 +13,5 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="20dp"
-        android:background="@drawable/amachinestatu_btn_selector" />
+        android:background="@drawable/waitting_lamp" />
 </LinearLayout>

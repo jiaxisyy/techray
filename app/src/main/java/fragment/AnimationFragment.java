@@ -28,9 +28,14 @@ public class AnimationFragment extends Fragment{
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(msg.getData().get("1").equals("1")){
+            if(msg.getData().getString("d700").equals("0")){
+                animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
+                animationView_single.stopDraw();
+            }else if(msg.getData().getString("d700").equals("1")){
+                animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.running_lamp));
                 animationView_single.startDraw();
-            }else{
+            }else if(msg.getData().getString("d700").equals("2")){
+                animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                 animationView_single.stopDraw();
             }
         }
@@ -53,9 +58,9 @@ public class AnimationFragment extends Fragment{
             @Override
             public void run() {
                 while (flag){
-                    String[]str = ReadAndWrite.ReadJni(1,new int[]{1});
+                    String[]D700 = ReadAndWrite.ReadJni(1,new int[]{700});
                     Bundle bundle = new Bundle();
-                    bundle.putString("1",str[0]);
+                    bundle.putString("1",D700[0]);
                     Message msg = new Message();
                     msg.setData(bundle);
                     try {
