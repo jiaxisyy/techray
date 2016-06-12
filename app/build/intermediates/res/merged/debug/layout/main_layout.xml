@@ -16,12 +16,26 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="26px"
             android:background="@drawable/logo" />
-
+        <!--
+           <view.MarqueeTextView
+                    android:id="@+id/tv_main_warning"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="38sp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="#FF0000"
+                    android:text="tesja;eao;ffjidaofjieloafj.afiaeofjidk.afjie"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/scrollTextView"
+                    />-->
 
         <TextView
             android:id="@+id/tv_main_time"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="50dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="2016-06-09    15:30"
@@ -56,7 +70,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="118px" />
-
         </LinearLayout>
 
         <FrameLayout

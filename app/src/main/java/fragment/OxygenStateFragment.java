@@ -11,15 +11,11 @@ import com.hitek.serial.R;
 /**
  * Created by zuheng.lv on 2016/6/9.
  */
-public class OxygenStateFragment extends Fragment{
+public class OxygenStateFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_oxygen_state,container,false);
-
-
-
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_oxygen_state, container, false);
         return view;
 
 

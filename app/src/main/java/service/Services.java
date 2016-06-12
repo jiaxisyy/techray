@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import java.net.ConnectException;
+
 import SQL.SqlManager;
 import download.UpdateApp;
 
@@ -39,6 +41,8 @@ public class Services extends Service {
                         UpdateApp.updateApk();
 
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ConnectException e) {
                         e.printStackTrace();
                     }
                 }

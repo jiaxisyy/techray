@@ -1,3 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.3.0_689c46d290f0655c18c432e6a2ba3fb5b72255ee.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.3.0_7f8cd4a1be5b7bdefd83daec8832d3fa3bbfbd64.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\internal_impl-23.3.0_6ace4ca4bbb89fd04bfbe2dcc7c604e5fdb1dbf9.jar" />
+    </item>
+    <item
+        jar="D:\Android\Studio\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\support-annotations-23.3.0_7ae95f3ae4e4200fbfeae0802b5df10b2586b03d.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.2\f1bc476cc167b18e66c297df599b2377131a8947\gson-2.6.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\gson-2.6.2_c17c38981cd59f0a67cb02a0689a27ab08e3284c.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="aa4e9404315bcb208f1e8a952e0d57e5bcae76c0">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\instant-run_694d5ad43a4c92e9ec3f42e27b1242bc72d755f4.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="d4b36740983440253a1b6680048329eb3ddb370a">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_90d5ed19433e04a8b278c084408f7e48f7001898.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="003ebdacd5f75067b8724f92bd5eefa323d870aa">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-gridlayout-v7-23.3.0_7824e1550f466b349480af571c4db2d8e4889e59.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.3.0_a26730b75c98940af7664984c092d6351b02fff7.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.3.0_59eba068bd1f90226a7faad1721546d8e674f5ed.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.3.0_7257e94891f89c2028d0c48774317a3579dd42f1.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.koushikdutta.async\androidasync\2.1.7\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="eace26bfd08119044e19e9fc0f9ae1bdffac83ed">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.koushikdutta.async-androidasync-2.1.7_4b0dc713cd4b04d40244c04a5ace158cc38a8126.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\exploded-aar\com.koushikdutta.ion\ion\2.1.7\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8bbd470f524833532e041b110abe9e3d514d63eb">
+        <dex dex="C:\Users\shuang.xiang\Documents\Tencent Files\373696471\FileRecv\serial5.0\app\build\intermediates\pre-dexed\debug\com.koushikdutta.ion-ion-2.1.7_64ffd4a0bb4b33a9398592f34cd0487846adba72.jar" />
+    </item>
+
+</items>

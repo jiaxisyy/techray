@@ -37,7 +37,6 @@ public class SpecialControlsFragment extends Fragment {
 
         return view;
     }
-
     private void initialize() {
 
         tvidrevise = (TextView) view.findViewById(R.id.tv_id_revise);

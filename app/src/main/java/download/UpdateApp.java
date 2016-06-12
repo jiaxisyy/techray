@@ -2,8 +2,10 @@ package download;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -18,10 +20,12 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.hitek.serial.R;
 import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.async.http.socketio.ExceptionCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.ProgressCallback;
 
 import java.io.File;
+import java.net.ConnectException;
 
 import bean.ApkInfo;
 import utils.Httputils;
@@ -30,14 +34,18 @@ import utils.Httputils;
  * Created by shuang.xiang on 2016/6/11.
  */
 public class UpdateApp {
+    private static String appName = "techray-coic";
 
     private static String localUrl = "http://10.199.198.161:8081/JavaWebApp/ver.json";
-    private static String url = "http://10.199.198.55:58010/userconsle/clientApps/aaa";
-    private static String fileUrl = "http://10.199.198.55:58010/userconsle/clientApps/aaa/file";
+    private static String localFileUrl = "http://10.199.198.161:8081/JavaWebApp/techray-coic.apk";
+    private static String url = "http://10.199.198.55:58010/userconsle/clientApps/" + appName;
+    private static String fileUrl = "http://10.199.198.55:58010/userconsle/clientApps/" + appName + "/file";
     private static String filePath;
     private static Context context;
     private static int NEW = 1;
     private static int OLD = 2;
+    private static int INTERNETERROR = 3;
+
     private static PopupWindow upPopupWindow;
 
     private static Handler handler = new Handler() {
@@ -80,6 +88,13 @@ public class UpdateApp {
 
 
             }
+            if (msg.what==INTERNETERROR){
+                //网络异常
+                Toast.makeText(context, "网络异常", Toast.LENGTH_SHORT).show();
+
+
+
+            }
 
 
         }
@@ -97,7 +112,7 @@ public class UpdateApp {
 
 
                 Ion.with(context)
-                        .load(fileUrl)
+                        .load("http://10.199.198.55:58010/userconsle/clientApps/techray-coic/file")
 //// have a ProgressBar get updated automatically with the percent
 //                                .progressBar(progressBar)
 // and a ProgressDialog
@@ -110,14 +125,19 @@ public class UpdateApp {
                                 System.out.println("" + downloaded + " / " + total);
                             }
                         })
-                        .write(new File(Environment.getExternalStorageDirectory() + filePath))
+                        .write(new File(Environment.getExternalStorageDirectory() +"/Download/techray-coic.apk"))
                         .setCallback(new FutureCallback<File>() {
                             @Override
                             public void onCompleted(Exception e, File file) {
                                 // download done...
                                 // do stuff with the File or error
                                 progressDialog.dismiss();
-                                Log.d("*************",file.getAbsolutePath()+"");
+                                Log.d("*************", file.getAbsolutePath() + "");
+                                //安装app
+//                                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                intent.setDataAndType(Uri.parse("file://" + file.getPath()), "application/vnd.android.package-archive");
+//                                context.startActivity(intent);
 
 
                             }
@@ -135,37 +155,34 @@ public class UpdateApp {
     /**
      * 更新apk文件
      */
-    public static void updateApk() {
+    public static void updateApk() throws ConnectException{
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Httputils httputils = new Httputils(context);
-                byte[] bytes = httputils.loadByteFromURL(localUrl, context);
-                if (bytes != null) {
-                    String s = new String(bytes);
-                    Gson gson = new Gson();
-                    ApkInfo apkInfo = gson.fromJson(s, ApkInfo.class);
-                    filePath = apkInfo.getFilePath();
-                    int verCode = getVerCode(context);
-                    int versionCode = apkInfo.getVersionCode();
-                    if (versionCode > verCode) {
-                        //需要更新
-                        Message obtain = Message.obtain();
-                        obtain.what = OLD;
-                        handler.sendMessage(obtain);
+                    byte[] bytes = httputils.loadByteFromURL(url, context);
 
-                    } else {
-                        //提示不需要更新,是最新版本
-                        Message obtain = Message.obtain();
-                        obtain.what = NEW;
-                        handler.sendMessage(obtain);
+                    if (bytes != null) {
+                        String s = new String(bytes);
+                        Gson gson = new Gson();
+                        ApkInfo apkInfo = gson.fromJson(s, ApkInfo.class);
 
+                        filePath = apkInfo.getFilePath();
+                        int verCode = getVerCode(context);
+                        int versionCode = apkInfo.getVersionCode();
+                        if (versionCode > verCode) {
+                            //需要更新
+                            Message obtain = Message.obtain();
+                            obtain.what = OLD;
+                            handler.sendMessage(obtain);
 
+                        } else {
+                            //提示不需要更新,是最新版本
+                            Message obtain = Message.obtain();
+                            obtain.what = NEW;
+                            handler.sendMessage(obtain);
+                        }
                     }
-
-
-                }
-
 
             }
         }).start();

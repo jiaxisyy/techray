@@ -16,10 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="压力上限:"
+            android:text="压力报警值:"
             android:textSize="24px"
             android:layout_marginTop="16dp"
-            android:layout_marginLeft="130dp"/>
+            android:layout_marginLeft="120dp"/>
         <EditText
             android:id="@+id/pressure_et_max1"
             android:layout_width="wrap_content"
@@ -38,10 +38,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="压力下限:"
+            android:text="浓度报警值:"
             android:textSize="24px"
             android:layout_marginTop="16dp"
-            android:layout_marginLeft="130dp"/>
+            android:layout_marginLeft="120dp"/>
         <EditText
             android:id="@+id/pressure_et_min1"
             android:layout_width="wrap_content"

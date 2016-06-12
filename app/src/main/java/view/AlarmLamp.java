@@ -25,7 +25,7 @@ public class AlarmLamp extends View{
          paintText = new Paint();
         paintText.setColor(Color.BLACK);
         thisX =getWidth();
-        thisY = 30;
+        thisY = 0;
         runDraw();
     }
     public AlarmLamp(Context context , AttributeSet attrs){
