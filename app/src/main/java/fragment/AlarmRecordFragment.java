@@ -36,6 +36,8 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.alarmrecord_layout,container,false);
+        initView();
+        initData();
         return view;
     }
     public void initView(){
@@ -49,6 +51,7 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment{
         list = new ArrayList<>();
         SqlManager sqlManager = new SqlManager(getContext(),"history.db",null,1);
         list = sqlManager.searchAlarmRecord();
+        System.out.println(list.get(0).getType());
         alarmRecordRecycleViewAdapter =new AlarmRecordRecycleViewAdapter(getContext(),list);
         alarmrecord_recycle.setAdapter(alarmRecordRecycleViewAdapter);
         alarmrecord_recycle.setLayoutManager(new LinearLayoutManager(getContext()));

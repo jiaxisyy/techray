@@ -109,7 +109,7 @@ public class SqlManager extends DataBaseHelper {
     /**
      * 存储报警记录
      */
-    public long insertAlarmRecord(String type,String data,String explain ){
+    public int insertAlarmRecord(String type,String data,String explain ){
         ContentValues values = new ContentValues();
         SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
@@ -118,10 +118,14 @@ public class SqlManager extends DataBaseHelper {
         values.put("type",type);
         values.put("data",data);
         values.put("explain",explain);
-        long ID = db.insert("alarm",null,values);
-        return ID;
+        db.insert("alarm",null,values);
+        Cursor cursor =  db.query("alarm",new String[]{"alarmID"},null,null,null,null,"alarmID desc","1");
+        if (cursor.moveToFirst()){
+            return cursor.getInt(0);
+        }
+        return -1;
     }
-    public void upDateAlarmRecord(long ID){
+    public void upDateAlarmRecord(int ID){
         ContentValues values = new ContentValues();
         SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");

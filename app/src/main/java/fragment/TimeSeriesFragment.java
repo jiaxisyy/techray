@@ -54,7 +54,8 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                         flow_tv_safe.setText(String.valueOf(msg.getData().getInt("d272")));
                     }
                     if(msg.getData().getStringArray("data").length>0){
-                        series_year.setText(msg.getData().getShortArray("data")[0]);
+                        System.out.println(String.valueOf(msg.getData().getShortArray("data")[0]));
+                        series_year.setText(String.valueOf(msg.getData().getShortArray("data")[0]));
                         series_month.setText(msg.getData().getShortArray("data")[1]);
                         series_day.setText(msg.getData().getShortArray("data")[2]);
                         series_hour.setText(msg.getData().getShortArray("data")[3]);
