@@ -28,23 +28,16 @@ public class Pupwindow extends Activity implements View.OnClickListener {
     private int type;
     private int[] address;
     private View view;
-    private boolean flag;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public Pupwindow(Context context, View view, int type, int[] address){
-        this.view = view;
-        this.type = type;
-        this.address = address;
-        contentView =LayoutInflater.from(context).inflate(R.layout.pp_input, null);
+    public Pupwindow(Context context){
+        contentView =LayoutInflater.from(context).inflate(R.layout.popupwindow_layout, null);
         popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,false);
-        flag = true;
         if(popupWindow.isShowing()){
             popupWindow.dismiss();
         }
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
-        int[] location = new int[2];
-        view.getLocationOnScreen(location);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
         popupWindow.setAnimationStyle(R.style.AnimationPreview);
         pup_et = (EditText) contentView.findViewById(R.id.pup_et);
@@ -53,18 +46,20 @@ public class Pupwindow extends Activity implements View.OnClickListener {
         pup_comfirm.setOnClickListener(this);
         pup_cancel.setOnClickListener(this);
     }
-    public void showPopupWindow(){
+    public void showPopupWindow( View view, int type, int[] address){
+        this.view = view;
+        this.type = type;
+        this.address = address;
         if(!popupWindow.isShowing()){
             popupWindow.showAtLocation(contentView,Gravity.FILL,0,0);
         }
     }
     public void stopPopupWindow(){
 
-        if(flag){
             if(popupWindow.isShowing()){
                 popupWindow.dismiss();
             }
-        }
+
     }
     @Override
     public void onClick(View v) {

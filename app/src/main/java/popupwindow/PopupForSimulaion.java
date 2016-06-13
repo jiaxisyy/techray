@@ -32,12 +32,7 @@ public class PopupForSimulaion implements View.OnClickListener {
     private float y;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public PopupForSimulaion(Context context, View view, float x, float y, int type, int[] address){
-        this.x=x;
-        this.y=y;
-        this.view = view;
-        this.type = type;
-        this.address = address;
+    public PopupForSimulaion(Context context){
         contentView =LayoutInflater.from(context).inflate(R.layout.popupforsimulaion_layout, null);
         popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,false);
         if(popupWindow.isShowing()){
@@ -45,22 +40,25 @@ public class PopupForSimulaion implements View.OnClickListener {
         }
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
-        int[] location = new int[2];
-        view.getLocationOnScreen(location);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
         popupforsimulaion_et = (EditText) contentView.findViewById(R.id.popupforsimulaion_et);
-        popupforsimulaion_et.setWidth(view.getWidth());
-        popupforsimulaion_et.setHeight(view.getHeight());
-        Button popupforsimulaion_btn = (Button)contentView.findViewById(R.id.popupforsimulaion_btn);
-        popupforsimulaion_btn.setOnClickListener(this);
+
     }
-    public void showPopupWindow(){
+    public void showPopupWindow( View view, float x, float y, int type, int[] address){
+        this.x=x;
+        this.y=y;
+        this.view = view;
+        this.type = type;
+        this.address = address;
         if(!popupWindow.isShowing()){
+            popupforsimulaion_et.setWidth(view.getWidth());
+            popupforsimulaion_et.setHeight(view.getHeight());
+            Button popupforsimulaion_btn = (Button)contentView.findViewById(R.id.popupforsimulaion_btn);
+            popupforsimulaion_btn.setOnClickListener(this);
             popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, (int) x, (int) y);
         }
     }
     public void stopPopupWindow(){
-
         if(popupWindow.isShowing()){
             popupWindow.dismiss();
         }
