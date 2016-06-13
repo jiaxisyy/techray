@@ -116,29 +116,21 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
 
                         analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d256")[0]));
                     }
-                    if(String.valueOf(msg.getData().getFloatArray("d280")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d280")[0]).equals("")){
+                    if(String.valueOf(msg.getData().getFloatArray("d620")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d620")[0]).equals("")){
 
-                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d280")[0]));
+                        analog_et_oxy_alarm.setText(String.valueOf(msg.getData().getFloatArray("d620")[0]));
                     }
-                    if(String.valueOf(msg.getData().getFloatArray("d284")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d284")[0]).equals("")){
+                    if(String.valueOf(msg.getData().getFloatArray("d622")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d622")[0]).equals("")){
 
-                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d284")[0]));
+                        analog_et_flow_alarm.setText(String.valueOf(msg.getData().getFloatArray("d622")[0]));
                     }
-                    if(String.valueOf(msg.getData().getFloatArray("d296")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d296")[0]).equals("")){
+                    if(String.valueOf(msg.getData().getFloatArray("d626")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d626")[0]).equals("")){
 
-                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d296")[0]));
+                        analog_et_concentration_alarm.setText(String.valueOf(msg.getData().getFloatArray("d626")[0]));
                     }
-                    if(String.valueOf(msg.getData().getFloatArray("d300")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d300")[0]).equals("")){
+                    if(String.valueOf(msg.getData().getFloatArray("d624")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d624")[0]).equals("")){
 
-                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d300")[0]));
-                    }
-                    if(String.valueOf(msg.getData().getFloatArray("d304")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d304")[0]).equals("")){
-
-                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d304")[0]));
-                    }
-                    if(String.valueOf(msg.getData().getFloatArray("d308")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d308")[0]).equals("")){
-
-                        analog_et_temp_correction.setText(String.valueOf(msg.getData().getFloatArray("d308")[0]));
+                        analog_et_temp_alarm.setText(String.valueOf(msg.getData().getFloatArray("d624")[0]));
                     }
                     break;
 
@@ -147,13 +139,11 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
         }
     };
 
-    private Button simulaion_btn_pressure,simulaion_btn_flow,simulaion_btn_temp,simulaion_btn_concentration;
     private TextView analog_et_oxy_original,analog_et_flow_original,analog_et_concentration_original,analog_et_temp_original,analog_et_oxy_current,analog_et_flow_current,analog_et_concentration_current,analog_et_temp_current;
     private TextView analog_et_oxy_max,analog_et_flow_max,analog_et_concentration_max,analog_et_temp_max;
     private TextView analog_et_oxy_min,analog_et_flow_min,analog_et_concentration_min,analog_et_temp_min;
     private TextView analog_et_oxy_correction,analog_et_flow_correction,analog_et_concentration_correction,analog_et_temp_correction;
-    private TextView analog_et_oxy_alarm_max,analog_et_oxy_alarm_min,analog_et_flow_alarm_min,analog_et_concentration_alarm_max,analog_et_concentration_alarm_min,analog_et_temp_alarm_min;
-    private LinearLayout simulaion_layout_pressure,simulaion_layout_flow,simulaion_layout_temp,simulaion_layout_concentration;
+    private TextView analog_et_oxy_alarm,analog_et_flow_alarm,analog_et_concentration_alarm,analog_et_temp_alarm;
     private boolean flag=true;
     private int[] local,str;
     private View view;
@@ -165,7 +155,7 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
         initView();
         initData();
         setData();
-//        getData();
+        getData();
         return view;
     }
 
@@ -174,12 +164,10 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
     public void initView(){
         popupForSimulaion =  new PopupForSimulaion(getContext());
 
-        analog_et_oxy_alarm_max=(TextView)view.findViewById(R.id.analog_et_oxy_alarm_max);
-        analog_et_oxy_alarm_min=(TextView)view.findViewById(R.id.analog_et_oxy_alarm_min);
-        analog_et_flow_alarm_min=(TextView)view.findViewById(R.id.analog_et_flow_alarm_min);
-        analog_et_concentration_alarm_max=(TextView)view.findViewById(R.id.analog_et_concentration_alarm_max);
-        analog_et_concentration_alarm_min=(TextView)view.findViewById(R.id.analog_et_concentration_alarm_min);
-        analog_et_temp_alarm_min=(TextView)view.findViewById(R.id.analog_et_temp_alarm_min);
+        analog_et_oxy_alarm=(TextView)view.findViewById(R.id.analog_et_oxy_alarm_max);
+        analog_et_flow_alarm=(TextView)view.findViewById(R.id.analog_et_flow_alarm_min);
+        analog_et_concentration_alarm=(TextView)view.findViewById(R.id.analog_et_concentration_alarm_min);
+        analog_et_temp_alarm=(TextView)view.findViewById(R.id.analog_et_temp_alarm_min);
 
         analog_et_oxy_original=(TextView)view.findViewById(R.id.analog_et_oxy_original);
         analog_et_flow_original=(TextView)view.findViewById(R.id.analog_et_flow_original);
@@ -221,17 +209,11 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
         analog_et_concentration_correction.setOnClickListener(this);
         analog_et_temp_correction.setOnClickListener(this);
 
-        analog_et_oxy_alarm_max.setOnClickListener(this);
-        analog_et_oxy_alarm_min.setOnClickListener(this);
-        analog_et_flow_alarm_min.setOnClickListener(this);
-        analog_et_concentration_alarm_max.setOnClickListener(this);
-        analog_et_concentration_alarm_min.setOnClickListener(this);
-        analog_et_temp_alarm_min.setOnClickListener(this);
+        analog_et_oxy_alarm.setOnClickListener(this);
+        analog_et_flow_alarm.setOnClickListener(this);
+        analog_et_concentration_alarm.setOnClickListener(this);
+        analog_et_temp_alarm.setOnClickListener(this);
 
-        simulaion_layout_pressure = (LinearLayout) view.findViewById(R.id.simulaion_layout_pressure);
-        simulaion_layout_flow = (LinearLayout) view.findViewById(R.id.simulaion_layout_flow);
-        simulaion_layout_temp = (LinearLayout) view.findViewById(R.id.simulaion_layout_temp);
-        simulaion_layout_concentration = (LinearLayout) view.findViewById(R.id.simulaion_layout_concentration);
 
     }
     /**���ݳ�ʼ��*/
@@ -272,21 +254,17 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
                         //温度最小值
                         float[] d252 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 252, 1);
                         //温度修正值
-
-
                         float[] d256 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 256, 1);
-                        //氧气压力上限值
-                        float[]d280 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 280, 1);
-                        //氧气压力下限值
-                        float[]d284 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 284, 1);
-                        //氧气浓度下限值
-                        float[]d296 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 296, 1);
-                        //氧气流量上限值
-                        float[]d300 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 300, 1);
-                        //温度上限值
-                        float[]d304 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 304, 1);
-                        //温度下限值
-                        float[]d308 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 308, 1);
+
+
+                        //氧气压力报警值
+                        float[]d620 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D,620, 1);
+                        //氧气流量报警值
+                        float[]d622 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 622, 1);
+                        //氧气温度报警值
+                        float[]d624 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 624, 1);
+                        //氧气浓度报警值
+                        float[]d626 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 626, 1);
 
                         Bundle bundle = new Bundle();
                         bundle.putFloatArray("d200", d200);
@@ -301,12 +279,10 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
                         bundle.putFloatArray("d248", d248);
                         bundle.putFloatArray("d252", d252);
                         bundle.putFloatArray("d256", d256);
-                        bundle.putFloatArray("d280", d280);
-                        bundle.putFloatArray("d284", d284);
-                        bundle.putFloatArray("d296", d296);
-                        bundle.putFloatArray("d300", d300);
-                        bundle.putFloatArray("d304", d304);
-                        bundle.putFloatArray("d308", d308);
+                        bundle.putFloatArray("d620", d620);
+                        bundle.putFloatArray("d622", d622);
+                        bundle.putFloatArray("d624", d624);
+                        bundle.putFloatArray("d626", d626);
                         Message msg = new Message();
                         msg.setData(bundle);
                         msg.what = 2;
@@ -455,40 +431,29 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
                 str = new int[]{256};
                 popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
                 break;
-            case R.id.analog_et_oxy_alarm_max:
+
+            case R.id.analog_et_oxy_alarm:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{280};
+                str = new int[]{620};
                 popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
                 break;
-            case R.id.analog_et_oxy_alarm_min:
+            case R.id.analog_et_flow_alarm:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{284};
+                str = new int[]{622};
                 popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
                 break;
-            case R.id.analog_et_flow_alarm_min:
+            case R.id.analog_et_concentration_alarm:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{296};
+                str = new int[]{626};
                 popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
                 break;
-            case R.id.analog_et_concentration_alarm_max:
+            case R.id.analog_et_temp_alarm:
                 local=new int[2];
                 v.getLocationInWindow(local);
-                str = new int[]{300};
-                popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
-                break;
-            case R.id.analog_et_concentration_alarm_min:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{304};
-                popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
-                break;
-            case R.id.analog_et_temp_alarm_min:
-                local=new int[2];
-                v.getLocationInWindow(local);
-                str = new int[]{308};
+                str = new int[]{624};
                 popupForSimulaion.showPopupWindow(v,local[0],local[1],Constants.Define.OP_REAL_D,str);
                 break;
         }
