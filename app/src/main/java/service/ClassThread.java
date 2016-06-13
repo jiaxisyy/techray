@@ -16,9 +16,10 @@ public class ClassThread {
             "高于"+ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,new int[]{284}),
             "低于"+ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,new int[]{296}),
             "高于"+ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,new int[]{300}),
-            "高于于"+ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,new int[]{304}),
+            "高于"+ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,new int[]{304}),
             "低于"+ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,new int[]{308})};
-    private long[] id =new long[6];
+
+    private int[] id =new int[6];
 
     private boolean[] flag= {true,true,true,true,true,true};
     public ClassThread(SqlManager sqlManager){
@@ -65,15 +66,17 @@ public class ClassThread {
             @Override
             public void run() {
                 while (true){
+
                     String[] str = ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M,new int[]{50,51,52,53,54,55});
                     for(int i =0;i<str.length;i++){
                         if(str[i].equals("1") && flag[i]){
-                          String[] data =   ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M,new int[]{adress[i]});
-                            sqlManager.insertAlarmRecord(alarmstr[i],data[0]+unit[i],explain[i]);
+                            System.out.println(str[i]);
+                          String[] data =  ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M,new int[]{adress[i]});
+                           id[i] =sqlManager.insertAlarmRecord(alarmstr[i],data[0]+unit[i],explain[i]);
                             flag[i]=false;
                         }
                         if(str[i].equals("0") && flag[i]==false){
-                            sqlManager.upDateAlarmRecord(id[i]);
+                           sqlManager.upDateAlarmRecord(id[i]);
                             flag[i]=true;
                         }
                     }

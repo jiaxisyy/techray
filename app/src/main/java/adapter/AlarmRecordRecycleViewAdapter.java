@@ -29,14 +29,14 @@ public class AlarmRecordRecycleViewAdapter extends RecyclerView.Adapter<AlarmRec
     }
     @Override
     public AlarmRecordRecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.alarmrecord_recycleview_layout,parent);
+        View view = LayoutInflater.from(context).inflate(R.layout.alarmrecord_recycleview_layout,null);
        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(AlarmRecordRecycleViewAdapter.ViewHolder holder, int position) {
-        holder.recycle_date.setText(list.get(position).getDate());
+        holder.record_date.setText(list.get(position).getDate());
         holder.record_time.setText(list.get(position).getTime());
         holder.record_type.setText(list.get(position).getType());
         holder.record_data.setText(list.get(position).getData());
@@ -50,7 +50,7 @@ public class AlarmRecordRecycleViewAdapter extends RecyclerView.Adapter<AlarmRec
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView recycle_date;
+        TextView record_date;
         TextView record_time;
         TextView record_type;
         TextView record_data;
@@ -58,7 +58,7 @@ public class AlarmRecordRecycleViewAdapter extends RecyclerView.Adapter<AlarmRec
         TextView record_cancel;
         public ViewHolder(View itemView) {
             super(itemView);
-            recycle_date = (TextView) itemView.findViewById(R.id.recycle_date);
+            record_date = (TextView) itemView.findViewById(R.id.record_date);
             record_time = (TextView) itemView.findViewById(R.id.record_time);
             record_type = (TextView) itemView.findViewById(R.id.record_type);
             record_data = (TextView) itemView.findViewById(R.id.record_data);
