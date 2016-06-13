@@ -528,6 +528,8 @@
                     android:textSize="22px"
                     android:textColor="#B4B6C7"/>
                 <TextView
+
+
                     android:id="@+id/analog_et_temp_alarm"
                     android:layout_width="74dp"
                     android:layout_height="wrap_content"
