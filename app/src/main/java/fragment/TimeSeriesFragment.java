@@ -90,6 +90,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
 
     /**�ؼ���ʼ��*/
     public void initView(){
+        popupWindow = new Pupwindow(getContext());
         flow_tv_totalflow= (TextView)view.findViewById(R.id.flow_tv_totalflow);
         flow_tv_safe=(TextView) view.findViewById(R.id.flow_tv_safe);
         flow_btn_confirm =(Button)view.findViewById(R.id.flow_btn_confirm);
@@ -172,48 +173,39 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.flow_tv_totalflow:
                 int[] str = {264};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_DWORD_D,str);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_DWORD_D,str);
                 break;
             case R.id.flow_tv_safe:
                 int[] ste = {272};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_DWORD_D,ste);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_DWORD_D,ste);
                 break;
             case R.id.series_year:
                 int[] year = {600};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,year);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,year);
                 break;
             case R.id.series_month:
                 int[] month = {601};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,month);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,month);
                 break;
             case R.id.series_day:
                 int[] day = {602};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,day);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,day);
                 break;
             case R.id.series_hour:
                 int[] hour = {603};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,hour);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,hour);
                 break;
             case R.id.series_minute:
                 int[] minute = {604};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,minute);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,minute);
                 break;
             case R.id.series_second:
                 int[] second = {605};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,second);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,second);
                 break;
             case R.id.series_week:
                 int[] week = {606};
-                popupWindow = new Pupwindow(getContext(),v,Constants.Define.OP_WORD_D,week);
-                popupWindow.showPopupWindow();
+                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,week);
                 break;
             case R.id.flow_btn_open:
                 MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,new byte[]{1},58,1);
@@ -269,6 +261,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     @Override
     public void onPause() {
         super.onPause();
+        popupWindow.stopPopupWindow();
     }
 
     @Override

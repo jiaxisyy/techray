@@ -48,16 +48,13 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                     concentrationData =  msg.getData().getString("j1");
                     flowData =  msg.getData().getString("k1");
                     totalflowData =  msg.getData().getString("l1");
-                    if(msg.getData().getString("d700")!=null){
-                        if(msg.getData().getString("d700").equals("0")){
+                        if(msg.getData().getShort("d700")==0){
                             momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
-                        }else if(msg.getData().getString("d700").equals("1")){
+                        }else if(msg.getData().getShort("d700")==1){
                             momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
-                        }else if(msg.getData().getString("d700").equals("2")){
+                        }else if(msg.getData().getShort("d700")==2){
                             momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                         }
-                    }
-
                     break;
             }
         }
@@ -206,16 +203,16 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                         float l1 = (float) (Math.round(l[0] * 100)) / 100;
                         //A������״̬
 
-                        String[] D700=  ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{700});
-                        short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_REAL_D, 244, 1);
-                        System.out.println(d700[0]);
+                        short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 244, 1);
                         Bundle bundle = new Bundle();
 
                         bundle.putString("i1", String.valueOf(i1));
                         bundle.putString("j1", String.valueOf(j1));
                         bundle.putString("k1", String.valueOf(k1));
                         bundle.putString("l1", String.valueOf(l1));
-                        bundle.putString("d700",String.valueOf(d700[0]));
+                        if(d700.length>0){
+                            bundle.putShort("d700",d700[0]);
+                        }
 
                         Message msg = new Message();
                         msg.what = 1;
