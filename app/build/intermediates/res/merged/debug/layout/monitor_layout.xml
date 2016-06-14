@@ -1,50 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EFEFEF">
-    <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_weight="1">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_recycleview_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_recycleview_big"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-    </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:background="#EFEFEF"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginRight="16dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_recycleview_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_recycleview_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_main_warning"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginLeft="16dp"
-        android:background="@drawable/status_background">
+        android:layout_marginRight="16dp"
+        android:background="@drawable/main_warning_bg"
+      android:visibility="gone"
+       >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="报警信息:"
+            android:textColor="#FE4801"
+            android:textSize="26px" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/main_warning_icon" />
+
+        <TextView
+            android:id="@+id/tv_main_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textColor="#FE4801"
+            android:textSize="26sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/status_background"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
+
             <Button
                 android:id="@+id/momitor_btn_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:textSize="24px"
-                android:background="@drawable/momitor_btn_bacground_selector"
                 android:layout_gravity="center"
-                android:text="启动" />
+                android:background="@drawable/momitor_btn_bacground_selector"
+                android:text="启动"
+                android:textColor="#ffffff"
+                android:textSize="24px" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,15 +98,16 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
+
             <Button
                 android:id="@+id/momitor_btn_machine_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/waitting_lamp"
                 android:clickable="false"
                 android:text="A机"
                 android:textColor="#ffffff"
-                android:textSize="24px"
-                android:background="@drawable/waitting_lamp" />
+                android:textSize="18px" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,16 +115,16 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
+
             <Button
                 android:id="@+id/momitor_btn_stop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:textSize="24px"
                 android:layout_gravity="center"
                 android:background="@drawable/momitor_btn_bacground_selector"
                 android:text="停止"
-                />
+                android:textColor="#ffffff"
+                android:textSize="24px" />
         </LinearLayout>
 
     </LinearLayout>

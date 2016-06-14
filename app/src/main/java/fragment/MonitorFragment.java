@@ -16,6 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.hitek.serial.R;
 
@@ -35,7 +37,7 @@ import utils.ReadAndWrite;
 /**
  * Created by zuheng.lv on 2016/6/9.
  */
-public class MonitorFragment extends Fragment implements  View.OnTouchListener {
+public class MonitorFragment extends Fragment implements View.OnTouchListener {
     private Handler handler = new Handler() {
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
@@ -44,17 +46,29 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
             switch (msg.what) {
                 case 1:
                     /**����дUI���º���*/
-                    pressureData =  msg.getData().getString("i1");
-                    concentrationData =  msg.getData().getString("j1");
-                    flowData =  msg.getData().getString("k1");
-                    totalflowData =  msg.getData().getString("l1");
-                        if(msg.getData().getShort("d700")==0){
-                            momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
-                        }else if(msg.getData().getShort("d700")==1){
-                            momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
-                        }else if(msg.getData().getShort("d700")==2){
-                            momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
-                        }
+                    pressureData = msg.getData().getString("i1");
+                    concentrationData = msg.getData().getString("j1");
+                    flowData = msg.getData().getString("k1");
+                    totalflowData = msg.getData().getString("l1");
+                    momitor_btn_machine_a.setText(msg.getData().getString("d458")+"时");
+                    if (msg.getData().getShort("d700") == 0) {
+                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
+                    } else if (msg.getData().getShort("d700") == 1) {
+                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.running_lamp));
+                    } else if (msg.getData().getShort("d700") == 2) {
+                        momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
+                    }
+                    break;
+                case 2:
+                    //
+                    if (stringBuffer.length() >0) {
+                        //有报警信息
+                        ll_main_warning.setVisibility(View.VISIBLE);
+                        tv_main_warning.setText(stringBuffer.toString());
+                    }else if(stringBuffer.length()==0){
+                        ll_main_warning.setVisibility(View.GONE);
+                        ll_main_warning.layout(ll_main_warning.getLeft(),ll_main_warning.getTop(),ll_main_warning.getRight(),ll_main_warning.getBottom());
+                    }
                     break;
             }
         }
@@ -62,28 +76,29 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
 
     static Logger logger = Logger.getLogger("com.hitek.serial");
     static boolean is_run_flag = false;
-    private Boolean  btn_flag = true;
+    private Boolean btn_flag = true;
 
     //ѭ����־
     private boolean flag = true;
-    private Button momitor_btn_machine_a,momitor_btn_start,momitor_btn_stop;
+    private Button momitor_btn_machine_a, momitor_btn_start, momitor_btn_stop;
     private View view;
-    private MainRecycleViewAdapter mainRecycleView1,mainRecycleView2;
-    private RecyclerView recyclerView1,recyclerView2;
+    private MainRecycleViewAdapter mainRecycleView1, mainRecycleView2;
+    private RecyclerView recyclerView1, recyclerView2;
     private List<MainRecycleViewItem> list1;
     private List<MainRecycleViewItem> list2;
-    private String pressureData,concentrationData,flowData,totalflowData;
-
+    private String pressureData, concentrationData, flowData, totalflowData;
+    private LinearLayout ll_main_warning;
+    private TextView tv_main_warning;
+    private StringBuffer stringBuffer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.monitor_layout,container,false);
+        view = inflater.inflate(R.layout.monitor_layout, container, false);
         initData();
         initView();
         setData();
         return view;
     }
-
 
 
     /**
@@ -92,15 +107,17 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
     public void initView() {
         recyclerView1 = (RecyclerView) view.findViewById(R.id.main_recycleview_normal);
         recyclerView2 = (RecyclerView) view.findViewById(R.id.main_recycleview_big);
-        recyclerView1.setLayoutManager(new GLayoutManager(getContext(),3));
-        recyclerView2.setLayoutManager(new GLayoutManager(getContext(),1));
-        mainRecycleView1 = new MainRecycleViewAdapter(getContext(),list1,true);
-        mainRecycleView2 = new MainRecycleViewAdapter(getContext(),list2,false);
+        recyclerView1.setLayoutManager(new GLayoutManager(getContext(), 3));
+        recyclerView2.setLayoutManager(new GLayoutManager(getContext(), 1));
+        mainRecycleView1 = new MainRecycleViewAdapter(getContext(), list1, true);
+        mainRecycleView2 = new MainRecycleViewAdapter(getContext(), list2, false);
         recyclerView1.setAdapter(mainRecycleView1);
         recyclerView2.setAdapter(mainRecycleView2);
+        ll_main_warning = (LinearLayout) view.findViewById(R.id.ll_main_warning);
+        tv_main_warning = (TextView) view.findViewById(R.id.tv_main_warning);
 
         momitor_btn_machine_a = (Button) view.findViewById(R.id.momitor_btn_machine_a);
-        momitor_btn_start= (Button) view.findViewById(R.id.momitor_btn_start);
+        momitor_btn_start = (Button) view.findViewById(R.id.momitor_btn_start);
         momitor_btn_stop = (Button) view.findViewById(R.id.momitor_btn_stop);
         momitor_btn_stop.setOnTouchListener(this);
         momitor_btn_start.setOnTouchListener(this);
@@ -187,6 +204,7 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
 
                 /**����д���ݻ�ȡ�����ݴ�����*/
                 Log.d("TAG", "run");
+
                 while (flag) {
                     try {
                         //����ѹ��ֵ
@@ -205,20 +223,39 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
 
                         short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 244, 1);
                         Bundle bundle = new Bundle();
+                        int[] d458  =   MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D,458,1);
 
                         bundle.putString("i1", String.valueOf(i1));
                         bundle.putString("j1", String.valueOf(j1));
                         bundle.putString("k1", String.valueOf(k1));
                         bundle.putString("l1", String.valueOf(l1));
-                        if(d700.length>0){
-                            bundle.putShort("d700",d700[0]);
+                        bundle.putString("d458",String.valueOf(d458[0]));
+                        if (d700.length > 0) {
+                            bundle.putShort("d700", d700[0]);
                         }
+                        final int[] ints = {50, 51, 52, 53, 54, 55,57};
+                        final String[] strings = new String[]{"氧气压力过高;", "氧气压力过低;", "氧气浓度过低;", "氧气流量过高;", "露点/温度过高;", "露点/温度过低;", "设备锁机;"};
 
+                        // stringBuffer.append("\"氧气压力过高;\", \"氧气压力过低;\", \"氧气浓度过低;\", \"氧气流量过高;\", \"露点/温度过高;\", \"露点/温度过低;\"");
+                        String[] str = ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M, ints);
+                        stringBuffer = new StringBuffer();
+                        if (str != null) {
+                            int length = str.length;
+                            for (int p = 0; p < length; p++) {
+                                int index = Integer.parseInt(str[p]);
+                                if (index == 1) {
+                                    stringBuffer.append(strings[p]);
+                                }
+                            }
+                            Message obtain = Message.obtain();
+                            obtain.what = 2;
+                            handler.sendMessage(obtain);
+                        }
                         Message msg = new Message();
                         msg.what = 1;
                         msg.setData(bundle);
                         handler.sendMessage(msg);
-                        Thread.sleep(300);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -230,7 +267,7 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        flag=false;
+        flag = false;
     }
 
     @Override
@@ -238,8 +275,8 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
         switch (v.getId()) {
 
             case R.id.momitor_btn_start:
-                if(event.getAction()==MotionEvent.ACTION_UP){
-                    btn_flag=false;
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_flag = false;
                     momitor_btn_start.setSelected(btn_flag);
 
                     TimerTask timerTask = new TimerTask() {
@@ -248,24 +285,24 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                         public void run() {
                             // TODO Auto-generated method stub
                             byte[] b = {0};
-                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,b,10,1);
+                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, b, 10, 1);
                         }
                     };
                     Timer time = new Timer();
                     time.schedule(timerTask, 500);
                 }
-                if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    btn_flag=true;
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_flag = true;
                     momitor_btn_start.setSelected(btn_flag);
 
                     byte[] b = {1};
-                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,b,10,1);
+                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, b, 10, 1);
 
                 }
                 break;
             case R.id.momitor_btn_stop:
-                if(event.getAction()==MotionEvent.ACTION_UP){
-                    btn_flag=false;
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btn_flag = false;
                     momitor_btn_stop.setSelected(btn_flag);
                     TimerTask timerTask = new TimerTask() {
 
@@ -273,18 +310,18 @@ public class MonitorFragment extends Fragment implements  View.OnTouchListener {
                         public void run() {
                             // TODO Auto-generated method stub
                             byte[] b = {0};
-                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,b,101,1);
+                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, b, 101, 1);
                         }
                     };
                     Timer time = new Timer();
                     time.schedule(timerTask, 500);
 
                 }
-                if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    btn_flag=true;
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btn_flag = true;
                     momitor_btn_stop.setSelected(btn_flag);
                     byte[] b = {1};
-                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,b,101,1);
+                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, b, 101, 1);
                 }
                 break;
         }

@@ -55,6 +55,7 @@ public class PopupForSimulaion implements View.OnClickListener {
             popupforsimulaion_et.setHeight(view.getHeight());
             Button popupforsimulaion_btn = (Button)contentView.findViewById(R.id.popupforsimulaion_btn);
             popupforsimulaion_btn.setOnClickListener(this);
+            popupforsimulaion_et.setText("");
             popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, (int) x, (int) y);
         }
     }

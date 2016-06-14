@@ -36,26 +36,42 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
                     Log.d("LOG",String.valueOf(msg.getData().getShort("d400")));
                     /**����дUI���º���*/
                     if(String.valueOf(msg.getData().getShort("d400"))!=null && !String.valueOf(msg.getData().getShort("d400")).equals("")){
-                        ATiming_1.setText(String.valueOf(msg.getData().getShort("d400")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d400")));
+                        ATiming_1.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
 
                     }
                     if(String.valueOf(msg.getData().getShort("d402"))!=null && !String.valueOf(msg.getData().getShort("d402")).equals("")){
-                        ATiming_2.setText(String.valueOf(msg.getData().getShort("d402")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d402")));
+                        ATiming_2.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+
 
                     }
                     if(String.valueOf(msg.getData().getShort("d404"))!=null && !String.valueOf(msg.getData().getShort("d404")).equals("")){
-                        ATiming_3.setText(String.valueOf(msg.getData().getShort("d404")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d404")));
+                        ATiming_3.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_3.setText(String.valueOf(msg.getData().getShort("d404")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d406"))!=null && !String.valueOf(msg.getData().getShort("d406")).equals("")){
-                        ATiming_4.setText(String.valueOf(msg.getData().getShort("d406")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d406")));
+                        ATiming_4.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+
+//                        ATiming_4.setText(String.valueOf(msg.getData().getShort("d406")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d408"))!=null && !String.valueOf(msg.getData().getShort("d408")).equals("")){
-                        ATiming_5.setText(String.valueOf(msg.getData().getShort("d408")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d408")));
+                        ATiming_5.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_5.setText(String.valueOf(msg.getData().getShort("d408")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d410"))!=null && !String.valueOf(msg.getData().getShort("d410")).equals("")){
+                        //TODO
                         ATiming_6.setText(String.valueOf(msg.getData().getShort("d410")));
 
                     }

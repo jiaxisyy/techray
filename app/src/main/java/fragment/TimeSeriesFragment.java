@@ -28,6 +28,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import activity.MyApplication;
+import popupwindow.PopupForWeek;
 import popupwindow.Pupwindow;
 import utils.CacheUtils;
 import utils.Constants;
@@ -53,15 +54,50 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     if(String.valueOf(msg.getData().getInt("d272"))!=null && !String.valueOf(msg.getData().getInt("d272")).equals("")){
                         flow_tv_safe.setText(String.valueOf(msg.getData().getInt("d272")));
                     }
-                    if(msg.getData().getStringArray("data").length>0){
-                        System.out.println(String.valueOf(msg.getData().getShortArray("data")[0]));
-                        series_year.setText(String.valueOf(msg.getData().getShortArray("data")[0]));
-                        series_month.setText(msg.getData().getShortArray("data")[1]);
-                        series_day.setText(msg.getData().getShortArray("data")[2]);
-                        series_hour.setText(msg.getData().getShortArray("data")[3]);
-                        series_minute.setText(msg.getData().getShortArray("data")[4]);
-                        series_second.setText(msg.getData().getShortArray("data")[5]);
-                        series_week.setText(msg.getData().getShortArray("data")[6]);
+
+                    if(String.valueOf(msg.getData().getStringArray("data")[0]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[0] ).equals("")){
+                        series_year.setText(String.valueOf(msg.getData().getStringArray("data")[0]));
+                    }
+                    if(String.valueOf(msg.getData().getStringArray("data")[1]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[1] ).equals("")){
+                        series_month.setText(String.valueOf(msg.getData().getStringArray("data")[1]));
+                    }
+                    if(String.valueOf(msg.getData().getStringArray("data")[2]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[2] ).equals("")){
+                        series_day.setText(String.valueOf(msg.getData().getStringArray("data")[2]));
+                    }
+                    if(String.valueOf(msg.getData().getStringArray("data")[3]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[3] ).equals("")){
+                        series_hour.setText(String.valueOf(msg.getData().getStringArray("data")[3]));
+                    }
+                    if(String.valueOf(msg.getData().getStringArray("data")[4]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[4] ).equals("")){
+                        series_minute.setText(String.valueOf(msg.getData().getStringArray("data")[4]));
+                    }
+                    if(String.valueOf(msg.getData().getStringArray("data")[5]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[5] ).equals("")){
+                        series_second.setText(String.valueOf(msg.getData().getStringArray("data")[5]));
+                    }
+                    if(String.valueOf(msg.getData().getStringArray("data")[6]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[6] ).equals("")){
+                        switch (msg.getData().getStringArray("data")[6]){
+                            case "0":
+                                series_week.setText("天");
+                                break;
+                            case "1":
+                                series_week.setText("一");
+                                break;
+                            case "2":
+                                series_week.setText("二");
+                                break;
+                            case "3":
+                                series_week.setText("三");
+                                break;
+                            case "4":
+                                series_week.setText("四");
+                                break;
+                            case "5":
+                                series_week.setText("五");
+                                break;
+                            case "6":
+                                series_week.setText("六");
+                                break;
+                        }
+
                     }
                     break;
                 case 2:
@@ -72,16 +108,17 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         }
     };
 
-    private Button flow_btn_confirm,btn_time_series_affirm,flow_btn_open,flow_btn_close;
+    private Button flow_btn_confirm,btn_time_series_affirm,flow_btn_open;
     private TextView flow_tv_totalflow,flow_tv_safe;
     private TextView series_year,series_month,series_day,series_hour,series_minute,series_second,series_week;
     private boolean flag = true;
     private View view;
     private Pupwindow popupWindow;
+    private PopupForWeek popupForWeek;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_time_series,container,false);
+        view = inflater.inflate(R.layout.fragment_special_controls,container,false);
         initView();
         initData();
         setData();
@@ -92,12 +129,12 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     /**�ؼ���ʼ��*/
     public void initView(){
         popupWindow = new Pupwindow(getContext());
+        popupForWeek = new PopupForWeek(getContext());
         flow_tv_totalflow= (TextView)view.findViewById(R.id.flow_tv_totalflow);
         flow_tv_safe=(TextView) view.findViewById(R.id.flow_tv_safe);
         flow_btn_confirm =(Button)view.findViewById(R.id.flow_btn_confirm);
         btn_time_series_affirm = (Button) view.findViewById(R.id.btn_time_series_affirm);
         flow_btn_open=(Button)view.findViewById(R.id.flow_btn_open);
-        flow_btn_close=(Button)view.findViewById(R.id.flow_btn_close);
 
         series_year = (TextView) view.findViewById(R.id.series_year);
         series_month = (TextView) view.findViewById(R.id.series_month);
@@ -107,20 +144,19 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         series_second = (TextView) view.findViewById(R.id.series_second);
         series_week = (TextView) view.findViewById(R.id.series_week);
 
-        series_year.setOnTouchListener(this);
-        series_month.setOnTouchListener(this);
-        series_day.setOnTouchListener(this);
-        series_hour.setOnTouchListener(this);
-        series_minute.setOnTouchListener(this);
-        series_second.setOnTouchListener(this);
-        series_week.setOnTouchListener(this);
+        series_year.setOnClickListener(this);
+        series_month.setOnClickListener(this);
+        series_day.setOnClickListener(this);
+        series_hour.setOnClickListener(this);
+        series_minute.setOnClickListener(this);
+        series_second.setOnClickListener(this);
+        series_week.setOnClickListener(this);
 
         flow_tv_safe.setOnClickListener(this);
         flow_tv_totalflow.setOnClickListener(this);
         flow_btn_confirm.setOnTouchListener(this);
         btn_time_series_affirm.setOnTouchListener(this);
-        flow_btn_open.setOnClickListener(this);
-        flow_btn_close.setOnClickListener(this);
+        flow_btn_open.setOnTouchListener(this);
     }
     /**���ݳ�ʼ��*/
     public void initData(){
@@ -177,8 +213,8 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                 popupWindow.showPopupWindow(v,Constants.Define.OP_DWORD_D,str);
                 break;
             case R.id.flow_tv_safe:
-                int[] ste = {272};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_DWORD_D,ste);
+                int[] ste = {628};
+                popupWindow.showPopupWindow(v,Constants.Define.OP_REAL_D,ste);
                 break;
             case R.id.series_year:
                 int[] year = {600};
@@ -206,13 +242,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.series_week:
                 int[] week = {606};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,week);
-                break;
-            case R.id.flow_btn_open:
-                MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,new byte[]{1},58,1);
-                break;
-            case R.id.flow_btn_close:
-                MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,new byte[]{0},58,1);
+                popupForWeek.showPopupWindow(v,Constants.Define.OP_WORD_D,week);
                 break;
         }
     }
@@ -255,6 +285,24 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     time.schedule(timerTask, 500);
                 }
                 break;
+            case R.id.flow_btn_open:
+                if(event.getAction()== MotionEvent.ACTION_DOWN){
+                    byte[] m58 = {1};
+                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m58,58,1);
+                }else if(event.getAction()== MotionEvent.ACTION_UP){
+                    TimerTask timerTask = new TimerTask() {
+
+                        @Override
+                        public void run() {
+                            // TODO Auto-generated method stub
+                            byte[] m58 = {0};
+                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m58,58,1);
+                        }
+                    };
+                    Timer time = new Timer();
+                    time.schedule(timerTask, 500);
+                }
+                break;
         }
         return false;
     }
@@ -263,6 +311,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     public void onPause() {
         super.onPause();
         popupWindow.stopPopupWindow();
+        popupForWeek.stopPopupWindow();
     }
 
     @Override

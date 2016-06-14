@@ -19,17 +19,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hitek.serial.R;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.async.http.socketio.ExceptionCallback;
-import com.koushikdutta.ion.Ion;
-import com.koushikdutta.ion.ProgressCallback;
-
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.net.ConnectException;
-
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import bean.ApkInfo;
 import utils.CacheUtils;
-import utils.Constants;
 import utils.Httputils;
 
 /**
@@ -42,12 +39,17 @@ public class UpdateApp {
     private static String url = "http://10.199.198.55:58010/userconsle/clientApps/" + appName;
     private static String fileUrl = "http://10.199.198.55:58010/userconsle/clientApps/" + appName + "/file";
     private static String filePath;
-    private static Context context;
+    private Context context;
     private static int NEW = 1;
     private static int OLD = 2;
     private static int INTERNETERROR = 3;
+    private static String apkPath;
+
     private static PopupWindow upPopupWindow;
-    private static Handler handler = new Handler() {
+    public UpdateApp(Context context) {
+        this.context = context;
+    }
+    private  Handler handler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -96,63 +98,63 @@ public class UpdateApp {
         }
     };
 
-    private static void update() {
+
+    private void update() {
 
 
-        final ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.show();
-        //需要更新
-        new Thread(new Runnable() {
+
+        new Thread() {
             @Override
             public void run() {
+                super.run();
+                try {
+                    URL url = new URL(fileUrl);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.addRequestProperty("Cookie", CacheUtils.getString(context, "ID"));
+                    conn.connect();
+                    int length = conn.getContentLength();
+                    InputStream is = conn.getInputStream();
+                    String sdpath = Environment.getExternalStorageDirectory() + filePath.substring(0, 9);
+                    Log.d("TAG", sdpath);
 
+                    File file = new File(sdpath);
+                    // 判断文件目录是否存在
+                    if (!file.exists()) {
+                        file.mkdir();
+                    }
+                    File apkFile = new File(sdpath, appName + ".apk");//aaa 下载下来的软件名称
 
-                Ion.with(context)
+                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(apkFile));
+                    byte[] buf = new byte[1024 * 8];
+                    int len = 0;
+                    while ((len = is.read(buf)) != -1) {
+                        System.out.println(len);
+                        bos.write(buf, 0, len);
+                    }
+                    System.out.println("end" + length / 1024 / 1024);
+                    bos.flush();
+                    bos.close();
+                    is.close();
 
-                        .load("http://10.199.198.55:58010/userconsle/clientApps/techray-coic/file")
-//// have a ProgressBar get updated automatically with the percent
-//                                .progressBar(progressBar)
-// and a ProgressDialog
-                        .addHeader("Cookie",CacheUtils.getString(context,"ID"))
-                        .progressDialog(progressDialog)
-// can also use a custom callback
-                        .progress(new ProgressCallback() {
-                            @Override
-                            public void onProgress(long downloaded, long total) {
-                                System.out.println("" + downloaded + " / " + total);
-                            }
-                        })
-                        .write(new File(Environment.getExternalStorageDirectory() + "/Download/techray-coic.apk"))
-                        .setCallback(new FutureCallback<File>() {
-                            @Override
-                            public void onCompleted(Exception e, File file) {
-                                // download done...
-                                // do stuff with the File or error
-                                progressDialog.dismiss();
-                                Log.d("*************", file.getAbsolutePath() + "");
-                                //安装app
-//                                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                intent.setDataAndType(Uri.parse("file://" + file.getPath()), "application/vnd.android.package-archive");
-//                                context.startActivity(intent);
-
-
-                            }
-                        });
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setDataAndType(Uri.fromFile(new File(apkFile.getPath())), "application/vnd.android.package-archive");
+                    context.startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
-        }).start();
+
+        }.start();
+
     }
 
-
-    public UpdateApp(Context context) {
-        this.context = context;
-    }
 
     /**
      * 更新apk文件
      */
-    public static void updateApk() {
+    public void updateApk() {
         new Thread(new Runnable() {
             @Override
             public void run() {

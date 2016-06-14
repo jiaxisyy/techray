@@ -1,5 +1,7 @@
 package fragment;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,7 +14,9 @@ import android.widget.Button;
 
 import com.hitek.serial.R;
 
+import activity.MyApplication;
 import bean.AnimationSingleView;
+import utils.Constants;
 import utils.ReadAndWrite;
 
 /**
@@ -25,24 +29,26 @@ public class AnimationFragment extends Fragment{
     private Boolean flag=true;
 
     Handler handler = new Handler(){
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(msg.getData().getString("d700").equals("0")){
+            if(msg.getData().getShort("d700")==0){
+                System.out.println(msg.getData().getShort("d700"));
                 animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
                 animationView_single.stopDraw();
-            }else if(msg.getData().getString("d700").equals("1")){
+            }else if(msg.getData().getShort("d700")==1){
                 animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.running_lamp));
                 animationView_single.startDraw();
-            }else if(msg.getData().getString("d700").equals("2")){
+            }else if(msg.getData().getShort("d700")==2){
                 animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                 animationView_single.stopDraw();
             }
         }
     };
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          view = inflater.inflate(R.layout.animation_single_layout,container,false);
         initView();
         setData();
@@ -58,11 +64,14 @@ public class AnimationFragment extends Fragment{
             @Override
             public void run() {
                 while (flag){
-                    String[]D700 = ReadAndWrite.ReadJni(1,new int[]{700});
+                    short[] d700 =    MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 700, 1);
                     Bundle bundle = new Bundle();
-                    bundle.putString("1",D700[0]);
+                    if(d700.length>0){
+                        bundle.putShort("d700",d700[0]);
+                    }
                     Message msg = new Message();
                     msg.setData(bundle);
+                    handler.sendMessage(msg);
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -71,5 +80,16 @@ public class AnimationFragment extends Fragment{
                 }
             }
         }).start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        onDestroy();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

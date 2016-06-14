@@ -129,7 +129,7 @@ public class SqlManager extends DataBaseHelper {
         ContentValues values = new ContentValues();
         SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
-        values.put("cancel", df1.format(new Date())+df2.format(new Date()));
+        values.put("cancel", df1.format(new Date())+"\n"+df2.format(new Date()));
         db.update("alarm",values,"alarmID =?",new String[]{String.valueOf(ID)});
     }
 }

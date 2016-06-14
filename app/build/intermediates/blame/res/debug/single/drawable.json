@@ -48,6 +48,10 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_bg.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable\\wheel_bg.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\momitor_btn_machine_a_selector.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable\\momitor_btn_machine_a_selector.xml"
     },
@@ -72,6 +76,10 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
     {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\timeseries_date_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable\\timeseries_date_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\valve_btn_selector.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable\\valve_btn_selector.xml"
     },
@@ -86,6 +94,10 @@
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\wheel_val.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable\\wheel_val.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\alarm_solid.xml",
@@ -134,6 +146,10 @@
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\oxy_selecor.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\drawable\\oxy_selecor.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",

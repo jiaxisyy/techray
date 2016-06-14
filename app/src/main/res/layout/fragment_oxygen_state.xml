@@ -30,14 +30,14 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/ck_solenoid_valve0"
+                android:id="@+id/avalve_btn_valve_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="40dp"
 
-                android:background="@drawable/solenoid_valve_red_rectangle"
+                android:background="@drawable/oxy_selecor"
                 android:button="@null" />
 
             <LinearLayout
@@ -47,19 +47,19 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/ck_solenoid_valve1"
+                    android:id="@+id/avalve_btn_valve1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="135dp"
-                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:background="@drawable/oxy_selecor"
                     android:button="@null" />
 
                 <CheckBox
-                    android:id="@+id/ck_solenoid_valve2"
+                    android:id="@+id/avalve_btn_valve2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
-                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:background="@drawable/oxy_selecor"
                     android:button="@null" />
 
             </LinearLayout>
@@ -71,19 +71,19 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/ck_solenoid_valve3"
+                    android:id="@+id/avalve_btn_valve3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="135dp"
-                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:background="@drawable/oxy_selecor"
                     android:button="@null" />
 
                 <CheckBox
-                    android:id="@+id/ck_solenoid_valve4"
+                    android:id="@+id/avalve_btn_valve4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
-                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:background="@drawable/oxy_selecor"
                     android:button="@null" />
 
             </LinearLayout>
@@ -95,30 +95,30 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/ck_solenoid_valve5"
+                    android:id="@+id/avalve_btn_valve5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="135dp"
-                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:background="@drawable/oxy_selecor"
                     android:button="@null" />
 
                 <CheckBox
-                    android:id="@+id/ck_solenoid_valve6"
+                    android:id="@+id/avalve_btn_valve6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
-                    android:background="@drawable/solenoid_valve_red_rectangle"
+                    android:background="@drawable/oxy_selecor"
                     android:button="@null" />
 
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/ck_solenoid_valve7"
+                android:id="@+id/avalve_btn_valve_born"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="3dp"
-                android:background="@drawable/solenoid_valve_red_rectangle"
+                android:background="@drawable/oxy_selecor"
                 android:button="@null" />
 
 

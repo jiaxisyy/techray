@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.hitek.serial.R;
 
-import popupwindow.PopupForSystemSetting;
 import utils.Constants;
 import popupwindow.Pupwindow;
 import utils.ReadAndWrite;
@@ -33,16 +32,26 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
                 case 1:
                     /**����дUI���º���*/
                     if(msg.getData().getString("0")!=null && !msg.getData().getString("0").equals("")){
-                        pressure_et_max1.setText(msg.getData().getString("0"));
+
+                        float v = Float.parseFloat(msg.getData().getString("0"));
+                        pressure_et_max1.setText(String.valueOf((float) Math.round(v * 100) / 100));
+
                     }
                     if(msg.getData().getString("1")!=null && !msg.getData().getString("1").equals("")){
-                        pressure_et_min1.setText(msg.getData().getString("1"));
+
+                        float v = Float.parseFloat(msg.getData().getString("1"));
+                        pressure_et_min1.setText(String.valueOf((float) Math.round(v * 100) / 100));
+
                     }
                     if(msg.getData().getString("2")!=null && !msg.getData().getString("2").equals("")){
-                        pressure_et_max2.setText(msg.getData().getString("2"));
+
+                        float v = Float.parseFloat(msg.getData().getString("2"));
+                        pressure_et_max2.setText(String.valueOf((float) Math.round(v * 100) / 100));
+
                     }
                     if(msg.getData().getString("3")!=null && !msg.getData().getString("3").equals("")){
-                        pressure_et_min2.setText(msg.getData().getString("3"));
+                        float v = Float.parseFloat(msg.getData().getString("3"));
+                        pressure_et_min2.setText(String.valueOf((float) Math.round(v * 100) / 100));
                     }
 
                     break;
@@ -51,14 +60,14 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
     };
 
 
-    private Button systemsetting_btn_change;
-    private EditText pressure_et_max1,pressure_et_max2,pressure_et_min1,pressure_et_min2;
+
+    private TextView pressure_et_max1,pressure_et_max2,pressure_et_min1,pressure_et_min2;
     private boolean flag=true;
     private  Thread myThread;
     private int[] local;
     private int[] str;
     private View view;
-    private PopupForSystemSetting popupForSystemSetting;
+    private Pupwindow pupwindow;
 
     @Nullable
     @Override
@@ -67,18 +76,20 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
         initView();
         initData();
         setData();
-        popupForSystemSetting = new PopupForSystemSetting(getContext(),view,Constants.Define.OP_REAL_D,new int[]{330,334,338,342});
+        pupwindow = new Pupwindow(getContext());
         myThread.start();
         return view;
     }
     /**�ؼ���ʼ��*/
     public void initView(){
-        pressure_et_max1 = (EditText)view.findViewById(R.id.pressure_et_max1);
-        pressure_et_max2 = (EditText)view.findViewById(R.id.pressure_et_max2);
-        pressure_et_min1 = (EditText)view.findViewById(R.id.pressure_et_min1);
-        pressure_et_min2 = (EditText)view.findViewById(R.id.pressure_et_min2);
-        systemsetting_btn_change = (Button) view.findViewById(R.id.systemsetting_btn_change);
-        systemsetting_btn_change.setOnClickListener(this);
+        pressure_et_max1 = (TextView)view.findViewById(R.id.pressure_et_max1);
+        pressure_et_max2 = (TextView)view.findViewById(R.id.pressure_et_max2);
+        pressure_et_min1 = (TextView)view.findViewById(R.id.pressure_et_min1);
+        pressure_et_min2 = (TextView)view.findViewById(R.id.pressure_et_min2);
+        pressure_et_max1.setOnClickListener(this);
+        pressure_et_max2.setOnClickListener(this);
+        pressure_et_min1.setOnClickListener(this);
+        pressure_et_min2.setOnClickListener(this);
     }
     /**���ݳ�ʼ��*/
     public void initData(){
@@ -102,7 +113,7 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
             public void run() {
                 while(flag){
                     try{
-                        int[] address = {330,334,338,342};
+                        int[] address = {620,626,330,334};
                         String[] read = ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,address);
                         Bundle bundle = new Bundle();
                         for(int i =0;i<read.length;i++){
@@ -112,7 +123,7 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
                         msg.what = 1;
                         msg.setData(bundle);
                         handler.sendMessage(msg);
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -126,8 +137,17 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.systemsetting_btn_change:
-                popupForSystemSetting.showPopupWindow();
+            case R.id.pressure_et_max1:
+                pupwindow.showPopupWindow(view,Constants.Define.OP_REAL_D,new int[]{620});
+                break;
+            case R.id.pressure_et_min1:
+                pupwindow.showPopupWindow(view,Constants.Define.OP_REAL_D,new int[]{626});
+                break;
+            case R.id.pressure_et_max2:
+                pupwindow.showPopupWindow(view,Constants.Define.OP_REAL_D,new int[]{330});
+                break;
+            case R.id.pressure_et_min2:
+                pupwindow.showPopupWindow(view,Constants.Define.OP_REAL_D,new int[]{334});
                 break;
         }
     }
@@ -135,7 +155,7 @@ public class SystemSettingFragment extends Fragment implements View.OnClickListe
     @Override
     public void onPause() {
         super.onPause();
-        popupForSystemSetting.stopPopupWindow();
+        pupwindow.stopPopupWindow();
     }
 
     @Override

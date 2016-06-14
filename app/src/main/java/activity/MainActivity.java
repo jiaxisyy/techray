@@ -2,18 +2,22 @@ package activity;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +26,15 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.hitek.serial.R;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 import adapter.MainExpandableListViewAdapter;
 import bean.LoginErrorInfo;
@@ -41,6 +48,7 @@ import fragment.OxygenStateFragment;
 import fragment.SimulaionFragment;
 import fragment.SpecialControlsFragment;
 import fragment.SystemSettingFragment;
+import fragment.TimeSeriesFragment;
 import fragment.TimeSettingFragment;
 import service.Services;
 import utils.CacheUtils;
@@ -64,6 +72,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private CheckBox pp_login_ck_remember;
     private PopupWindow popupWindow, newPopupWindow;
     private String LOGIN_URL = "http://10.199.198.55:58010/userconsle/login";
+
     private final static int MSG_LOGIN_SUCCEED = 1;
     private final static int MSG_LOGIN_ERROR = 2;
     private final int TIME = 3;
@@ -72,6 +81,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private View view, newView;
     private String loginInfo;
     private String errorInfo, str;
+
     private Handler handler = new Handler() {
 
         @Override
@@ -139,6 +149,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //关闭分组
 //                elv_mian_state.collapseGroup(groupPosition);
                 Log.d("JIAXI", groupPosition + "____" + childPosition);
+//                TextView viewById = (TextView) v.findViewById(R.id.second_textview);
+//                viewById.setTextColor(Color.RED);
                 changeFragment(groupPosition, childPosition);
 
                 return true;
@@ -166,6 +178,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 return false;
             }
         });
+
     }
 
     /**
@@ -226,10 +239,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 4:
                         //特殊控制
-                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SpecialControlsFragment.class);
+                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSeriesFragment.class);
                         break;
                     case 5:
                         //检测更新
+
                         UpdateApp updateApp = new UpdateApp(this);
                         updateApp.updateApk();
 
@@ -265,7 +279,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ions.add(R.drawable.main_icon_home);
         ions.add(R.drawable.main_icon_status);
         ions.add(R.drawable.main_icon_introduce);
-     //    readWarning();
+        //    readWarning();
         updataMainActivity();
         new Thread(new Runnable() {
             @Override
@@ -288,43 +302,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
-    /**
-     * 读取报警信息
-     */
-    private void readWarning() {
-        final int[] ints = new int[]{50, 51, 52, 53, 54, 55};
-        final String[] strings = new String[]{"氧气压力过高;", "氧气压力过低;", "氧气浓度过低;", "氧气流量过高;", "露点/温度过高;", "露点/温度过低;"};
-        final StringBuffer stringBuffer = new StringBuffer();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                while (true) {
-                    try {
-                        Thread.sleep(5000);
-                        String[] str = ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M, ints);
-                        if (str != null) {
-                            int length = str.length;
-                            for (int i = 0; i < length; i++) {
-                                int index = Integer.parseInt(str[i]);
-                                if (index == 1) {
-                                    stringBuffer.append(strings[i]);
-                                }
-
-
-                            }
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-            }
-        }).start();
-
-
-    }
 
     private void initialize() {
 
@@ -463,6 +440,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
         Log.d("JIAXI", "updataMainActivity");
     }
+
 
 }
 

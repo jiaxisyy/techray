@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:text="搜索"
             android:textSize="18px"
+            android:visibility="gone"
             android:textColor="#ffffff"
             android:layout_marginLeft="20dp"
             android:background="@drawable/history_btn_search"/>
@@ -86,8 +87,8 @@
             android:text="报警类型"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:textSize="18px"
             android:gravity="center"
             android:layout_weight="1"/>

@@ -32,10 +32,6 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\second_main_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_layout.xml"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\analog_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\analog_layout.xml"
     },
@@ -64,12 +60,20 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\time_picker.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\time_picker.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_login.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupwindow_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\timeseris_date_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\timeseris_date_layout.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_parent.xml",
@@ -126,6 +130,10 @@
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\test_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupfortimeseries_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupfortimeseries_layout.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\parameter_layout.xml",
@@ -208,6 +216,10 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupforsimulation_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupforsimulation_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
@@ -222,6 +234,10 @@
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pressure_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\pressure_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pp_input.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\pp_input.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",

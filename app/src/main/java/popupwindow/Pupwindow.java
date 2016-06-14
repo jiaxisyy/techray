@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+
 import com.hitek.serial.R;
 
 import utils.ReadAndWrite;
@@ -31,7 +33,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public Pupwindow(Context context){
-        contentView =LayoutInflater.from(context).inflate(R.layout.popupwindow_layout, null);
+        contentView =LayoutInflater.from(context).inflate(R.layout.pp_input, null);
         popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,false);
         if(popupWindow.isShowing()){
             popupWindow.dismiss();
@@ -42,7 +44,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
         popupWindow.setAnimationStyle(R.style.AnimationPreview);
         pup_et = (EditText) contentView.findViewById(R.id.pup_et);
         Button pup_comfirm = (Button)contentView.findViewById(R.id.pup_comfirm);
-        Button pup_cancel = (Button)contentView.findViewById(R.id.pup_cancel);
+        TextView pup_cancel = (TextView)contentView.findViewById(R.id.pup_cancel);
         pup_comfirm.setOnClickListener(this);
         pup_cancel.setOnClickListener(this);
     }
@@ -51,6 +53,7 @@ public class Pupwindow extends Activity implements View.OnClickListener {
         this.type = type;
         this.address = address;
         if(!popupWindow.isShowing()){
+            pup_et.setText("");
             popupWindow.showAtLocation(contentView,Gravity.FILL,0,0);
         }
     }

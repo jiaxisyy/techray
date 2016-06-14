@@ -28,6 +28,7 @@ public class ReadAndWrite {
                 break;
             case Constants.Define.OP_BIT_M:
                 for(int i =0;i<str.length;i++){
+
                     byte[] x=  MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_M,str[i],1);
                     Return[i] = String.valueOf(x[0]);
                 }
@@ -65,7 +66,7 @@ public class ReadAndWrite {
             case Constants.Define.OP_WORD_D:
                 for(int i =0;i<str.length;i++){
                     short[] x=  MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D,str[i],1);
-                    System.out.println(x[0]+"aaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    ;
                     Return[i] = String.valueOf(x[0]);
                 }
                 break;
