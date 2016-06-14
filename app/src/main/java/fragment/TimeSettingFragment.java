@@ -71,36 +71,61 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
 
                     }
                     if(String.valueOf(msg.getData().getShort("d410"))!=null && !String.valueOf(msg.getData().getShort("d410")).equals("")){
-                        //TODO
-                        ATiming_6.setText(String.valueOf(msg.getData().getShort("d410")));
+
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d410")));
+                        ATiming_6.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+
+
 
                     }
                     if(String.valueOf(msg.getData().getShort("d412"))!=null && !String.valueOf(msg.getData().getShort("d412")).equals("")){
-                        ATiming_7.setText(String.valueOf(msg.getData().getShort("d412")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d412")));
+                        ATiming_7.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+
 
                     }
                     if(String.valueOf(msg.getData().getShort("d414"))!=null && !String.valueOf(msg.getData().getShort("d414")).equals("")){
-                        ATiming_8.setText(String.valueOf(msg.getData().getShort("d414")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d414")));
+                        ATiming_8.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_8.setText(String.valueOf(msg.getData().getShort("d414")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d416"))!=null && !String.valueOf(msg.getData().getShort("d416")).equals("")){
-                        ATiming_9.setText(String.valueOf(msg.getData().getShort("d416")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d416")));
+                        ATiming_9.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_9.setText(String.valueOf(msg.getData().getShort("d416")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d418"))!=null && !String.valueOf(msg.getData().getShort("d418")).equals("")){
-                        ATiming_10.setText(String.valueOf(msg.getData().getShort("d418")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d418")));
+                        ATiming_10.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_10.setText(String.valueOf(msg.getData().getShort("d418")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d420"))!=null && !String.valueOf(msg.getData().getShort("d420")).equals("")){
-                        ATiming_11.setText(String.valueOf(msg.getData().getShort("d420")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d420")));
+                        ATiming_11.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_11.setText(String.valueOf(msg.getData().getShort("d420")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d422"))!=null && !String.valueOf(msg.getData().getShort("d422")).equals("")){
-                        ATiming_12.setText(String.valueOf(msg.getData().getShort("d422")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d422")));
+                        ATiming_12.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_12.setText(String.valueOf(msg.getData().getShort("d422")));
 
                     }
                     if(String.valueOf(msg.getData().getShort("d424"))!=null && !String.valueOf(msg.getData().getShort("d424")).equals("")){
-                        ATiming_13.setText(String.valueOf(msg.getData().getShort("d424")));
+                        float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d424")));
+                        ATiming_13.setText(String.valueOf((float) Math.round(v * 10) / 10));
+
+//                        ATiming_13.setText(String.valueOf(msg.getData().getShort("d424")));
 
                     }
 
