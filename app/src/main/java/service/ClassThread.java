@@ -76,7 +76,7 @@ public class ClassThread {
 
                     String[] str = ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M, new int[]{50, 51, 52, 53, 54, 55});
                     for (int i = 0; i < str.length; i++) {
-                        if (str[i].equals("1") && flag[i]) {
+                        if (str[i].equals("") && flag[i]) {
                             System.out.println(str[i]);
                             String[] data = ReadAndWrite.ReadJni(Constants.Define.OP_BIT_M, new int[]{adress[i]});
                             String s = explain[i];

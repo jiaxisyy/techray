@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -111,10 +112,15 @@ public class SqlManager extends DataBaseHelper {
      */
     public int insertAlarmRecord(String type,String data,String explain ){
         ContentValues values = new ContentValues();
-        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
-        values.put("date", df1.format(new Date()));
-        values.put("time", df2.format(new Date()));
+        String[] datatime =ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{610,611,612,613,614,615});
+//        try {
+//            Date  dmy = new SimpleDateFormat("yyyy-MM-dd").parse(datatime[0]+"-"+datatime[1]+"-"+datatime[2]);
+//            Date  hms = new SimpleDateFormat("hh:mm:ss").parse(datatime[3]+":"+datatime[4]+":"+datatime[5]);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+        values.put("date", datatime[0]+"-"+datatime[1]+"-"+datatime[2]);
+        values.put("time", datatime[3]+":"+datatime[4]+":"+datatime[5]);
         values.put("type",type);
         values.put("data",data);
         values.put("explain",explain);
@@ -127,9 +133,8 @@ public class SqlManager extends DataBaseHelper {
     }
     public void upDateAlarmRecord(int ID){
         ContentValues values = new ContentValues();
-        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat df2 = new SimpleDateFormat("HH:mm:ss");
-        values.put("cancel", df1.format(new Date())+"\n"+df2.format(new Date()));
+        String[] datatime =ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{610,611,612,613,614,615});
+        values.put("cancel",datatime[0]+"-"+datatime[1]+"-"+datatime[2]+"\n"+datatime[3]+":"+datatime[4]+":"+datatime[5]);
         db.update("alarm",values,"alarmID =?",new String[]{String.valueOf(ID)});
     }
 }

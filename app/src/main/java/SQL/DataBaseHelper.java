@@ -27,8 +27,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                 ")");
         //报警记录的数据库
         db.execSQL("Create TABLE alarm (alarmID integer primary key autoincrement ," +
-                "date DATETIME,"+
-                "time DATETIME,"+
+                "date  varchar(20) default null,"+
+                "time  varchar(20) default null,"+
                 "type varchar(20),"+
                 "data varchar(20),"+
                 "explain varchar(20),"+
