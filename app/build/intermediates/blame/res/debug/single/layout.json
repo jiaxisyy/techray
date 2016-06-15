@@ -92,12 +92,12 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\alarmrecord_recycleview_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\run_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\run_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
@@ -132,12 +132,12 @@
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\alarm_layout.xml"
     },
     {
-        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupfortimeseries_layout.xml",
-        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupfortimeseries_layout.xml"
-    },
-    {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\test_layout.xml",
         "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\test_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupfortimeseries_layout.xml",
+        "source": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\src\\main\\res\\layout\\popupfortimeseries_layout.xml"
     },
     {
         "merged": "C:\\Users\\shuang.xiang\\Documents\\Tencent Files\\373696471\\FileRecv\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\parameter_layout.xml",

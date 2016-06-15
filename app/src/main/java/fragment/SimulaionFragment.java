@@ -39,7 +39,7 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
 
                     if(String.valueOf(msg.getData().getShortArray("d10")[0])!=null && !String.valueOf(msg.getData().getShortArray("d10")[0]).equals("")){
 
-                        Log.d("TAG", "setD10=" + String.valueOf(msg.getData().getShortArray("d10")[0]));
+
                         analog_et_oxy_original.setText(String.valueOf(msg.getData().getShortArray("d10")[0]));
 
                     }
@@ -62,7 +62,7 @@ public class SimulaionFragment extends Fragment implements View.OnClickListener 
                     if(String.valueOf(msg.getData().getFloatArray("d212")[0])!=null && !String.valueOf(msg.getData().getFloatArray("d212")[0]).equals("")){
 
                         float v = Float.parseFloat(String.valueOf(msg.getData().getFloatArray("d212")[0]));
-                        Log.d("TAG","setD212="+String.valueOf(String.valueOf((float) Math.round(v * 100) / 100)));
+
                         analog_et_oxy_current.setText(String.valueOf((float) Math.round(v * 100) / 100));
 
 //                        analog_et_oxy_current.setText(String.valueOf(msg.getData().getFloatArray("d212")[0]));

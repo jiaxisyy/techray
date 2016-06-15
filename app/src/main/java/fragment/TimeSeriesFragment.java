@@ -51,11 +51,11 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
             switch (msg.what) {
                 case 1:
                     /**����дUI���º���*/
-                    if (String.valueOf(msg.getData().getFloat("d264")) != null && !String.valueOf(msg.getData().getFloat("d264")).equals("")) {
-                        flow_tv_totalflow.setText(String.valueOf((float) Math.round(msg.getData().getFloat("d264") * 10000) / 10000));
+                    if (String.valueOf(msg.getData().getFloat("d272")) != null && !String.valueOf(msg.getData().getFloat("d272")).equals("")) {
+                        flow_tv_totalflow.setText(String.valueOf((float) Math.round(msg.getData().getFloat("d272") * 10000) / 10000));
                     }
-                    if (String.valueOf(msg.getData().getInt("d272")) != null && !String.valueOf(msg.getData().getInt("d272")).equals("")) {
-                        flow_tv_safe.setText(String.valueOf(msg.getData().getInt("d272")));
+                    if (String.valueOf(msg.getData().getInt("d628")) != null && !String.valueOf(msg.getData().getInt("d628")).equals("")) {
+                        flow_tv_safe.setText(String.valueOf(msg.getData().getInt("d628")));
                     }
 
                     if (String.valueOf(msg.getData().getStringArray("data")[0]) != null && !String.valueOf(msg.getData().getStringArray("data")[0]).equals("")) {
@@ -204,14 +204,14 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                 /**����д���ݻ�ȡ�����ݴ�����*/
                 while (flag) {
                     try {
-                        float[] d264 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 264, 1);
+                        float[] d628 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 628, 1);
                         int[] d272 = MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D, 272, 1);
                         String[] data = ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D, new int[]{610, 611, 612, 613, 614, 615, 616});
 
                         Bundle bundle = new Bundle();
                         Message msg = new Message();
                         bundle.putStringArray("data", data);
-                        bundle.putFloat("d264", d264[0]);
+                        bundle.putFloat("d264", d628[0]);
                         bundle.putInt("d272", d272[0]);
                         msg.setData(bundle);
                         msg.what = 1;
@@ -233,11 +233,11 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.flow_tv_totalflow:
-                int[] str = {628};
+                int[] str = {272};
                 popupForSpecial.showPopupWindow(v, Constants.Define.OP_DWORD_D, str);
                 break;
             case R.id.flow_tv_safe:
-                int[] ste = {264};
+                int[] ste = {628};
                 popupForSpecial.showPopupWindow(v, Constants.Define.OP_REAL_D, ste);
                 break;
             case R.id.time_picker:
