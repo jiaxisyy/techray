@@ -62,7 +62,7 @@ public class HistoryFragment extends Fragment{
             history_starttime.setText(cursor1.getString(1));
         }
     if (cursor2.moveToFirst()){
-        System.out.println(cursor2.getString(1));
+//        System.out.println(cursor2.getString(1));
         history_stopdate.setText(cursor2.getString(0));
         history_stoptime.setText(cursor2.getString(1));
     }

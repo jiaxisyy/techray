@@ -201,8 +201,10 @@ public class AnimationSingleView extends View{
         byte[]y1=  MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y,1,1);
         if(y0[0]==1){
             paintRect1.setColor(Color.GREEN);
+            startDraw();
         }else {
             paintRect1.setColor(Color.RED);
+            stopDraw();
         }
         if(y1[0]==1){
             paintRect2.setColor(Color.GREEN);

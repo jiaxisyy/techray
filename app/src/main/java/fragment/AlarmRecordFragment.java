@@ -64,7 +64,7 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment{
             alarmrecord_starttime.setText(cursor1.getString(1));
         }
         if (cursor2.moveToFirst()){
-            System.out.println(cursor2.getString(1));
+//            System.out.println(cursor2.getString(1));
             alarmrecord_stopdate.setText(cursor2.getString(0));
             alarmrecord_stoptime.setText(cursor2.getString(1));
         }

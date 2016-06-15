@@ -235,13 +235,13 @@ public class ReadAndWrite {
                 }
                 break;
             case Constants.Define.OP_DWORD_D:
-                Log.d("TAG","OP_DWORD_D1");
+//                Log.d("TAG","OP_DWORD_D1");
                 for(int i =0;i<str.length;i++){
                     if(input[i]!=null && !input[i].equals("")){
-                        Log.d("TAG","OP_DWORD_D2");
+//                        Log.d("TAG","OP_DWORD_D2");
                         int[]integer = {Integer.parseInt(input[i])};
                         MyApplication.getInstance().mdbuswritedword(Constants.Define.OP_DWORD_D,integer,str[i],1);
-                        Log.d("TAG","OP_DWORD_D3");
+//                        Log.d("TAG","OP_DWORD_D3");
                     }
 
                 }

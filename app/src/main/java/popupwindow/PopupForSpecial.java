@@ -7,7 +7,6 @@ import android.os.Build;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,15 +16,13 @@ import android.widget.TextView;
 
 import com.hitek.serial.R;
 
-import activity.MyApplication;
-import utils.Constants;
 import utils.ReadAndWrite;
 
 /**
  * Created by zuheng.lv on 2016/6/11.
  * //
  */
-public class PopupForTimeSetting implements View.OnClickListener{
+public class PopupForSpecial implements View.OnClickListener{
     private PopupWindow  popupWindow;
     private View contentView;
     private EditText pup_et;
@@ -34,7 +31,7 @@ public class PopupForTimeSetting implements View.OnClickListener{
     private View view;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public PopupForTimeSetting(Context context){
+    public PopupForSpecial(Context context){
         contentView =LayoutInflater.from(context).inflate(R.layout.pp_input, null);
         popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT,false);
         if(popupWindow.isShowing()){
@@ -55,7 +52,6 @@ public class PopupForTimeSetting implements View.OnClickListener{
         this.type = type;
         this.address = address;
         if(!popupWindow.isShowing()){
-            pup_et.setInputType(InputType.TYPE_CLASS_NUMBER);
             pup_et.setText("");
             popupWindow.showAtLocation(contentView,Gravity.FILL,0,0);
         }

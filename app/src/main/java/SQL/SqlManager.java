@@ -51,7 +51,7 @@ public class SqlManager extends DataBaseHelper {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 //        db.execSQL("DELETE FROM history WHERE date<"+df.format(new Date()));
         db.delete("history","date<?",new String[]{"Select CONVERT(varchar(100), dateadd(day,-30,GETDATE()), 24)"});
-        System.out.println("delete");
+//        System.out.println("delete");
     }
 
     /**

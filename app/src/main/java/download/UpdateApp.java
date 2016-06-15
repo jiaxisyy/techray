@@ -23,6 +23,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import bean.ApkInfo;
@@ -115,7 +116,7 @@ public class UpdateApp {
                     int length = conn.getContentLength();
                     InputStream is = conn.getInputStream();
                     String sdpath = Environment.getExternalStorageDirectory() + filePath.substring(0, 9);
-                    Log.d("TAG", sdpath);
+//                    Log.d("TAG", sdpath);
 
                     File file = new File(sdpath);
                     // 判断文件目录是否存在
@@ -128,7 +129,7 @@ public class UpdateApp {
                     byte[] buf = new byte[1024 * 8];
                     int len = 0;
                     while ((len = is.read(buf)) != -1) {
-                        System.out.println(len);
+//                        System.out.println(len);
                         bos.write(buf, 0, len);
                     }
                     System.out.println("end" + length / 1024 / 1024);
@@ -154,7 +155,7 @@ public class UpdateApp {
     /**
      * 更新apk文件
      */
-    public void updateApk() {
+    public void updateApk() throws RuntimeException{
         new Thread(new Runnable() {
             @Override
             public void run() {

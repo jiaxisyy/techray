@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="00.00"
-            android:textSize="22px"
+            android:textSize="18px"
             android:textColor="#B4B6C7"/>
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="00.00"
-            android:textSize="22px"
+            android:textSize="18px"
             android:textColor="#B4B6C7"
             android:layout_marginRight="15dp"/>
     </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="00.00"
-            android:textSize="22px"
+            android:textSize="18px"
             android:textColor="#B4B6C7"/>
         <TextView
             android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="00.00"
-            android:textSize="22px"
+            android:textSize="18px"
             android:textColor="#B4B6C7"
             android:layout_marginRight="15dp"/>
     </LinearLayout>
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="00.00"
-            android:textSize="22px"
+            android:textSize="18px"
             android:textColor="#B4B6C7"/>
 
         <TextView
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="00.00"
-            android:textSize="22px"
+            android:textSize="18px"
             android:textColor="#B4B6C7"
             android:layout_marginRight="15dp"/>
     </LinearLayout>
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
-                android:textSize="22px"
+                android:textSize="18px"
                 android:textColor="#B4B6C7"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
-                android:textSize="22px"
+                android:textSize="18px"
                 android:textColor="#B4B6C7"
                 android:layout_marginRight="15dp"/>
         </LinearLayout>
@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
-                android:textSize="22px"
+                android:textSize="18px"
                 android:textColor="#B4B6C7"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -228,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
-                android:textSize="22px"
+                android:textSize="18px"
                 android:textColor="#B4B6C7"
                 android:layout_marginRight="15dp"/>
         </LinearLayout>
@@ -250,7 +250,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
-                android:textSize="22px"
+                android:textSize="18px"
                 android:textColor="#B4B6C7"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -264,7 +264,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="00.00"
-                android:textSize="22px"
+                android:textSize="18px"
                 android:id="@+id/analog_et_flow_alarm"
                 android:textColor="#B4B6C7"
                 android:layout_marginRight="15dp"/>
@@ -311,7 +311,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -326,7 +326,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
@@ -350,7 +350,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -365,7 +365,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
@@ -387,7 +387,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -402,7 +402,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
@@ -442,7 +442,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -457,7 +457,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
@@ -481,7 +481,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -496,7 +496,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>
@@ -518,7 +518,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -535,7 +535,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="00.00"
-                    android:textSize="22px"
+                    android:textSize="18px"
                     android:textColor="#B4B6C7"
                     android:layout_marginRight="15dp"/>
             </LinearLayout>

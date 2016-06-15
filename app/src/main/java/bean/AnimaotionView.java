@@ -61,7 +61,7 @@ public class AnimaotionView extends View {
                     if(list.get(list.size()-1).getX()>=110 ) {
                         initData();
                     }
-                    System.out.println(list.size());
+//                    System.out.println(list.size());
                     for (int i =0;i<list.size();i++){
                         if(list.get(i).getLINE()){
                             loopDraw(i);
@@ -250,7 +250,7 @@ public class AnimaotionView extends View {
         }
         canvas.drawRect(100,100,400,400,paintRect1);
         canvas.drawRect(200,100,100,100,paintRect2);
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@");
 
     }
     @Override
@@ -261,7 +261,7 @@ public class AnimaotionView extends View {
 
     private void getData(){
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
         byte[]y0=  MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y,0,1);
         byte[]y1=  MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y,1,1);
         if(y0[0]==1){

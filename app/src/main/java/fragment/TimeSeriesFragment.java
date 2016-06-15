@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,6 +28,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import activity.MyApplication;
+import popupwindow.PopupForSpecial;
+import popupwindow.PopupForTime;
+import popupwindow.PopupForTimeSetting;
 import popupwindow.PopupForWeek;
 import popupwindow.Pupwindow;
 import utils.CacheUtils;
@@ -41,40 +44,40 @@ import wheel.WheelView;
  */
 public class TimeSeriesFragment extends Fragment implements View.OnClickListener, View.OnTouchListener {
 
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 1:
                     /**����дUI���º���*/
-                    if(String.valueOf(msg.getData().getFloat("d264"))!=null && !String.valueOf(msg.getData().getFloat("d264")).equals("")){
-                        flow_tv_totalflow.setText(String.valueOf((float) Math.round( msg.getData().getFloat("d264")* 10000) / 10000));
+                    if (String.valueOf(msg.getData().getFloat("d264")) != null && !String.valueOf(msg.getData().getFloat("d264")).equals("")) {
+                        flow_tv_totalflow.setText(String.valueOf((float) Math.round(msg.getData().getFloat("d264") * 10000) / 10000));
                     }
-                    if(String.valueOf(msg.getData().getInt("d272"))!=null && !String.valueOf(msg.getData().getInt("d272")).equals("")){
+                    if (String.valueOf(msg.getData().getInt("d272")) != null && !String.valueOf(msg.getData().getInt("d272")).equals("")) {
                         flow_tv_safe.setText(String.valueOf(msg.getData().getInt("d272")));
                     }
 
-                    if(String.valueOf(msg.getData().getStringArray("data")[0]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[0] ).equals("")){
+                    if (String.valueOf(msg.getData().getStringArray("data")[0]) != null && !String.valueOf(msg.getData().getStringArray("data")[0]).equals("")) {
                         series_year.setText(String.valueOf(msg.getData().getStringArray("data")[0]));
                     }
-                    if(String.valueOf(msg.getData().getStringArray("data")[1]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[1] ).equals("")){
+                    if (String.valueOf(msg.getData().getStringArray("data")[1]) != null && !String.valueOf(msg.getData().getStringArray("data")[1]).equals("")) {
                         series_month.setText(String.valueOf(msg.getData().getStringArray("data")[1]));
                     }
-                    if(String.valueOf(msg.getData().getStringArray("data")[2]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[2] ).equals("")){
+                    if (String.valueOf(msg.getData().getStringArray("data")[2]) != null && !String.valueOf(msg.getData().getStringArray("data")[2]).equals("")) {
                         series_day.setText(String.valueOf(msg.getData().getStringArray("data")[2]));
                     }
-                    if(String.valueOf(msg.getData().getStringArray("data")[3]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[3] ).equals("")){
+                    if (String.valueOf(msg.getData().getStringArray("data")[3]) != null && !String.valueOf(msg.getData().getStringArray("data")[3]).equals("")) {
                         series_hour.setText(String.valueOf(msg.getData().getStringArray("data")[3]));
                     }
-                    if(String.valueOf(msg.getData().getStringArray("data")[4]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[4] ).equals("")){
+                    if (String.valueOf(msg.getData().getStringArray("data")[4]) != null && !String.valueOf(msg.getData().getStringArray("data")[4]).equals("")) {
                         series_minute.setText(String.valueOf(msg.getData().getStringArray("data")[4]));
                     }
-                    if(String.valueOf(msg.getData().getStringArray("data")[5]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[5] ).equals("")){
+                    if (String.valueOf(msg.getData().getStringArray("data")[5]) != null && !String.valueOf(msg.getData().getStringArray("data")[5]).equals("")) {
                         series_second.setText(String.valueOf(msg.getData().getStringArray("data")[5]));
                     }
-                    if(String.valueOf(msg.getData().getStringArray("data")[6]) !=null &&!String.valueOf(msg.getData().getStringArray("data")[6] ).equals("")){
-                        switch (msg.getData().getStringArray("data")[6]){
+                    if (String.valueOf(msg.getData().getStringArray("data")[6]) != null && !String.valueOf(msg.getData().getStringArray("data")[6]).equals("")) {
+                        switch (msg.getData().getStringArray("data")[6]) {
                             case "0":
                                 series_week.setText("天");
                                 break;
@@ -108,17 +111,20 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         }
     };
 
-    private Button flow_btn_confirm,btn_time_series_affirm,flow_btn_open;
-    private TextView flow_tv_totalflow,flow_tv_safe;
-    private TextView series_year,series_month,series_day,series_hour,series_minute,series_second,series_week;
+    private Button flow_btn_confirm, btn_time_series_affirm, flow_btn_open;
+    private TextView flow_tv_totalflow, flow_tv_safe;
+    private TextView series_year, series_month, series_day, series_hour, series_minute, series_second, series_week;
     private boolean flag = true;
     private View view;
-    private Pupwindow popupWindow;
+
+    private PopupForSpecial popupForSpecial;
+    private PopupForTime popupForTime;
     private PopupForWeek popupForWeek;
-    @Nullable
+    private LinearLayout time_picker;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_special_controls,container,false);
+        view = inflater.inflate(R.layout.fragment_special_controls, container, false);
         initView();
         initData();
         setData();
@@ -126,15 +132,20 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
-    /**�ؼ���ʼ��*/
-    public void initView(){
-        popupWindow = new Pupwindow(getContext());
+    /**
+     * �ؼ���ʼ��
+     */
+    public void initView() {
+        time_picker = (LinearLayout) view.findViewById(R.id.time_picker);
+        time_picker.setOnClickListener(this);
+        popupForTime = new PopupForTime(getContext());
         popupForWeek = new PopupForWeek(getContext());
-        flow_tv_totalflow= (TextView)view.findViewById(R.id.flow_tv_totalflow);
-        flow_tv_safe=(TextView) view.findViewById(R.id.flow_tv_safe);
-        flow_btn_confirm =(Button)view.findViewById(R.id.flow_btn_confirm);
+        popupForSpecial = new PopupForSpecial(getContext());
+        flow_tv_totalflow = (TextView) view.findViewById(R.id.flow_tv_totalflow);
+        flow_tv_safe = (TextView) view.findViewById(R.id.flow_tv_safe);
+        flow_btn_confirm = (Button) view.findViewById(R.id.flow_btn_confirm);
         btn_time_series_affirm = (Button) view.findViewById(R.id.btn_time_series_affirm);
-        flow_btn_open=(Button)view.findViewById(R.id.flow_btn_open);
+        flow_btn_open = (Button) view.findViewById(R.id.flow_btn_open);
 
         series_year = (TextView) view.findViewById(R.id.series_year);
         series_month = (TextView) view.findViewById(R.id.series_month);
@@ -144,13 +155,13 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         series_second = (TextView) view.findViewById(R.id.series_second);
         series_week = (TextView) view.findViewById(R.id.series_week);
 
-        series_year.setOnClickListener(this);
-        series_month.setOnClickListener(this);
-        series_day.setOnClickListener(this);
-        series_hour.setOnClickListener(this);
-        series_minute.setOnClickListener(this);
-        series_second.setOnClickListener(this);
-        series_week.setOnClickListener(this);
+//        series_year.setOnClickListener(this);
+//        series_month.setOnClickListener(this);
+//        series_day.setOnClickListener(this);
+//        series_hour.setOnClickListener(this);
+//        series_minute.setOnClickListener(this);
+//        series_second.setOnClickListener(this);
+//        series_week.setOnClickListener(this);
 
         flow_tv_safe.setOnClickListener(this);
         flow_tv_totalflow.setOnClickListener(this);
@@ -158,23 +169,34 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         btn_time_series_affirm.setOnTouchListener(this);
         flow_btn_open.setOnTouchListener(this);
     }
-    /**���ݳ�ʼ��*/
-    public void initData(){
+
+    /**
+     * ���ݳ�ʼ��
+     */
+    public void initData() {
 
 
     }
 
-    /**���ݻ�ȡ*/
-    public void getData(){
+    /**
+     * ���ݻ�ȡ
+     */
+    public void getData() {
 
 
     }
-    /**���ݴ洢*/
-    public void saveData(){
+
+    /**
+     * ���ݴ洢
+     */
+    public void saveData() {
 
     }
-    /**���ݸ���*/
-    public void setData(){
+
+    /**
+     * ���ݸ���
+     */
+    public void setData() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -184,11 +206,11 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     try {
                         float[] d264 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 264, 1);
                         int[] d272 = MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D, 272, 1);
-                        String[] data = ReadAndWrite.ReadJni(Constants.Define.OP_DWORD_D,new int[]{610,611,612,613,614,615,616});
+                        String[] data = ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D, new int[]{610, 611, 612, 613, 614, 615, 616});
 
                         Bundle bundle = new Bundle();
                         Message msg = new Message();
-                        bundle.putStringArray("data",data);
+                        bundle.putStringArray("data", data);
                         bundle.putFloat("d264", d264[0]);
                         bundle.putInt("d272", d272[0]);
                         msg.setData(bundle);
@@ -204,99 +226,77 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     }
 
 
-    /**�����������*/
+    /**
+     * �����������
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.flow_tv_totalflow:
-                int[] str = {264};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_DWORD_D,str);
+                int[] str = {628};
+                popupForSpecial.showPopupWindow(v, Constants.Define.OP_DWORD_D, str);
                 break;
             case R.id.flow_tv_safe:
-                int[] ste = {628};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_REAL_D,ste);
+                int[] ste = {264};
+                popupForSpecial.showPopupWindow(v, Constants.Define.OP_REAL_D, ste);
                 break;
-            case R.id.series_year:
-                int[] year = {600};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,year);
-                break;
-            case R.id.series_month:
-                int[] month = {601};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,month);
-                break;
-            case R.id.series_day:
-                int[] day = {602};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,day);
-                break;
-            case R.id.series_hour:
-                int[] hour = {603};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,hour);
-                break;
-            case R.id.series_minute:
-                int[] minute = {604};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,minute);
-                break;
-            case R.id.series_second:
-                int[] second = {605};
-                popupWindow.showPopupWindow(v,Constants.Define.OP_WORD_D,second);
-                break;
-            case R.id.series_week:
-                int[] week = {606};
-                popupForWeek.showPopupWindow(v,Constants.Define.OP_WORD_D,week);
+            case R.id.time_picker:
+                popupForTime.showPopupWindow(v, Constants.Define.OP_WORD_D, new int[]{600, 601, 602, 603, 604, 605});
                 break;
         }
     }
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.flow_btn_confirm:
-                if(event.getAction()== MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     byte[] m190 = {1};
-                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m190,190,1);
-                }else if(event.getAction()== MotionEvent.ACTION_UP){
+                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, m190, 190, 1);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     TimerTask timerTask = new TimerTask() {
 
                         @Override
                         public void run() {
                             // TODO Auto-generated method stub
                             byte[] m190 = {0};
-                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m190,190,1);
+                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, m190, 190, 1);
                         }
                     };
                     Timer time = new Timer();
                     time.schedule(timerTask, 500);
                 }
                 break;
-            case R.id.btn_time_series_affirm:
-                if(event.getAction()== MotionEvent.ACTION_DOWN){
-                    byte[] m56 = {1};
-                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m56,56,1);
-                }else if(event.getAction()== MotionEvent.ACTION_UP){
-                    TimerTask timerTask = new TimerTask() {
-
-                        @Override
-                        public void run() {
-                            // TODO Auto-generated method stub
-                            byte[] m56 = {0};
-                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m56,56,1);
-                        }
-                    };
-                    Timer time = new Timer();
-                    time.schedule(timerTask, 500);
-                }
-                break;
+//            case R.id.btn_time_series_affirm:
+//                if(event.getAction()== MotionEvent.ACTION_DOWN){
+//                    byte[] m56 = {1};
+//                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m56,56,1);
+//                }else if(event.getAction()== MotionEvent.ACTION_UP){
+//                    TimerTask timerTask = new TimerTask() {
+//
+//                        @Override
+//                        public void run() {
+//                            // TODO Auto-generated method stub
+//                            byte[] m56 = {0};
+//                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m56,56,1);
+//                        }
+//                    };
+//                    Timer time = new Timer();
+//                    time.schedule(timerTask, 500);
+//                }
+//                break;
             case R.id.flow_btn_open:
-                if(event.getAction()== MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     byte[] m58 = {1};
-                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m58,58,1);
-                }else if(event.getAction()== MotionEvent.ACTION_UP){
+                    MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, m58, 58, 1);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     TimerTask timerTask = new TimerTask() {
 
                         @Override
                         public void run() {
                             // TODO Auto-generated method stub
                             byte[] m58 = {0};
-                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M,m58,58,1);
+                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, m58, 58, 1);
                         }
                     };
                     Timer time = new Timer();
@@ -310,13 +310,13 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     @Override
     public void onPause() {
         super.onPause();
-        popupWindow.stopPopupWindow();
+        popupForTime.stopPopupWindow();
         popupForWeek.stopPopupWindow();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        flag=false;
+        flag = false;
     }
 }

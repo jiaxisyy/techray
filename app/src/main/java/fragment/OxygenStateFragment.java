@@ -26,7 +26,7 @@ public class OxygenStateFragment extends Fragment implements View.OnTouchListene
             switch (msg.what) {
                 case 1:
                     /**这里写UI更新函数*/
-                    System.out.println(msg.getData().getBoolean("y3"));
+//                    System.out.println(msg.getData().getBoolean("y3"));
                     avalve_btn_valve1.setChecked(msg.getData().getBoolean("y3"));
                     avalve_btn_valve2.setSelected(msg.getData().getBoolean("y4"));
                     avalve_btn_valve3.setSelected(msg.getData().getBoolean("y5"));

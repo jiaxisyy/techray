@@ -1,12 +1,16 @@
 package activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,6 +32,7 @@ import com.hitek.serial.R;
 
 import org.w3c.dom.Text;
 
+import java.net.ConnectException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,10 +77,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private CheckBox pp_login_ck_remember;
     private PopupWindow popupWindow, newPopupWindow;
     private String LOGIN_URL = "http://10.199.198.55:58010/userconsle/login";
-
-    private final static int MSG_LOGIN_SUCCEED = 1;
-    private final static int MSG_LOGIN_ERROR = 2;
+    private boolean gradeFlag1 = false;
+    private boolean gradeFlag2 = false;
+    private boolean gradeFlag3 = false;
+    private final int MSG_LOGIN_SUCCEED = 1;
+    private final int MSG_LOGIN_ERROR = 2;
     private final int TIME = 3;
+    private final int NOINTERNET = 4;
+    private final int ONE = 5;
+    private final int TWO = 6;
     private List<Integer> ions;
     private ExpandableListView elv_mian_state;
     private View view, newView;
@@ -92,10 +102,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                 case MSG_LOGIN_SUCCEED:
                     //登录成功
+                    gradeFlag3 = true;
                     popupWindow.dismiss();
                     Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                     btn_main_login.setText("注销");
-                    updataMainActivity();
+                    updateMainActivity();
                     btn_main_login.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -103,6 +114,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                             parent.clear();
                             map.clear();
                             ions.clear();
+                            gradeFlag3 = false;
                             initData();
                             MainExpandableListViewAdapter mainExpandableListViewAdapter = new MainExpandableListViewAdapter(map, parent, getApplicationContext(), ions);
                             elv_mian_state.setAdapter(mainExpandableListViewAdapter);
@@ -120,6 +132,65 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     break;
                 case TIME:
                     tv_main_time.setText(str);
+                    break;
+                case NOINTERNET:
+                    //没有网络
+                    Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case ONE:
+                    //一级
+                    //登录成功
+                    gradeFlag1 = true;
+                    popupWindow.dismiss();
+                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                    btn_main_login.setText("注销");
+                    updateOne();
+//                    updateMainActivity();
+                    btn_main_login.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            btn_main_login.setText("登录");
+                            parent.clear();
+                            map.clear();
+                            ions.clear();
+                            gradeFlag1 = false;
+                            initData();
+                            MainExpandableListViewAdapter mainExpandableListViewAdapter = new MainExpandableListViewAdapter(map, parent, getApplicationContext(), ions);
+                            elv_mian_state.setAdapter(mainExpandableListViewAdapter);
+                            showLoginPopupWindow();
+
+
+                        }
+                    });
+
+                    break;
+                case TWO:
+                    //二级
+                    //登录成功
+                    gradeFlag2 = true;
+                    popupWindow.dismiss();
+                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                    btn_main_login.setText("注销");
+                    updateTwo();
+//                    updateMainActivity();
+                    btn_main_login.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            btn_main_login.setText("登录");
+                            parent.clear();
+                            map.clear();
+                            ions.clear();
+                            gradeFlag2 = false;
+                            initData();
+                            MainExpandableListViewAdapter mainExpandableListViewAdapter = new MainExpandableListViewAdapter(map, parent, getApplicationContext(), ions);
+                            elv_mian_state.setAdapter(mainExpandableListViewAdapter);
+                            showLoginPopupWindow();
+
+
+                        }
+                    });
+
                     break;
             }
 
@@ -148,7 +219,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 //关闭分组
 //                elv_mian_state.collapseGroup(groupPosition);
-                Log.d("JIAXI", groupPosition + "____" + childPosition);
+//                Log.d("JIAXI", groupPosition + "____" + childPosition);
 //                TextView viewById = (TextView) v.findViewById(R.id.second_textview);
 //                viewById.setTextColor(Color.RED);
                 changeFragment(groupPosition, childPosition);
@@ -223,29 +294,72 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 switch (childPosition) {
                     case 0:
                         //时序设置
-                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
+
+                        if (gradeFlag1) {
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SystemSettingFragment.class);
+                        }
+//                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
+                        //二级用户
+                        else if (gradeFlag2) {
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
+                        } else {
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSettingFragment.class);
+                        }
+
                         break;
                     case 1:
-                        //模拟量设置
-                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
+                        if (gradeFlag1) {
+                            Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
+                        } else if (gradeFlag2) {
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
+                        } else {
+                            //模拟量设置
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
+                        }
+
                         break;
                     case 2:
-                        //历史报警记录
-                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AlarmRecordFragment.class);
+                        if (gradeFlag2) {
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AlarmRecordFragment.class);
+                        } else {
+
+                            //历史报警记录
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, AlarmRecordFragment.class);
+                        }
+
                         break;
                     case 3:
-                        //系统设置
-                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SystemSettingFragment.class);
+                        if (gradeFlag2) {
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SystemSettingFragment.class);
+                        } else {
+
+                            //系统设置
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SystemSettingFragment.class);
+                        }
+
+
                         break;
                     case 4:
-                        //特殊控制
-                        Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSeriesFragment.class);
+                        if (gradeFlag2) {
+                            Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //特殊控制
+                            Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSeriesFragment.class);
+
+                        }
+
                         break;
                     case 5:
                         //检测更新
-
+                        Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
                         UpdateApp updateApp = new UpdateApp(this);
-                        updateApp.updateApk();
+                        try {
+                            updateApp.updateApk();
+                        } catch (Exception e) {
+                            Log.d("TAG", "error++++++");
+                            Toast.makeText(this, "网络异常", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
 
 
                         break;
@@ -280,7 +394,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ions.add(R.drawable.main_icon_status);
         ions.add(R.drawable.main_icon_introduce);
         //    readWarning();
-        updataMainActivity();
+        // updataMainActivity();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -366,6 +480,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         pp_btn_affirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // updataMainActivity();
                 String username = pp_et_username.getText().toString();
                 String password = pp_et_password.getText().toString();
                 boolean checked = pp_login_ck_remember.isChecked();
@@ -381,35 +496,75 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 final Map<String, String> user = new HashMap<>();
                 user.put("username", username);
                 user.put("password", password);
+
+                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+                    if (password.equals("admin2") && username.equals("admin1")) {
+                        //一级用户
+                        Message message = Message.obtain();
+                        message.what = ONE;
+                        handler.sendMessage(message);
+
+                    }
+                    if (password.equals("admin5") && username.equals("admin2")) {
+                        //二级用户
+                        Message message = Message.obtain();
+                        message.what = TWO;
+                        handler.sendMessage(message);
+                    }
+                    if (password.equals("admin10") && username.equals("admin3")) {
+                        //三级用户
+                        Message message = Message.obtain();
+                        message.what = MSG_LOGIN_SUCCEED;
+                        handler.sendMessage(message);
+                    }
+
+                }
+
+
                 //返回信息
-                new Thread(new Runnable() {
+              /*  new Thread(new Runnable() {
                     @Override
                     public void run() {
                         Httputils httputils = new Httputils(getApplicationContext());
-                        loginInfo = httputils.submitPostData(LOGIN_URL, user, "UTF-8");
-                        Gson gson = new Gson();
-                        if (loginInfo != null) {
-                            if (!loginInfo.contains("\"error\"")) {
-                                //登陆成功
-                                Log.d("JIAXI", loginInfo);
-                                Message message = Message.obtain();
-                                message.what = MSG_LOGIN_SUCCEED;
-                                handler.sendMessage(message);
+                        //判断网络
+                        if (isNetworkConnected()) {
 
-                            } else {
-                                //登陆失败
-                                errorInfo = gson.fromJson(loginInfo, LoginErrorInfo.class).getError().toString();
-                                Message message = new Message();
-                                message.what = MSG_LOGIN_ERROR;
-                                handler.sendMessage(message);
+                            //有网络
+                            loginInfo = httputils.submitPostData(LOGIN_URL, user, "UTF-8");
+
+                            Gson gson = new Gson();
+                            if (loginInfo != null) {
+                                if (!loginInfo.contains("\"error\"")) {
+                                    //登陆成功
+                                    Message message = Message.obtain();
+                                    message.what = MSG_LOGIN_SUCCEED;
+                                    handler.sendMessage(message);
+
+                                } else {
+                                    //登陆失败
+                                    errorInfo = gson.fromJson(loginInfo, LoginErrorInfo.class).getError().toString();
+                                    Message message = Message.obtain();
+                                    message.what = MSG_LOGIN_ERROR;
+                                    handler.sendMessage(message);
+
+                                }
 
                             }
+
+
+                        } else {
+                            //没有网络
+                            Message message = Message.obtain();
+                            message.what = NOINTERNET;
+                            handler.sendMessage(message);
+
+
                         }
 
                     }
 
 
-                }).start();
+                }).start();*/
 
             }
         });
@@ -424,9 +579,57 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     /**
+     * 判断网络问题
+     *
+     * @return
+     */
+    public boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ni != null && ni.isConnectedOrConnecting();
+    }
+
+    /**
+     * 一级用户
+     */
+    private void updateOne() {
+        parent.add("设置");
+        List<String> list4 = new ArrayList<String>();
+//        list4.add("时序设置");
+//        list4.add("模拟量设置");
+//        list4.add("历史报警记录");
+        list4.add("系统设置");
+//        list4.add("特殊控制");
+        list4.add("检测更新");
+        map.put("设置", list4);
+        ions.add(R.drawable.main_icon_setting);
+        elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
+
+    }
+
+    /**
+     * 二级用户
+     */
+    private void updateTwo() {
+        parent.add("设置");
+        List<String> list4 = new ArrayList<String>();
+        list4.add("时序设置");
+        list4.add("模拟量设置");
+        list4.add("历史报警记录");
+        list4.add("系统设置");
+//        list4.add("特殊控制");
+        list4.add("检测更新");
+        map.put("设置", list4);
+        ions.add(R.drawable.main_icon_setting);
+        elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
+
+    }
+
+
+    /**
      * 更新主界面
      */
-    private void updataMainActivity() {
+    private void updateMainActivity() {
         parent.add("设置");
         List<String> list4 = new ArrayList<String>();
         list4.add("时序设置");
@@ -438,7 +641,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         map.put("设置", list4);
         ions.add(R.drawable.main_icon_setting);
         elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
-        Log.d("JIAXI", "updataMainActivity");
+//        Log.d("JIAXI", "updataMainActivity");
     }
 
 

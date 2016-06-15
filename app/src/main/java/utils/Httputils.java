@@ -412,8 +412,8 @@ public class Httputils {
                 return dealResponseResult(inptStream);                     //处理服务器的响应结果
             }
         } catch (IOException e) {
-            //e.printStackTrace();
-            return "err: " + e.getMessage().toString();
+            e.printStackTrace();
+            return null;
         }
         return "-1";
     }
