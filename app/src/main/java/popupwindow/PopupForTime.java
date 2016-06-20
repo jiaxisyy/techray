@@ -122,20 +122,20 @@ public class PopupForTime implements View.OnClickListener, View.OnTouchListener 
                         };
                         Timer timer = new Timer();
                         timer.schedule(timerTask, 2000);
-
+                        popupWindow.dismiss();
                     }
 
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    TimerTask timerTask = new TimerTask() {
-                        @Override
-                        public void run() {
-                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, new byte[]{0}, 56, 1);
-                            Log.d("TAG","up");
-                        }
-                    };
-                    Timer timer = new Timer();
-                    timer.schedule(timerTask, 2000);
-                    popupWindow.dismiss();
+//                    TimerTask timerTask = new TimerTask() {
+//                        @Override
+//                        public void run() {
+//                            MyApplication.getInstance().mdbuswritebyte(Constants.Define.OP_BIT_M, new byte[]{0}, 56, 1);
+//                            Log.d("TAG","up");
+//                        }
+//                    };
+////                    Timer timer = new Timer();
+////                    timer.schedule(timerTask, 2000);
+////                    popupWindow.dismiss();
                 }
                 break;
         }

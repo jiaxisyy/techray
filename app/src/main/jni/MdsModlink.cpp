@@ -1,18 +1,18 @@
 //----------------------------------------------------
 //Copyright (C), 2016,  Kawakp.
-//°æÈ¨ËùÓÐ (C), 2016,   Kawakp.
-//ËùÊôÄ£¿é:	APP modbusÍ¨Ñ¶¿âÄ£¿é
-//×÷Õß£ºyjs
-//°æ±¾£ºV1.0.0
-//³õÊ¼°æ±¾Íê³ÉÈÕÆÚ£º2016-04-20
-//ÎÄ¼þÃèÊö: ModbusÖ÷Õ¾Í¨Ñ¶ÃüÁî¶¨Òå
-//ÆäËûËµÃ÷: Èç¹ûÐèÒªÔö¼Ó±ðµÄÍ¨Ñ¶±äÁ¿,Ö»ÐèÒªÔö¼Ó"gat_MdsHighCmd"ºÍ"gat_MdsLowCmd"±äÁ¿±í
-//ÐÞ¶©ÀúÊ·:
+//ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ (C), 2016,   Kawakp.
+//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½:	APP modbusÍ¨Ñ¶ï¿½ï¿½Ä£ï¿½ï¿½
+//ï¿½ï¿½ï¿½ß£ï¿½yjs
+//ï¿½æ±¾ï¿½ï¿½V1.0.0
+//ï¿½ï¿½Ê¼ï¿½æ±¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½2016-04-20
+//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½: Modbusï¿½ï¿½Õ¾Í¨Ñ¶ï¿½ï¿½ï¿½î¶¨ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ó±ï¿½ï¿½Í¨Ñ¶ï¿½ï¿½ï¿½ï¿½,Ö»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½"gat_MdsHighCmd"ï¿½ï¿½"gat_MdsLowCmd"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½Þ¶ï¿½ï¿½ï¿½Ê·:
 //2. ...
-//1. ÈÕÆÚ: 2016-04-20
-//   ×÷Õß: yjs
-//   ÐÂ°æ±¾ºÅ: V1.0.0
-//   ÐÞ¸ÄËµÃ÷: Ô­Ê¼°æ±¾ 
+//1. ï¿½ï¿½ï¿½ï¿½: 2016-04-20
+//   ï¿½ï¿½ï¿½ï¿½: yjs
+//   ï¿½Â°æ±¾ï¿½ï¿½: V1.0.0
+//   ï¿½Þ¸ï¿½Ëµï¿½ï¿½: Ô­Ê¼ï¿½æ±¾ 
 //------------------------------------------------------
 #include "RobotVar.h"
 #include "MdsModlink.h"
@@ -27,77 +27,113 @@
 #define _yPrintf(...)
 #endif
 
-// ×î´óÖ§³Ö100ÌõÍ¨Ñ¶,µ«ÎªÁËËÙ¶È±£Ö¤,×îºÃ´Î±í³¤¶È¿ØÖÆÔÚ10ÌõÄÚ
+// ï¿½ï¿½ï¿½Ö§ï¿½ï¿½100ï¿½ï¿½Í¨Ñ¶,ï¿½ï¿½Îªï¿½ï¿½ï¿½Ù¶È±ï¿½Ö¤,ï¿½ï¿½Ã´Î±ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½ï¿½
 unsigned long gu32_MdsHcmdCnt;
 struct tag_MdsModlinkCmd gat_MdsHighCmd[] = {
 /*id        cmd        IsStop    MstDel   cnt    pname    opAdr     opCnt     save      */
-{ USID,   RdMutiBit,	0,		   0,	  0,	 "Y",		0,		  256,		0 },   	// ¶ÁÈ¡ÏÂÎ»»úY0¿ªÊ¼µÄ100¸öÎ»Ôª¼þ
+{ USID,   RdMutiBit,	0,		   0,	  0,	 "Y",		0,		  256,		0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½Y0ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½Î»Ôªï¿½ï¿½
 
-{ USID,   RdMutiBit,	0,		   0,	  0,	 "M",		0,	      1000,		0 },	// ¶ÁÈ¡ÏÂÎ»»úM0 ¿ªÊ¼µÄ1000¸öÎ»Ôª¼þ
-{ USID,   WrMutiBit,    0,         1,     0,     "M",       0,        1000,     0 },	// Ð´ÈëM0 ¿ªÊ¼µÄ1000¸öÎ»Ôª¼þµ½ÏÂÎ»»ú
-{ USID,   WrMutiBit,	0,		   1,	  1,	 "M",		1000,	  1000,		0 },   	// Ð´ÈëM1000 ¿ªÊ¼µÄ1000¸öÎ»Ôª¼þµ½ÏÂÎ»»ú
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
 
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   0,		 100,	   0 }, 	// ¶ÁÈ¡ÏÂÎ»»úD0 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		0,		100,	0 },   // Ð´ÈëÏÂÎ»»úD0 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   100, 	 100,	   0 }, 	// ¶ÁÈ¡ÏÂÎ»»úD100 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		100,	100,	0 },   // Ð´ÈëÏÂÎ»»úD100 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      200,      100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD200 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		200,	100,	0 },   // Ð´ÈëÏÂÎ»»úD200 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      300,      100,      0 },		// ¶ÁÈ¡ÏÂÎ»»úD300 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		300,	100,	0 },   // Ð´ÈëÏÂÎ»»úD300 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
+{ USID,   RdMutiBit,	0,		   0,	  0,	 "M",		0,	      1000,		0 },	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½M0 ï¿½ï¿½Ê¼ï¿½ï¿½1000ï¿½ï¿½Î»Ôªï¿½ï¿½
+{ USID,   WrMutiBit,    0,         1,     0,     "M",       0,        1000,     0 },	// Ð´ï¿½ï¿½M0 ï¿½ï¿½Ê¼ï¿½ï¿½1000ï¿½ï¿½Î»Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+{ USID,   WrMutiBit,	0,		   1,	  1,	 "M",		1000,	  1000,		0 },   	// Ð´ï¿½ï¿½M1000 ï¿½ï¿½Ê¼ï¿½ï¿½1000ï¿½ï¿½Î»Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 
-{ UNUSE,  0,            0,         0,     0,     "",        0,        0,        0 }    // ×îºóÒ»Ìõ£¬±ØÐë·Å×îºó
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   0,		 100,	   0 }, 	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D0 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		0,		100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D0 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   100, 	 100,	   0 }, 	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D100 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		100,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D100 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      200,      100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D200 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		200,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D200 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      300,      100,      0 },		// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D300 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		300,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D300 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ UNUSE,  0,            0,         0,     0,     "",        0,        0,        0 }    // ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 };
 
 
-// ×î´óÖ§³Ö100ÌõÍ¨Ñ¶
+// ï¿½ï¿½ï¿½Ö§ï¿½ï¿½100ï¿½ï¿½Í¨Ñ¶
 unsigned long gu32_MdsLcmdCnt;
 struct tag_MdsModlinkCmd gat_MdsLowCmd[] = {
 /*id        cmd        IsStop   MstDel    cnt    pname    opAdr     opCnt    save */
-{ USID,   RdMutiBit,    0,         0,     0,  	 "X",       0,        256,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úX0 ¿ªÊ¼µÄ100¸öÎ»Ôª¼þ
-{ USID,   WrMutiBit,    0,         1,     0,     "Y",       0,        256,      0 },   	// Ð´ÈëY0 ¿ªÊ¼µÄ100¸öÎ»Ôª¼þµ½ÏÂÎ»»ú
-{ USID,   RdMutiBit,	0,		   0,	  0,	 "M",		1000,	  1000, 	0 },	// ¶ÁÈ¡ÏÂÎ»»úM1000 ¿ªÊ¼µÄ1000¸öÎ»Ôª¼þ
+{ USID,   RdMutiBit,    0,         0,     0,  	 "X",       0,        256,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½X0 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½Î»Ôªï¿½ï¿½
+{ USID,   WrMutiBit,    0,         1,     0,     "Y",       0,        256,      0 },   	// Ð´ï¿½ï¿½Y0 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½Î»Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+{ USID,   RdMutiBit,	0,		   0,	  0,	 "M",		1000,	  1000, 	0 },	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½M1000 ï¿½ï¿½Ê¼ï¿½ï¿½1000ï¿½ï¿½Î»Ôªï¿½ï¿½
 
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   400, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD400 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		400,	100,	0 },   // Ð´ÈëÏÂÎ»»úD400 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      500,      100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD500 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		500,	100,	0 },   // Ð´ÈëÏÂÎ»»úD500 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      600,      100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD600 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		600,	100,	0 },   // Ð´ÈëÏÂÎ»»úD600 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   700, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD700 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		700,	100,	0 },   // Ð´ÈëÏÂÎ»»úD700 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
 
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      800,      100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD800 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		800,	100,	0 },   // Ð´ÈëÏÂÎ»»úD800 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      900,      100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD900 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		900,	100,	0 },   // Ð´ÈëÏÂÎ»»úD900 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1000, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1000 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1000,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1000 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1100, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1100 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1100,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1100 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   400, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D400 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		400,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D400 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
 
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      1200,     100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1200 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1200,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1200 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      1300,     100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1300 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1300,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1300 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1400, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1400 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1400,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1400 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1500, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1500 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1500,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1500 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
 
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      1600,     100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1600 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1600,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1600 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,    0,         0,     1,     "D",      1700,     100,      0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1700 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1700,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1700 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1800, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1800 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1800,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1800 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1900, 	 100,	   0 },   	// ¶ÁÈ¡ÏÂÎ»»úD1900 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
-{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1900,	100,	0 },   // Ð´ÈëÏÂÎ»»úD1900 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      500,      100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D500 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		500,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D500 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      600,      100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D600 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		600,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D600 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   700, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D700 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		700,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D700 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
 
-{ USID,   RdMutiReg,    0,         1,     1,     "SD",      0,     100,      0 },		// ¶ÁÈ¡ÏÂÎ»»úSD0 ¿ªÊ¼µÄ100¸ö×ÖÔª¼þ,Ö»¶ÁÈ¡Ò»´Î
-{ USID,   RdMutiReg,	0,		   1,	  1,	 "SM",		0,	   512, 	 0 },		// ¶ÁÈ¡ÏÂÎ»»úSM0 ¿ªÊ¼µÄ512¸öÎ»Ôª¼þ,Ö»¶ÁÈ¡Ò»´Î
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
 
-{ UNUSE,  0,            0,         0,     0,     "",        0,        0,        0 }    // ×îºóÒ»Ìõ£¬±ØÐë·Å×îºó
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      800,      100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D800 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		800,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D800 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      900,      100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D900 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		900,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D900 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1000, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1000 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1000,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1000 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1100, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1100 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1100,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1100 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      1200,     100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1200 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1200,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1200 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      1300,     100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1300 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1300,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1300 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1400, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1400 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1400,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1400 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1500, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1500 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1500,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1500 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      1600,     100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1600 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1600,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1600 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,    0,         0,     1,     "D",      1700,     100,      0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1700 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1700,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1700 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1800, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1800 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1800,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1800 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   1900, 	 100,	   0 },   	// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½D1900 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+{ USID,   WrMutiReg,	0,		   1,	  0,	 "D",		1900,	100,	0 },   // Ð´ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½D1900 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½
+
+{ USID,   RdMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   WrMutiReg,	0,		   0,	  1,	 "D",	   600,		 20,	   0 },
+{ USID,   RdMutiReg,    0,         1,     1,     "SD",      0,     100,      0 },		// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½SD0 ï¿½ï¿½Ê¼ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½,Ö»ï¿½ï¿½È¡Ò»ï¿½ï¿½
+{ USID,   RdMutiReg,	0,		   1,	  1,	 "SM",		0,	   512, 	 0 },		// ï¿½ï¿½È¡ï¿½ï¿½Î»ï¿½ï¿½SM0 ï¿½ï¿½Ê¼ï¿½ï¿½512ï¿½ï¿½Î»Ôªï¿½ï¿½,Ö»ï¿½ï¿½È¡Ò»ï¿½ï¿½
+
+{ UNUSE,  0,            0,         0,     0,     "",        0,        0,        0 }    // ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 };
 
 struct tag_ModelinkRecord gat_ModelinkRecord[MAX_MODELINK_RECORD];
@@ -265,19 +301,19 @@ unsigned long _yPackedBzMdsDta(struct tag_MdsElemMap *pmap, struct tag_MdsModlin
     pflg->pSdBuf[2] = mstAdr >>8;
     pflg->pSdBuf[3] = mstAdr &0xff;
     switch(pcmd->cmd) {
-    case RdMutiBit:     // ¶Á¶à¸öÏßÈ¦        
-    case RdMutiIn:      // ¶ÁÈ¡¶à¸öÊäÈë        
-    case RdMutiReg:     // ¶Á¶à¸ö¼Ä´æÆ÷
+    case RdMutiBit:     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦        
+    case RdMutiIn:      // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½        
+    case RdMutiReg:     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
         pflg->pSdBuf[4] = pcmd->opCnt >>8;
         pflg->pSdBuf[5] = pcmd->opCnt &0xff;
         pflg->sendLen =_yMdsAddVerify(pflg->pSdBuf, 6);
         break;
         
-    case WrSimpBit:     // Ð´µ¥¸öÏßÈ¦
+    case WrSimpBit:     // Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦
     	if(_yPointEq(pmap->pElemAdr, pmap->pWtElmAdr)) {
 			return 2;
 		}    
-    	if(pmap->pu8Chg[pcmd->opAdr]) {							// Êý¾ÝÓÐ¸Ä±ä
+    	if(pmap->pu8Chg[pcmd->opAdr]) {							// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸Ä±ï¿½
     		pmap->pu8Chg[pcmd->opAdr] = 0;
         	pu8Tmp = (unsigned char *)(pmap->pWtElmAdr);
 	        if(pu8Tmp[pcmd->opAdr]) {
@@ -290,17 +326,17 @@ unsigned long _yPackedBzMdsDta(struct tag_MdsElemMap *pmap, struct tag_MdsModlin
 	        }
 	        pflg->sendLen =_yMdsAddVerify(pflg->pSdBuf, 6);			
 		}
-		else {													// Êý¾ÝÃ»ÓÐ¸Ä±ä
+		else {													// ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¸Ä±ï¿½
 			return 3;
 		}
 
         break;
         
-    case WrSimpReg:     // Ð´µ¥¸ö¼Ä´æÆ÷
+    case WrSimpReg:     // Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
     	if(_yPointEq(pmap->pElemAdr, pmap->pWtElmAdr)) {
 			return 2;
 		}
-		if(pmap->pu8Chg[pcmd->opAdr]) {							// Êý¾ÝÓÐ¸Ä±ä		
+		if(pmap->pu8Chg[pcmd->opAdr]) {							// ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸Ä±ï¿½		
 			pmap->pu8Chg[pcmd->opAdr] = 0;
 			pu16Tmp = (unsigned short *)(pmap->pWtElmAdr);
 			pflg->pSdBuf[4] = pu16Tmp[pcmd->opAdr] >>8;
@@ -312,7 +348,7 @@ unsigned long _yPackedBzMdsDta(struct tag_MdsElemMap *pmap, struct tag_MdsModlin
 		}
         break;
         
-    case WrMutiBit:     // Ð´¶à¸öÏßÈ¦
+    case WrMutiBit:     // Ð´ï¿½ï¿½ï¿½ï¿½ï¿½È¦
         if(pcmd->opCnt >1900) {
             return 1;
         }
@@ -350,19 +386,20 @@ unsigned long _yPackedBzMdsDta(struct tag_MdsElemMap *pmap, struct tag_MdsModlin
                 k++;
             }
         }
-		if(n >0) {													// ÓÐÊý¾Ý¸Ä±ä
+		if(n >0) {													// ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸Ä±ï¿½
 	        if(pcmd->opCnt &0x07) {
 	            pflg->pSdBuf[7+k] = tmpu8;
 	            k++;
 	        }
 	        pflg->sendLen =_yMdsAddVerify(pflg->pSdBuf, 7+k);		
 		}
-		else {
+		else {
+
 			return 3;
 		}
         break;
         
-    case WrMutiReg:     // Ð´¶à¸ö¼Ä´æÆ÷
+    case WrMutiReg:     // Ð´ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
         if(pcmd->opCnt >120) {
             return 1;
         }
@@ -401,7 +438,7 @@ unsigned long _yPackedBzMdsDta(struct tag_MdsElemMap *pmap, struct tag_MdsModlin
 			}
 			m++;
         }
-		if(n >0) {													// ÓÐÊý¾Ý¸Ä±ä
+		if(n >0) {													// ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸Ä±ï¿½
         	pflg->sendLen =_yMdsAddVerify(pflg->pSdBuf, 7+k);
 			if(pcmd->pname[1]!='\0') {
 				_yPrintf("WrSimpBit Send %c%c%d Num=%d ok!\n", pcmd->pname[0], pcmd->pname[1], pcmd->opAdr, pcmd->opCnt);
@@ -414,7 +451,7 @@ unsigned long _yPackedBzMdsDta(struct tag_MdsElemMap *pmap, struct tag_MdsModlin
 			return 3;
 		}
         break;
-    default:            // ³ö´í
+    default:            // ï¿½ï¿½ï¿½ï¿½
         return 1;
     }
     return 0;
@@ -433,7 +470,7 @@ unsigned long _yRunModlinkModule(void)
 	static unsigned long cyclecnt =0;
 
     pdcb =&gat_UartDcb[0];
-    if((pdcb->flag.isTxing) ||(pdcb->flag.isRxing)) {                           // Ö÷Õ¾ÔöÔÚ·¢ËÍ,»òÕßÕýÔÚ½ÓÊÕ
+    if((pdcb->flag.isTxing) ||(pdcb->flag.isRxing)) {                           // ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½
         return 0;
     }
     
@@ -441,18 +478,18 @@ unsigned long _yRunModlinkModule(void)
     cnt = 0;
     RE_CHECK:
     switch(pflg->fsm) {
-    case FSM_NON_INIT:          // Ã»ÓÐ³õÊ¼»¯
-    case FSM_EMPTY:             // ³õÊ¼»¯ºó,±àÒëºóÎ»¿Õ
+    case FSM_NON_INIT:          // Ã»ï¿½Ð³ï¿½Ê¼ï¿½ï¿½
+    case FSM_EMPTY:             // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
         break;
         
-    case FSM_COMPILE_OK:        // ±àÒëÕýÈ·
+    case FSM_COMPILE_OK:        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·
     case FSM_COMPILE_OVER:
- 	  	if(pflg->pause ==0) {   // Ã»ÓÐÔÝÍ£
-            if(cnt >=pflg->cnt) {                                               // ³¬¹ýÏÞÖÆ,ÍË³ö
+ 	  	if(pflg->pause ==0) {   // Ã»ï¿½ï¿½ï¿½ï¿½Í£
+            if(cnt >=pflg->cnt) {                                               // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ë³ï¿½
                 break;
             }
             pflg->pcur = pflg->head.next;
-            if(pflg->pcur ==(&pflg->head)) {                                     // ¿Õ,ÍË³ö
+            if(pflg->pcur ==(&pflg->head)) {                                     // ï¿½ï¿½,ï¿½Ë³ï¿½
                 pflg->fsm = FSM_EMPTY;
                 goto RE_CHECK;
             }
@@ -460,7 +497,7 @@ unsigned long _yRunModlinkModule(void)
             list_del_init(pflg->pcur);
             precord = list_entry(pflg->pcur, struct tag_ModelinkRecord, list);
             pcmd = (struct tag_MdsModlinkCmd *)(precord->pvoid);
-            if(pcmd->IsStop) {                                                  // ÒÑ¾­Í£Ö¹Ê¹ÓÃ,²éÕÒÏÂÒ»Ìõ
+            if(pcmd->IsStop) {                                                  // ï¿½Ñ¾ï¿½Í£Ö¹Ê¹ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
                 cnt++;
                 list_add_tail(pflg->pcur, &pflg->head);
                 goto RE_CHECK;
@@ -472,21 +509,21 @@ unsigned long _yRunModlinkModule(void)
 			}
             list_add_tail(pflg->pcur, &pflg->head);
             if(pcmd->cmd >WrMutiReg)
-                pflg->fsm = FSM_SEND_EXT;                                       // ÇÐ»»×´Ì¬»ú
+                pflg->fsm = FSM_SEND_EXT;                                       // ï¿½Ð»ï¿½×´Ì¬ï¿½ï¿½
             else
-                pflg->fsm = FSM_SEND_BZ;                                        // ÇÐ»»×´Ì¬»ú
+                pflg->fsm = FSM_SEND_BZ;                                        // ï¿½Ð»ï¿½×´Ì¬ï¿½ï¿½
             goto RE_CHECK;
         }
         break;
         
-    case FSM_SEND_BZ:															// ´ò°üÊý¾Ý,Æô¶¯·¢ËÍ
+    case FSM_SEND_BZ:															// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	ptu8 = (unsigned char *)(pcmd->pname);
         pmap = _yMgetMdsElmIfo(pcmd->cmd, ptu8, _yGetStrLen(pcmd->pname), pcmd->opAdr);
-        if( !pmap ) {															// Êý¾Ý°ü³ö´í
+        if( !pmap ) {															// ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ï¿½ï¿½
             pflg->fsm = FSM_COMPILE_OK;
             break;
         }
-		if( _yPackedBzMdsDta(pmap, pcmd) ){										// ´ò°üÊý¾Ý³ö´í
+		if( _yPackedBzMdsDta(pmap, pcmd) ){										// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
             pflg->fsm = FSM_COMPILE_OK;
             break;        
         }
@@ -505,11 +542,11 @@ unsigned long _yRunModlinkModule(void)
 		}
 
         break;
-    case FSM_SEND_EXT:          // ´ò°üÊý¾Ý,Æô¶¯·¢ËÍ(À©Õ¹)
+    case FSM_SEND_EXT:          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Õ¹)
         break;
 
     case FSM_WAIT_REC:
-        if(pflg->RunNxtList) {                                                  // Æô¶¯ÏÂÒ»ÌõÖ´ÐÐ
+        if(pflg->RunNxtList) {                                                  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ö´ï¿½ï¿½
             pflg->RunNxtList = 0;
 			pflg->fsm = FSM_DELY_TO_SEND;
 			pflg->dlyStTime = _yGetCurMsTime();
@@ -525,11 +562,11 @@ unsigned long _yRunModlinkModule(void)
 		break;
 		
     case FSM_RUN_NXT:
-        if(cnt >=pflg->cnt) {                                               // ³¬¹ýÏÞÖÆ,ÍË³ö
+        if(cnt >=pflg->cnt) {                                               // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ë³ï¿½
             break;
         }
         pflg->pcur = pflg->head.next;
-        if(pflg->pcur ==(&pflg->head)) {                                     // ¿Õ,ÍË³ö
+        if(pflg->pcur ==(&pflg->head)) {                                     // ï¿½ï¿½,ï¿½Ë³ï¿½
             pflg->fsm = FSM_EMPTY;
             goto RE_CHECK;
         }
@@ -537,7 +574,7 @@ unsigned long _yRunModlinkModule(void)
         list_del_init(pflg->pcur);
         precord = list_entry(pflg->pcur, struct tag_ModelinkRecord, list);
         pcmd = (struct tag_MdsModlinkCmd *)(precord->pvoid);
-        if(pcmd->IsStop) {                                                  // ÒÑ¾­Í£Ö¹Ê¹ÓÃ,²éÕÒÏÂÒ»Ìõ
+        if(pcmd->IsStop) {                                                  // ï¿½Ñ¾ï¿½Í£Ö¹Ê¹ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
             cnt++;
             list_add_tail(pflg->pcur, &pflg->head);
             goto RE_CHECK;
@@ -549,9 +586,9 @@ unsigned long _yRunModlinkModule(void)
 		}		
         list_add_tail(pflg->pcur, &pflg->head);
         if(pcmd->cmd >WrMutiReg)
-            pflg->fsm = FSM_SEND_EXT;                                       // ÇÐ»»×´Ì¬»ú
+            pflg->fsm = FSM_SEND_EXT;                                       // ï¿½Ð»ï¿½×´Ì¬ï¿½ï¿½
         else
-            pflg->fsm = FSM_SEND_BZ;                                        // ÇÐ»»×´Ì¬»ú
+            pflg->fsm = FSM_SEND_BZ;                                        // ï¿½Ð»ï¿½×´Ì¬ï¿½ï¿½
         goto RE_CHECK;
         //break;
         
