@@ -18,8 +18,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         //历史记录的数据库
         db.execSQL("Create TABLE history (historyID integer primary key autoincrement ," +
-                "date DATETIME,"+
-                "time DATETIME,"+
+                "date  varchar(20) default null,"+
+                "time  varchar(20) default null,"+
                 "pressure number(10) default null,"+
                 "concentration number(10) default null,"+
                 "flow number(10) default null,"+
