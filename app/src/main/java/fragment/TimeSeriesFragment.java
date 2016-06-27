@@ -1,44 +1,29 @@
 package fragment;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.hitek.serial.R;
 
-import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import activity.MyApplication;
 import popupwindow.PopupForSpecial;
 import popupwindow.PopupForTime;
-import popupwindow.PopupForTimeSetting;
-import popupwindow.PopupForWeek;
-import popupwindow.Pupwindow;
-import utils.CacheUtils;
 import utils.Constants;
 import utils.ReadAndWrite;
-import wheel.StrericWheelAdapter;
-import wheel.WheelView;
+
 
 /**
  * Created by zuheng.lv on 2016/6/9.
@@ -127,7 +112,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
 
     private PopupForSpecial popupForSpecial;
     private PopupForTime popupForTime;
-    private PopupForWeek popupForWeek;
+
     private LinearLayout time_picker;
 
     @Override
@@ -147,7 +132,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
         time_picker = (LinearLayout) view.findViewById(R.id.time_picker);
         time_picker.setOnClickListener(this);
         popupForTime = new PopupForTime(getContext());
-        popupForWeek = new PopupForWeek(getContext());
+
         popupForSpecial = new PopupForSpecial(getContext());
         flow_tv_totalflow = (TextView) view.findViewById(R.id.flow_tv_totalflow);
         flow_tv_safe = (TextView) view.findViewById(R.id.flow_tv_safe);
@@ -214,7 +199,6 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                     try {
                         float[] d628 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 628, 1);
                         float[] d272 = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 272, 1);
-
                         String[] data = ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D, new int[]{610, 611, 612, 613, 614, 615, 616});
                         Bundle bundle = new Bundle();
                         Message msg = new Message();
@@ -319,7 +303,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
     public void onPause() {
         super.onPause();
         popupForTime.stopPopupWindow();
-        popupForWeek.stopPopupWindow();
+
     }
 
 //    @Override

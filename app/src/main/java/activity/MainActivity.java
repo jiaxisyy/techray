@@ -91,6 +91,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private View view, newView;
     private String loginInfo;
     private String errorInfo, str;
+    private StringBuffer sb;
 
     private Handler handler = new Handler() {
 
@@ -131,7 +132,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     Toast.makeText(getApplicationContext(), errorInfo == null ? "登录失败" : errorInfo, Toast.LENGTH_SHORT).show();
                     break;
                 case TIME:
-                    tv_main_time.setText(str);
+                    tv_main_time.setText(sb.toString());
                     break;
                 case NOINTERNET:
                     //没有网络
@@ -400,13 +401,29 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             public void run() {
                 while (true) {
                     try {
-                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm ");
-                        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
-                        str = formatter.format(curDate);
-                        Message obtain = Message.obtain();
-                        obtain.what = TIME;
-                        handler.sendMessage(obtain);
-                        Thread.sleep(1000 * 60);
+//                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm ");
+//                        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+//                        str = formatter.format(curDate);
+                        String[] time = ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D, new int[]{610, 611, 612, 613, 614});
+                        int length = time.length;
+                        if(time!=null&&length>0){
+                            sb = new StringBuffer();
+                            sb.append(time[0]);
+                            sb.append("年");
+                            sb.append(time[1]);
+                            sb.append("月");
+                            sb.append(time[2]);
+                            sb.append("日");
+                            sb.append("    ");
+                            sb.append(time[3]);
+                            sb.append(":");
+                            sb.append(time[4]);
+                            Message obtain = Message.obtain();
+                            obtain.what = TIME;
+                            handler.sendMessage(obtain);
+                        }
+
+                        Thread.sleep(1000 * 30);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

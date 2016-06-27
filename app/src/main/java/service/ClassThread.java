@@ -40,7 +40,7 @@ public class ClassThread {
                 while (true) {
                     sqlManager.insertHistory();
                     try {
-                        Thread.sleep(1000 * 60 * 15);
+                        Thread.sleep(1000*60* 15);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

@@ -38,10 +38,16 @@ public class HistoryFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.history_layout,container,false);
-        initData();
+//        initData();
         return view;
     }
 
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        initData();
+    }
     public void initData(){
         list = new SqlManager(getContext(),"history.db",null,1).searchHistory();
         recyclerView = (RecyclerView) view.findViewById(R.id.history_recycle);

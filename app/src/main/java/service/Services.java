@@ -25,6 +25,7 @@ public class Services extends Service{
         sqlManager = new SqlManager(getApplicationContext(),"history.db",null,1);
         ClassThread thread = new ClassThread(sqlManager);
         thread.historySave();
+        thread.historyDelete();
         thread.saveAlarmRecord();
 
 //        thread.historyDelete();

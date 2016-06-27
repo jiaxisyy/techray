@@ -52,6 +52,7 @@
 
 
             <EditText
+                android:digits="0123456789.-"
                 android:id="@+id/pup_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +60,6 @@
                 android:layout_marginLeft="10px"
                 android:background="@null"
                 android:hint="请输入数值"
-                android:inputType="phone"
                 android:singleLine="true"
                 android:textSize="18px"
                 />

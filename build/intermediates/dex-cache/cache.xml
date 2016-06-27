@@ -1,3 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.3.0_b5a0b2b7e95e82ac99cdc97e918168a529359df7.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.3.0_f6a62cf1249fae53481d5f44c97f674eb278fa4e.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="003ebdacd5f75067b8724f92bd5eefa323d870aa">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-gridlayout-v7-23.3.0_1d0ae05c18101442ec411a7f8aff79b680ec0856.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="204a97065f0ac7a8dbcd7719de031dfaa7dccdf6">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\instant-run_de0d89f5bc2179e06bed219e0b5ec0b36ec3989e.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.3.0_bfaa6c22da5b909ad95577f574c61f9e381af7ce.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="94867b57b8ccfa00de087a00cd97c3858486248a">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_7658b8b5d493a7ac678f3946dcb892f69166a800.jar" />
+    </item>
+    <item
+        jar="D:\Android\Studio\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\support-annotations-23.3.0_7ae95f3ae4e4200fbfeae0802b5df10b2586b03d.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.koushikdutta.async\androidasync\2.1.8\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="210a4042913301c708bd9aeed46e4ebb5d77e462">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.koushikdutta.async-androidasync-2.1.8_e79cf3d04581427d618c95a466a38f5f48a70e84.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.3.0_c98fa4f72b6c1ce2c5b6e5bab913dc6fa33e8e6f.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.2\f1bc476cc167b18e66c297df599b2377131a8947\gson-2.6.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\gson-2.6.2_c17c38981cd59f0a67cb02a0689a27ab08e3284c.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.koushikdutta.ion\ion\2.1.8\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="800456ff7459edf31e780604a318741d0f8ace09">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.koushikdutta.ion-ion-2.1.8_6e8c1c954b6053715bbeba3849b969abe9f003c2.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.3.0_d2d6b2ce34050e62bc9aaf7cbeedd609d71eb4fa.jar" />
+    </item>
+    <item
+        jar="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\shuang.xiang\Desktop\techray\620\serial5.0\app\build\intermediates\pre-dexed\debug\internal_impl-23.3.0_8521d35d68ab8ba3a54ade5400842e38aa359802.jar" />
+    </item>
+
+</items>

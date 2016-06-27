@@ -37,8 +37,8 @@ public class UpdateApp {
     private static String appName = "techray-coic";
     private static String localUrl = "http://10.199.198.161:8081/JavaWebApp/ver.json";
     private static String localFileUrl = "http://10.199.198.161:8081/JavaWebApp/techray-coic.apk";
-    private static String url = "http://10.199.198.55:58010/userconsle/clientApps/" + appName;
-    private static String fileUrl = "http://10.199.198.55:58010/userconsle/clientApps/" + appName + "/file";
+    private static String url = "http://kawakp.chinclouds.com:58010/userconsle/clientApps/" + appName;
+    private static String fileUrl = "http://kawakp.chinclouds.com:58010/userconsle/clientApps/" + appName + "/file";
     private static String filePath;
     private Context context;
     private static int NEW = 1;

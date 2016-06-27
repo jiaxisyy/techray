@@ -38,10 +38,6 @@
             android:name="activity.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
-        <activity
-            android:name="activity.RunActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
         <!-- <activity android:name="activity.TestActivity" -->
         <!-- android:screenOrientation="landscape" -->
         <!-- android:configChanges="orientation|keyboardHidden"/> -->
