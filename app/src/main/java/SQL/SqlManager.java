@@ -88,8 +88,9 @@ public class SqlManager extends DataBaseHelper {
         }
         return list;
     }
-    public List<AlarmRecordData> searchAlarmRecord(){
-        Cursor cursor =  db.query("alarm",null,null,null,null,null,"alarmID desc");
+    public List<AlarmRecordData> searchAlarmRecord(String[] columns,String selection, String[] selectionArgs,String groupBy, String having, String orderBy, String limit){
+//        Cursor cursor =  db.query("alarm",null,null,null,null,null,"alarmID desc");
+        Cursor cursor =   db.query("alarm",columns,selection,selectionArgs,groupBy,having,orderBy,limit);
         List<AlarmRecordData> list = new ArrayList<>();
         if(cursor.moveToFirst()){
             do{
