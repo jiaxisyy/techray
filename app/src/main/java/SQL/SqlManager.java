@@ -36,12 +36,17 @@ public class SqlManager extends DataBaseHelper {
         ContentValues values = new ContentValues();
         int str[]={212,264,228,244};
         String[]num = ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,str);
+//        SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+//        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+//        values.put("date", formatter.format(curDate));
+//        values.put("time", datatime[0]+"-"+datatime[1]+"-"+datatime[2]);
         values.put("date", datatime[0]+"-"+datatime[1]+"-"+datatime[2]);
         values.put("time", datatime[3]+":"+datatime[4]+":"+datatime[5]);
         values.put("pressure",num[0]);
         values.put("concentration",num[3]);
         values.put("flow",num[2]);
         values.put("totalflow",num[1]);
+        System.out.println(values);
         db.insert("history",null,values);
     }
     /**
@@ -55,9 +60,12 @@ public class SqlManager extends DataBaseHelper {
     /**
      * 查询历史记录
      */
-    public List<HistoryData> searchHistory(){
-        Cursor cursor =  db.query("history",null,null,null,null,null,"historyID desc");
+    public List<HistoryData> searchHistory(String[] columns,String selection, String[] selectionArgs,String groupBy, String having, String orderBy, String limit){
+//        Cursor cursor =  db.query("history",null,null,null,null,null,"historyID desc");
+        Cursor cursor =   db.query("history",columns,selection,selectionArgs,groupBy,having,orderBy,limit);
+//        Cursor cursor =  db.rawQuery("SELECT * FROM history WHERE date BETWEEN ? AND ? ",new String[]{"2016-06-30","2016-07-02"});
         List<HistoryData> list = new ArrayList<>();
+        System.out.println(cursor.moveToFirst());
         if(cursor.moveToFirst()){
             do{
                 HistoryData historyData = new HistoryData();
