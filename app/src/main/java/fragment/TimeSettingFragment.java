@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.hitek.serial.R;
 
 import activity.MyApplication;
+import popupwindow.PopupForTimeSetting;
 import popupwindow.Pupwindow;
 import utils.Constants;
 
@@ -26,14 +27,14 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
     private TextView ATiming_1, ATiming_2, ATiming_3, ATiming_4, ATiming_5, ATiming_6, ATiming_7, ATiming_8, ATiming_9, ATiming_10, ATiming_11, ATiming_12, ATiming_13;
     private int[] local,str;
     private Button time_btn_change;
-    private Pupwindow pupwindow;
+    private PopupForTimeSetting pupwindow;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 1:
-                    Log.d("LOG",String.valueOf(msg.getData().getShort("d400")));
+//                    Log.d("LOG",String.valueOf(msg.getData().getShort("d400")));
                     /**����дUI���º���*/
                     if(String.valueOf(msg.getData().getShort("d400"))!=null && !String.valueOf(msg.getData().getShort("d400")).equals("")){
                         float v = Float.parseFloat(String.valueOf(msg.getData().getShort("d400")));
@@ -148,7 +149,7 @@ public class TimeSettingFragment extends Fragment implements View.OnClickListene
      * �ؼ���ʼ��
      */
     public void initView() {
-        pupwindow = new Pupwindow(getContext());
+        pupwindow = new PopupForTimeSetting(getContext());
 
         ATiming_1 = (TextView) view.findViewById(R.id.ATiming_1);
         ATiming_2 = (TextView) view.findViewById(R.id.ATiming_2);

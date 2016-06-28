@@ -50,7 +50,6 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                     concentrationData = msg.getData().getString("j1");
                     flowData = msg.getData().getString("k1");
                     totalflowData = msg.getData().getString("l1");
-                    momitor_btn_machine_a.setText(msg.getData().getString("d458")+"时");
                     if (msg.getData().getShort("d700") == 0) {
                         momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
                     } else if (msg.getData().getShort("d700") == 1) {
@@ -58,6 +57,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                     } else if (msg.getData().getShort("d700") == 2) {
                         momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                     }
+                    momitor_btn_machine_a.setText(msg.getData().getString("d458")+"时");
                     break;
                 case 2:
                     //
@@ -164,7 +164,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
 
         mConcentration.setStr("244");
         mFlow.setBackground(getResources().getDrawable(R.drawable.flow_normal));
-        mFlow.setBackgroundBig(getResources().getDrawable(R.drawable.flow_normal));
+        mFlow.setBackgroundBig(getResources().getDrawable(R.drawable.flow_big));
         mFlow.setType("当前流量");
         mFlow.setData("333");
         mFlow.setUnit("L/min");
@@ -202,8 +202,8 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
 //                float   a  =   123.2334f;
 //                float  b   =  (float)(Math.round(a*100))/100;(�����100����2λС����,���Ҫ����λ,��4λ,��������100�ĳ�10000)
 
-                /**����д���ݻ�ȡ�����ݴ�����*/
-                Log.d("TAG", "run");
+//                /**����д���ݻ�ȡ�����ݴ�����*/
+//                Log.d("TAG", "run");
 
                 while (flag) {
                     try {
@@ -221,7 +221,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         float l1 = (float) (Math.round(l[0] * 100)) / 100;
                         //A������״̬
 
-                        short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 244, 1);
+                        short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 700, 1);
                         Bundle bundle = new Bundle();
                         int[] d458  =   MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D,458,1);
 

@@ -37,9 +37,17 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.alarmrecord_layout,container,false);
         initView();
-        initData();
+//        initData();
         return view;
     }
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        initData();
+    }
+
     public void initView(){
         alarmrecord_recycle = (RecyclerView)view.findViewById(R.id.alarmrecord_recycle);
         alarmrecord_startdate = (TextView)view.findViewById(R.id.alarmrecord_startdate);
@@ -64,7 +72,7 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment{
             alarmrecord_starttime.setText(cursor1.getString(1));
         }
         if (cursor2.moveToFirst()){
-            System.out.println(cursor2.getString(1));
+//            System.out.println(cursor2.getString(1));
             alarmrecord_stopdate.setText(cursor2.getString(0));
             alarmrecord_stoptime.setText(cursor2.getString(1));
         }

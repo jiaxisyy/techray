@@ -38,10 +38,16 @@ public class HistoryFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.history_layout,container,false);
-        initData();
+//        initData();
         return view;
     }
 
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        initData();
+    }
     public void initData(){
         list = new SqlManager(getContext(),"history.db",null,1).searchHistory();
         recyclerView = (RecyclerView) view.findViewById(R.id.history_recycle);
@@ -62,7 +68,7 @@ public class HistoryFragment extends Fragment{
             history_starttime.setText(cursor1.getString(1));
         }
     if (cursor2.moveToFirst()){
-        System.out.println(cursor2.getString(1));
+//        System.out.println(cursor2.getString(1));
         history_stopdate.setText(cursor2.getString(0));
         history_stoptime.setText(cursor2.getString(1));
     }

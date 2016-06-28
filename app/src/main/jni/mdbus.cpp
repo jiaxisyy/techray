@@ -1063,67 +1063,67 @@ static void thread_recv_func(void *data)
 	static unsigned long cyclecnt =0;
 
 	pdcb = &gat_UartDcb[0];
-	if(mu32_RecFlag) {													// ´¦ÓÚ½ÓÊÕ±êÖ¾
-		if( _yIs1msTimeout(mu32_RecStartTime, mu32_RecUseTime) ) {		// ½ÓÊÕÊÇ·ñÍê³É
+	if(mu32_RecFlag) {													// ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Õ±ï¿½Ö¾
+		if( _yIs1msTimeout(mu32_RecStartTime, mu32_RecUseTime) ) {		// ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 			ret = read(fd, &buf[rdlen], (1024-rdlen));
-			if(ret >0) {												// ¶ÁÈ¡µ½Êý¾Ý
+			if(ret >0) {												// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				rdlen += ret;
-				if(rdlen >=1024) {										// Êý¾Ý³¬¹ýÏÞÖÆ,Ò»°ü½áÊø
+				if(rdlen >=1024) {										// ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					isfram = 1;
 				}
-				else {													// Êý¾ÝÎ´³¬¹ýÏÞÖÆ
+				else {													// ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					mu32_RecStartTime = _yGetCurMsTime();
 				}
 			}
-			else {														// Î´¶ÁÈ¡µ½Êý¾Ý
+			else {														// Î´ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				isfram = 1;
 			}
 		}
 
-		if( isfram ) {													// ÊÇÒ»°üÊý¾Ý
+		if( isfram ) {													// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			//LOGE ("Thread recv packe data %d\n",cyclecnt);
 			cyclecnt++;
-			mu32_RecFlag = 0;											// Çå³ý½ÓÊÕ±êÖ¾
-			if(rdlen >UART_MAX_BUF) {								// ¼ì²é³¬ÏÞ
+			mu32_RecFlag = 0;											// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ±ï¿½Ö¾
+			if(rdlen >UART_MAX_BUF) {								// ï¿½ï¿½é³¬ï¿½ï¿½
 				rdlen = UART_MAX_BUF;
 			}
 			
-			for(i=0; i<rdlen; i++) {								// Êý¾Ý¿½±´µ½»º³åÇø
+			for(i=0; i<rdlen; i++) {								// ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				pdcb->pRxBuf[i] = buf[i];
 			}
 			pdcb->RxCnt = rdlen;
 			rdlen = 0;
 
-            if( pdcb->flag.UseRx ) {                                // µ±Ç°Ê¹ÓÃ1ºÅ»º³åÇø
-                if(pdcb->flag.Rx0Flg ==0) {                         // 0ºÅ»º³åÇø´¦ÓÚÎ´Ê¹ÓÃ
-                    pdcb->aRxCnt[1] = pdcb->RxCnt;                  // ½ÓÊÕ¸öÊý´¦Àí
-                    pdcb->flag.Rx1Flg =2;                           // ÖÃ1ºÅ»º³åÇøÓÐÍêÕû°ü
+            if( pdcb->flag.UseRx ) {                                // ï¿½ï¿½Ç°Ê¹ï¿½ï¿½1ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½
+                if(pdcb->flag.Rx0Flg ==0) {                         // 0ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´Ê¹ï¿½ï¿½
+                    pdcb->aRxCnt[1] = pdcb->RxCnt;                  // ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    pdcb->flag.Rx1Flg =2;                           // ï¿½ï¿½1ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     if(pdcb->flag.HaveRxMsg <2)
-                        pdcb->flag.HaveRxMsg++;                     // ÖÃÓÐÍêÕû°ü±êÖ¾
-                    pdcb->pRxBuf = pdcb->paRxBuf[0];                // Ê¹ÓÃ0ºÅ»º³åÇø
-                    pdcb->flag.UseRx =0;                            // ÉèÖÃÊ¹ÓÃ0ºÅ»º³åÇø±êÖ¾
+                        pdcb->flag.HaveRxMsg++;                     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
+                    pdcb->pRxBuf = pdcb->paRxBuf[0];                // Ê¹ï¿½ï¿½0ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½
+                    pdcb->flag.UseRx =0;                            // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½0ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
                 }
             }
             else {
-                if(pdcb->flag.Rx1Flg ==0) {                         // 1ºÅ»º³åÇø´¦ÓÚÎ´Ê¹ÓÃ
-                    pdcb->aRxCnt[0] = pdcb->RxCnt;                  // ½ÓÊÕ¸öÊý´¦Àí
-                    pdcb->flag.Rx0Flg =2;                           // ÖÃ0ºÅ»º³åÇøÓÐÍêÕû°ü
+                if(pdcb->flag.Rx1Flg ==0) {                         // 1ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´Ê¹ï¿½ï¿½
+                    pdcb->aRxCnt[0] = pdcb->RxCnt;                  // ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    pdcb->flag.Rx0Flg =2;                           // ï¿½ï¿½0ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     if(pdcb->flag.HaveRxMsg <2)
-                        pdcb->flag.HaveRxMsg++;                     // ÖÃÓÐÍêÕû°ü±êÖ¾
-                    pdcb->pRxBuf = pdcb->paRxBuf[1];                // Ê¹ÓÃ1ºÅ»º³åÇø
-                    pdcb->flag.UseRx =1;                            // ÉèÖÃÊ¹ÓÃ1ºÅ»º³åÇø±êÖ¾
+                        pdcb->flag.HaveRxMsg++;                     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
+                    pdcb->pRxBuf = pdcb->paRxBuf[1];                // Ê¹ï¿½ï¿½1ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½
+                    pdcb->flag.UseRx =1;                            // ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½1ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
                 }
             }
-            pdcb->RxCnt = 0;                                        // Çå³ýÎªÏÂ´Î½ÓÊÕ×¼±¸
-            pdcb->flag.isRxing = 0;                                 // Çå³ýÕýÔÚ½ÓÊÕ±êÖ¾				
+            pdcb->RxCnt = 0;                                        // ï¿½ï¿½ï¿½Îªï¿½Â´Î½ï¿½ï¿½ï¿½×¼ï¿½ï¿½
+            pdcb->flag.isRxing = 0;                                 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Õ±ï¿½Ö¾				
 		}		
 	}
-	else {																// Î´´¦ÓÚ½ÓÊÕ±êÖ¾
+	else {																// Î´ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Õ±ï¿½Ö¾
 		ret = read(fd, buf, 1024);
 		if(ret >0) {
 			rdlen = ret;
 			mu32_RecFlag = 1;
-			pdcb->flag.isRxing = 1;                                 // ÉèÖÃÕýÔÚ½ÓÊÕ±êÖ¾
+			pdcb->flag.isRxing = 1;                                 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Õ±ï¿½Ö¾
 			mu32_RecStartTime = _yGetCurMsTime();
 		}	
 	}
@@ -1138,14 +1138,14 @@ static void thread_send_func(void *data)
 	struct tag_UartDcb *pdcb;
 
 	pdcb = &gat_UartDcb[0];
-	if(mu32_SdFlag) {													// ´¦ÓÚ·¢ËÍ×´Ì¬
-		if( _yIs1msTimeout(mu32_SendStartTime, mu32_SendUseTime) ) {	// ·¢ËÍÍê³É
-			pdcb->flag.isTxing = 0;                                 	// Çå³ýÕýÔÚ·¢ËÍ±êÖ¾	
-			mu32_SdFlag = 0;											// Çå³ý´¦ÓÚ·¢ËÍ×´Ì¬
+	if(mu32_SdFlag) {													// ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½×´Ì¬
+		if( _yIs1msTimeout(mu32_SendStartTime, mu32_SendUseTime) ) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			pdcb->flag.isTxing = 0;                                 	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½Í±ï¿½Ö¾	
+			mu32_SdFlag = 0;											// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½×´Ì¬
 		}
 		
 	}
-	else if(pdcb->Txflg >0) {											// ÒÑ¾­ÓÐÊý¾ÝÒª·¢ËÍ
+	else if(pdcb->Txflg >0) {											// ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
 		pdcb->Txflg = 0;
 		
 		write(fd, pdcb->pTxBuf, pdcb->TxCnt);
@@ -1157,7 +1157,7 @@ static void thread_send_func(void *data)
 			mu32_SendUseTime += 2;
 		}
 		mu32_SendStartTime = _yGetCurMsTime();
-		mu32_SdFlag = 1;												// ÉèÖÃ´¦ÓÚ·¢ËÍ×´Ì¬
+		mu32_SdFlag = 1;												// ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ú·ï¿½ï¿½ï¿½×´Ì¬
 	}
 }
 
@@ -1167,7 +1167,7 @@ static void *thread_time_func(void *data)
 
 	LOGE ("Create time_thread ok! \n");
 	while(1) {
-		usleep(1*1000);													// ÑÓ³Ù1 MS
+		usleep(1*1000);													// ï¿½Ó³ï¿½1 MS
 		gu32_CurMsTime++;
 	}
 

@@ -32,6 +32,7 @@ public class SqlManager extends DataBaseHelper {
      * 存储历史记录
      */
     public void insertHistory(){
+        String[] datatime =ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D,new int[]{610,611,612,613,614,615});
         ContentValues values = new ContentValues();
         int str[]={212,264,228,244};
         String[]num = ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D,str);
@@ -48,9 +49,7 @@ public class SqlManager extends DataBaseHelper {
      */
     public void deleteHistory(){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//        db.execSQL("DELETE FROM history WHERE date<"+df.format(new Date()));
-        db.delete("history","date<?",new String[]{"Select CONVERT(varchar(100), dateadd(day,-30,GETDATE()), 24)"});
-        System.out.println("delete");
+        db.execSQL("DELETE FROM history WHERE date< date('"+df.format(new Date())+"','start of day','-30 days')");
     }
 
     /**

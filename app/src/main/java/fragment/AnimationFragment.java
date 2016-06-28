@@ -34,15 +34,12 @@ public class AnimationFragment extends Fragment{
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.getData().getShort("d700")==0){
-                System.out.println(msg.getData().getShort("d700"));
+//                System.out.println(msg.getData().getShort("d700"));
                 animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.stop_lamp));
-                animationView_single.stopDraw();
             }else if(msg.getData().getShort("d700")==1){
                 animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.running_lamp));
-                animationView_single.startDraw();
             }else if(msg.getData().getShort("d700")==2){
                 animation_btn_switch.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
-                animationView_single.stopDraw();
             }
         }
     };
