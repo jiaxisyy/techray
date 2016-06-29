@@ -54,7 +54,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
         list.clear();
         initData();
         myThread = new MyThread();
-        threadFlag = true;
+//        threadFlag = true;
     }
 
     public AnimationSurfaceView(Context context, AttributeSet attributeSet){
@@ -75,7 +75,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
         list.clear();
         initData();
         myThread = new MyThread();
-        threadFlag = true;
+//        threadFlag = true;
     }
     public AnimationSurfaceView(Context context, AttributeSet attributeSet,int defStyle){
         super(context,attributeSet,defStyle);
@@ -94,7 +94,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
         list = new ArrayList<Circle>();
         list.clear();
         myThread = new MyThread();
-        threadFlag = true;
+//        threadFlag = true;
     }
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
@@ -234,7 +234,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
                         loopDraw();
                         runDraw();
                         Canvas canvas = holder.lockCanvas();
-                    canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                         drawUI(canvas);
                     holder.unlockCanvasAndPost(canvas);
                 }

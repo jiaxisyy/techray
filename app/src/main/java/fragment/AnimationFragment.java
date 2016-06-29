@@ -25,7 +25,6 @@ import utils.ReadAndWrite;
 public class AnimationFragment extends Fragment{
     private View view;
     private Button animation_btn_switch;
-    private AnimationSingleView animationView_single;
     private Boolean flag=true;
 
     Handler handler = new Handler(){
@@ -53,7 +52,7 @@ public class AnimationFragment extends Fragment{
     }
     private void initView(){
         animation_btn_switch=(Button) view.findViewById(R.id.animation_btn_switch);
-        animationView_single = (AnimationSingleView) view.findViewById(R.id.animationView_single);
+
     }
 
     private void setData(){

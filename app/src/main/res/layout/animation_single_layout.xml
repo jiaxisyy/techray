@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/status_background_single">
-    <bean.AnimationSingleView
+    <bean.AnimationSurfaceView
         android:id="@+id/animationView_single"
         android:layout_width="match_parent"
         android:layout_height="550dp" />
