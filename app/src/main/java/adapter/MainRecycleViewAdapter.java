@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -140,18 +141,19 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
     }
 
     public void removeData(int position, MainRecycleViewItem classess) {
-//        classess.setHeight(100);
+
+
         list.add(classess);
         list.remove(position);
-
         notifyItemRemoved(position);
+
     }
 
     public void removeData(MainRecycleViewItem classess) {
-//        classess.setHeight(220);
         list.add(classess);
         list.remove(0);
         notifyItemRemoved(0);
+
     }
 
     public interface OnItemClickLitener {

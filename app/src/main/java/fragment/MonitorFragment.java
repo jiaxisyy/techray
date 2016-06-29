@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,8 @@ import bean.GLayoutManager;
 import bean.MainRecycleViewItem;
 import utils.Constants;
 import utils.ReadAndWrite;
+import utils.Utils;
+import view.NoDoubleClickListener;
 
 /**
  * Created by zuheng.lv on 2016/6/9.
@@ -57,17 +60,17 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                     } else if (msg.getData().getShort("d700") == 2) {
                         momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                     }
-                    momitor_btn_machine_a.setText(msg.getData().getString("d458")+"时");
+                    momitor_btn_machine_a.setText(msg.getData().getString("d458") + "时");
                     break;
                 case 2:
                     //
-                    if (stringBuffer.length() >0) {
+                    if (stringBuffer.length() > 0) {
                         //有报警信息
                         ll_main_warning.setVisibility(View.VISIBLE);
                         tv_main_warning.setText(stringBuffer.toString());
-                    }else if(stringBuffer.length()==0){
+                    } else if (stringBuffer.length() == 0) {
                         ll_main_warning.setVisibility(View.GONE);
-                        ll_main_warning.layout(ll_main_warning.getLeft(),ll_main_warning.getTop(),ll_main_warning.getRight(),ll_main_warning.getBottom());
+                        ll_main_warning.layout(ll_main_warning.getLeft(), ll_main_warning.getTop(), ll_main_warning.getRight(), ll_main_warning.getBottom());
                     }
                     break;
             }
@@ -90,6 +93,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
     private LinearLayout ll_main_warning;
     private TextView tv_main_warning;
     private StringBuffer stringBuffer;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -121,14 +125,20 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
         momitor_btn_stop = (Button) view.findViewById(R.id.momitor_btn_stop);
         momitor_btn_stop.setOnTouchListener(this);
         momitor_btn_start.setOnTouchListener(this);
+
         mainRecycleView1.setOnItemClickLitener(new MainRecycleViewAdapter.OnItemClickLitener() {
             @Override
-            public void onItemClick(View view, int position) {
-                List<MainRecycleViewItem> saveList = new ArrayList<MainRecycleViewItem>();
-                saveList.add(list2.get(0));
-                saveList.add(list1.get(position));
-                mainRecycleView2.removeData(saveList.get(1));
-                mainRecycleView1.removeData(position, saveList.get(0));
+            public void onItemClick(View view, final int position) {
+
+                if (Utils.isValidClick()) {
+                    List<MainRecycleViewItem> saveList = new ArrayList<MainRecycleViewItem>();
+                    saveList.add(list2.get(0));
+                    saveList.add(list1.get(position));
+                    mainRecycleView2.removeData(saveList.get(1));
+                    mainRecycleView1.removeData(position, saveList.get(0));
+                }
+
+
             }
 
             @Override
@@ -136,6 +146,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
 
             }
         });
+
     }
 
     /**
@@ -223,17 +234,17 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
 
                         short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 700, 1);
                         Bundle bundle = new Bundle();
-                        int[] d458  =   MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D,458,1);
+                        int[] d458 = MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D, 458, 1);
 
                         bundle.putString("i1", String.valueOf(i1));
                         bundle.putString("j1", String.valueOf(j1));
                         bundle.putString("k1", String.valueOf(k1));
                         bundle.putString("l1", String.valueOf(l1));
-                        bundle.putString("d458",String.valueOf(d458[0]));
+                        bundle.putString("d458", String.valueOf(d458[0]));
                         if (d700.length > 0) {
                             bundle.putShort("d700", d700[0]);
                         }
-                        final int[] ints = {50, 51, 52, 53, 54, 55,57};
+                        final int[] ints = {50, 51, 52, 53, 54, 55, 57};
                         final String[] strings = new String[]{"氧气压力过高;", "氧气压力过低;", "氧气浓度过低;", "氧气流量过高;", "露点/温度过高;", "露点/温度过低;", "设备锁机;"};
 
                         // stringBuffer.append("\"氧气压力过高;\", \"氧气压力过低;\", \"氧气浓度过低;\", \"氧气流量过高;\", \"露点/温度过高;\", \"露点/温度过低;\"");

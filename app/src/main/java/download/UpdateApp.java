@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hitek.serial.R;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,8 +27,11 @@ import java.io.InputStream;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import activity.MainActivity;
 import bean.ApkInfo;
 import utils.CacheUtils;
+import utils.CustomToast;
 import utils.Httputils;
 
 /**
@@ -44,20 +48,24 @@ public class UpdateApp {
     private static int NEW = 1;
     private static int OLD = 2;
     private static int INTERNETERROR = 3;
+    private static int DISMISSPROGRESSDIALOG = 4;
     private static String apkPath;
-
     private static PopupWindow upPopupWindow;
+    private ProgressDialog progressDialog;
+    private Message obtain=Message.obtain();
+
     public UpdateApp(Context context) {
         this.context = context;
     }
-    private  Handler handler = new Handler() {
+
+    private Handler handler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == NEW) {
                 //为最新,不需要更新
-                Toast.makeText(context, "当前版本为最新版本", Toast.LENGTH_SHORT).show();
+                CustomToast.showToast(context, "当前版本为最新版本", Toast.LENGTH_SHORT);
             }
             if (msg.what == OLD) {
                 View newView = LayoutInflater.from(context).inflate(R.layout.popupwindow_update, null);
@@ -67,14 +75,15 @@ public class UpdateApp {
                 upPopupWindow.showAsDropDown(newView);
                 final TextView affirm = (TextView) newView.findViewById(R.id.pp_btn_update_affirm);
                 final TextView cancel = (TextView) newView.findViewById(R.id.pp_btn_update_cancel);
-
                 //确定更新
                 affirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        progressDialog = new ProgressDialog(context);
+                        progressDialog.show();
+
                         update();
                         upPopupWindow.dismiss();
-
                     }
                 });
                 //取消
@@ -82,17 +91,15 @@ public class UpdateApp {
                     @Override
                     public void onClick(View v) {
                         upPopupWindow.dismiss();
-
                     }
                 });
-
-
             }
             if (msg.what == INTERNETERROR) {
                 //网络异常
-                Toast.makeText(context, "网络异常", Toast.LENGTH_SHORT).show();
-
-
+                CustomToast.showToast(context, "网络异常", Toast.LENGTH_SHORT);
+            }
+            if (msg.what == DISMISSPROGRESSDIALOG) {
+                progressDialog.dismiss();
             }
 
 
@@ -101,7 +108,6 @@ public class UpdateApp {
 
 
     private void update() {
-
 
 
         new Thread() {
@@ -116,7 +122,7 @@ public class UpdateApp {
                     int length = conn.getContentLength();
                     InputStream is = conn.getInputStream();
                     String sdpath = Environment.getExternalStorageDirectory() + filePath.substring(0, 9);
-//                    Log.d("TAG", sdpath);
+
 
                     File file = new File(sdpath);
                     // 判断文件目录是否存在
@@ -129,13 +135,16 @@ public class UpdateApp {
                     byte[] buf = new byte[1024 * 8];
                     int len = 0;
                     while ((len = is.read(buf)) != -1) {
-//                        System.out.println(len);
+
                         bos.write(buf, 0, len);
                     }
                     System.out.println("end" + length / 1024 / 1024);
                     bos.flush();
                     bos.close();
                     is.close();
+
+                    obtain.what = DISMISSPROGRESSDIALOG;
+                    handler.sendMessage(obtain);
 
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -155,7 +164,7 @@ public class UpdateApp {
     /**
      * 更新apk文件
      */
-    public void updateApk() throws RuntimeException{
+    public void updateApk() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -172,13 +181,11 @@ public class UpdateApp {
                     int versionCode = apkInfo.getVersionCode();
                     if (versionCode > verCode) {
                         //需要更新
-                        Message obtain = Message.obtain();
                         obtain.what = OLD;
                         handler.sendMessage(obtain);
 
                     } else {
                         //提示不需要更新,是最新版本
-                        Message obtain = Message.obtain();
                         obtain.what = NEW;
                         handler.sendMessage(obtain);
                     }

@@ -1,6 +1,7 @@
 package utils;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -74,5 +75,24 @@ public class Utils {
         ft.addToBackStack(tag);
         ft.commitAllowingStateLoss();
         return fragment;
+    }
+    /** 防止点击多次的判断*/
+    private static long lastClickTime;
+    private final static long EXIT_GAP = 500;
+    public static boolean isValidClick(){
+        if(SystemClock.uptimeMillis() - lastClickTime > EXIT_GAP){
+            lastClickTime = SystemClock.uptimeMillis();
+            return true;
+        }
+        return false;
+    }
+
+    private static long lastClickTime2;
+    public static boolean isValidClick(long millisecond){
+        if(SystemClock.uptimeMillis() - lastClickTime2 > millisecond){
+            lastClickTime2 = SystemClock.uptimeMillis();
+            return true;
+        }
+        return false;
     }
 }

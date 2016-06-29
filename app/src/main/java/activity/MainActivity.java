@@ -3,18 +3,13 @@ package activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -30,12 +25,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.hitek.serial.R;
 
-import org.w3c.dom.Text;
-
-import java.net.ConnectException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,13 +41,13 @@ import fragment.IntroduceFragment;
 import fragment.MonitorFragment;
 import fragment.OxygenStateFragment;
 import fragment.SimulaionFragment;
-import fragment.SpecialControlsFragment;
 import fragment.SystemSettingFragment;
 import fragment.TimeSeriesFragment;
 import fragment.TimeSettingFragment;
 import service.Services;
 import utils.CacheUtils;
 import utils.Constants;
+import utils.CustomToast;
 import utils.Httputils;
 import utils.ReadAndWrite;
 import utils.Utils;
@@ -105,7 +95,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     //登录成功
                     gradeFlag3 = true;
                     popupWindow.dismiss();
-                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                    CustomToast.showToast(MainActivity.this, "登录成功", Toast.LENGTH_SHORT);
                     btn_main_login.setText("注销");
                     updateMainActivity();
                     btn_main_login.setOnClickListener(new View.OnClickListener() {
@@ -129,14 +119,16 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     break;
                 case MSG_LOGIN_ERROR:
                     //登录失败
-                    Toast.makeText(getApplicationContext(), errorInfo == null ? "登录失败" : errorInfo, Toast.LENGTH_SHORT).show();
+
+                    CustomToast.showToast(MainActivity.this, errorInfo == null ? "登录失败" : errorInfo, Toast.LENGTH_SHORT);
                     break;
                 case TIME:
                     tv_main_time.setText(sb.toString());
                     break;
                 case NOINTERNET:
                     //没有网络
-                    Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
+
+                    CustomToast.showToast(MainActivity.this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
                     break;
 
                 case ONE:
@@ -144,7 +136,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     //登录成功
                     gradeFlag1 = true;
                     popupWindow.dismiss();
-                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                    CustomToast.showToast(MainActivity.this, "登录成功", Toast.LENGTH_SHORT);
                     btn_main_login.setText("注销");
                     updateOne();
 //                    updateMainActivity();
@@ -171,7 +163,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     //登录成功
                     gradeFlag2 = true;
                     popupWindow.dismiss();
-                    Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+                    CustomToast.showToast(MainActivity.this, "登录成功", Toast.LENGTH_SHORT);
                     btn_main_login.setText("注销");
                     updateTwo();
 //                    updateMainActivity();
@@ -209,20 +201,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initData();
         startService(new Intent(this, Services.class));
         elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
-        //取消线
-//        elv_mian_state.setDivider(null);
-        //去掉箭头
-//        mainlistview.setGroupIndicator(null);
 
-//elv_mian_state.setGroupIndicator(getResources().getDrawable(R.drawable.main_icon_home));
+//取消箭头
+        elv_mian_state.setGroupIndicator(null);
+
         elv_mian_state.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-//关闭分组
-//                elv_mian_state.collapseGroup(groupPosition);
-//                Log.d("JIAXI", groupPosition + "____" + childPosition);
-//                TextView viewById = (TextView) v.findViewById(R.id.second_textview);
-//                viewById.setTextColor(Color.RED);
+
+
+
+
+
                 changeFragment(groupPosition, childPosition);
 
                 return true;
@@ -310,7 +300,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 1:
                         if (gradeFlag1) {
-                            Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
+                            CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
                         } else if (gradeFlag2) {
                             Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
                         } else {
@@ -342,7 +332,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 4:
                         if (gradeFlag2) {
-                            Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
+                            CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
                         } else {
                             //特殊控制
                             Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSeriesFragment.class);
@@ -352,14 +342,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 5:
                         //检测更新
-                        Toast.makeText(getApplicationContext(), "网络异常,请检查网络状态", Toast.LENGTH_SHORT).show();
-                        UpdateApp updateApp = new UpdateApp(this);
-                        try {
+
+                        if (isNetworkConnected()) {
+                            UpdateApp updateApp = new UpdateApp(this);
                             updateApp.updateApk();
-                        } catch (Exception e) {
-                            Log.d("TAG", "error++++++");
-                            Toast.makeText(this, "网络异常", Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
+
+
+                        } else {
+
+                            CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
                         }
 
 
@@ -406,7 +397,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //                        str = formatter.format(curDate);
                         String[] time = ReadAndWrite.ReadJni(Constants.Define.OP_WORD_D, new int[]{610, 611, 612, 613, 614});
                         int length = time.length;
-                        if(time!=null&&length>0){
+                        if (time != null && length > 0) {
                             sb = new StringBuffer();
                             sb.append(time[0]);
                             sb.append("年");
@@ -424,6 +415,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         }
 
                         Thread.sleep(1000 * 30);
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -514,32 +506,32 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 user.put("username", username);
                 user.put("password", password);
 
-                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-                    if (password.equals("admin2") && username.equals("admin1")) {
-                        //一级用户
-                        Message message = Message.obtain();
-                        message.what = ONE;
-                        handler.sendMessage(message);
-
-                    }
-                    if (password.equals("admin5") && username.equals("admin2")) {
-                        //二级用户
-                        Message message = Message.obtain();
-                        message.what = TWO;
-                        handler.sendMessage(message);
-                    }
-                    if (password.equals("admin10") && username.equals("admin3")) {
-                        //三级用户
-                        Message message = Message.obtain();
-                        message.what = MSG_LOGIN_SUCCEED;
-                        handler.sendMessage(message);
-                    }
-
-                }
+//                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+//                    if (password.equals("admin2") && username.equals("admin1")) {
+//                        //一级用户
+//                        Message message = Message.obtain();
+//                        message.what = ONE;
+//                        handler.sendMessage(message);
+//
+//                    }
+//                    if (password.equals("admin5") && username.equals("admin2")) {
+//                        //二级用户
+//                        Message message = Message.obtain();
+//                        message.what = TWO;
+//                        handler.sendMessage(message);
+//                    }
+//                    if (password.equals("admin10") && username.equals("admin3")) {
+//                        //三级用户
+//                        Message message = Message.obtain();
+//                        message.what = MSG_LOGIN_SUCCEED;
+//                        handler.sendMessage(message);
+//                    }
+//
+//                }
 
 
                 //返回信息
-              /*  new Thread(new Runnable() {
+                new Thread(new Runnable() {
                     @Override
                     public void run() {
                         Httputils httputils = new Httputils(getApplicationContext());
@@ -581,7 +573,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     }
 
 
-                }).start();*/
+                }).start();
 
             }
         });
