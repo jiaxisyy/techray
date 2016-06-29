@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +39,10 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
                 case 1:
                     for (int i = 0; i <= list.size() - 1; i++) {
 
-                        float v = Float.parseFloat(msg.getData().get(list.get(i).getStr()).toString());
-
-                        list.get(i).setData(String.valueOf((float) Math.round(v * 100) / 100));
-
+                        if (msg.getData().get(list.get(i).getStr()).toString() != null) {
+                            float v = Float.parseFloat(msg.getData().get(list.get(i).getStr()).toString());
+                            list.get(i).setData(String.valueOf((float) Math.round(v * 100) / 100));
+                        }
                     }
                     notifyDataSetChanged();
                     break;
