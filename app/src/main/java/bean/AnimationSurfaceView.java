@@ -223,7 +223,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
                         e.printStackTrace();
                     }
 
-                    System.out.println(list.size());
+
                     getData();
                     if(list.size()>1&&list.get(0).getX()>getWidth() ){
                         list.remove(0);
@@ -234,9 +234,11 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
                         loopDraw();
                         runDraw();
                         Canvas canvas = holder.lockCanvas();
+                    if(canvas!=null){
                         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                         drawUI(canvas);
-                    holder.unlockCanvasAndPost(canvas);
+                        holder.unlockCanvasAndPost(canvas);
+                    }
                 }
             }
 
@@ -245,7 +247,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
      private void drawUI(Canvas canvas){
         canvas.drawRect(70,232,92,250,paintRect1);
         canvas.drawRect(190,232,210,248,paintRect2);
-         System.out.println("aaaaaaa");
+
         if(threadFlag){
             for(int i=0;i<list.size();i++){
                if((list.get(i).getX()<=162 || list.get(i).getX()>=220)&&(list.get(i).getX()<=294||list.get(i).getX()>=360)&&(list.get(i).getX()<=410||list.get(i).getX()>=492)&&(list.get(i).getX()<=502||list.get(i).getX()>=596)){
