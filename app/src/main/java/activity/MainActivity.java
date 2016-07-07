@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,7 +34,9 @@ import java.util.Map;
 
 
 import adapter.MainExpandableListViewAdapter;
+import bean.ApkInfo;
 import bean.LoginErrorInfo;
+import bean.LoginSucceedInfo;
 import download.UpdateApp;
 import fragment.AlarmRecordFragment;
 import fragment.AnimationFragment;
@@ -58,6 +62,7 @@ import utils.Utils;
  * Created by zuheng.lv on 2016/4/26.
  */
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+    private static final String TAG = "TAG";
     private List<String> parent = null;
     private Map<String, List<String>> map = null;
     private TextView tv_main_time;
@@ -66,7 +71,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private Button pp_btn_affirm, pp_btn_succeed_go_home;
     private CheckBox pp_login_ck_remember;
     private PopupWindow popupWindow, newPopupWindow;
-    private String LOGIN_URL = "http://10.199.198.55:58010/userconsle/login";
+    private String LOGIN_URL = "http://kawakp.chinclouds.com:58010/userconsle/login";
+    private String USERID_ONE = "51158022c9e1436a9f66d9c30484a597";
+    private String USERID_TWO = "4aa4c968e01448ba8ac123234203c883";
+    private String USERID_THREE = "09f92289861b497aa369bced8715793f";
     private boolean gradeFlag1 = false;
     private boolean gradeFlag2 = false;
     private boolean gradeFlag3 = false;
@@ -190,6 +198,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         }
     };
+    private Message message = Message.obtain();
 
 
     @Override
@@ -199,6 +208,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.main_layout);
         initialize();
         initData();
+
         startService(new Intent(this, Services.class));
         elv_mian_state.setAdapter(new MainExpandableListViewAdapter(map, parent, this, ions));
 
@@ -208,9 +218,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         elv_mian_state.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-
-
-
 
 
                 changeFragment(groupPosition, childPosition);
@@ -300,7 +307,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 1:
                         if (gradeFlag1) {
-                            CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
+
+                            if (isNetworkConnected()) {
+                                UpdateApp updateApp = new UpdateApp(this);
+                                updateApp.updateApk();
+                            } else {
+                                CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
+                            }
                         } else if (gradeFlag2) {
                             Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, SimulaionFragment.class);
                         } else {
@@ -332,7 +345,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         break;
                     case 4:
                         if (gradeFlag2) {
-                            CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
+                            if (isNetworkConnected()) {
+                                UpdateApp updateApp = new UpdateApp(this);
+                                updateApp.updateApk();
+                            } else {
+                                CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
+                            }
                         } else {
                             //特殊控制
                             Utils.replace(getSupportFragmentManager(), R.id.frameLayout_main, TimeSeriesFragment.class);
@@ -346,10 +364,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         if (isNetworkConnected()) {
                             UpdateApp updateApp = new UpdateApp(this);
                             updateApp.updateApk();
-
-
                         } else {
-
                             CustomToast.showToast(this, "网络异常,请检查网络状态", Toast.LENGTH_SHORT);
                         }
 
@@ -528,8 +543,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //                    }
 //
 //                }
-
-
                 //返回信息
                 new Thread(new Runnable() {
                     @Override
@@ -540,27 +553,33 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                             //有网络
                             loginInfo = httputils.submitPostData(LOGIN_URL, user, "UTF-8");
-
+                            Log.d(TAG, loginInfo);
                             Gson gson = new Gson();
                             if (loginInfo != null) {
                                 if (!loginInfo.contains("\"error\"")) {
                                     //登陆成功
-                                    Message message = Message.obtain();
-                                    message.what = MSG_LOGIN_SUCCEED;
-                                    handler.sendMessage(message);
+//                                    Message message = Message.obtain();
+//                                    message.what = MSG_LOGIN_SUCCEED;
+//                                    handler.sendMessage(message);
+                                    String id = gson.fromJson(loginInfo, LoginSucceedInfo.class).getRoles().get(0).getId().toString();
+                                    if (!TextUtils.isEmpty(id) && id.equals(USERID_ONE)) {
+                                        message.what = ONE;
+                                        handler.sendMessage(message);
+                                    } else if (!TextUtils.isEmpty(id) && id.equals(USERID_TWO)) {
+                                        message.what = TWO;
+                                        handler.sendMessage(message);
 
+                                    } else if (!TextUtils.isEmpty(id) && id.equals(USERID_THREE)) {
+                                        message.what = MSG_LOGIN_SUCCEED;
+                                        handler.sendMessage(message);
+                                    }
                                 } else {
                                     //登陆失败
                                     errorInfo = gson.fromJson(loginInfo, LoginErrorInfo.class).getError().toString();
-                                    Message message = Message.obtain();
                                     message.what = MSG_LOGIN_ERROR;
                                     handler.sendMessage(message);
-
                                 }
-
                             }
-
-
                         } else {
                             //没有网络
                             Message message = Message.obtain();

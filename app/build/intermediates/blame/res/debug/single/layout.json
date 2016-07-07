@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\simulation_layout.xml",
-        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\layout\\simulation_layout.xml"
-    },
-    {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\simulation_layout.xml",
+        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\layout\\simulation_layout.xml"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\alarmrecord_layout.xml",
@@ -20,12 +20,12 @@
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\animation_single_layout.xml",
-        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\layout\\animation_single_layout.xml"
-    },
-    {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupfortime_layout.xml",
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\layout\\popupfortime_layout.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\animation_single_layout.xml",
+        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\layout\\animation_single_layout.xml"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
@@ -144,6 +144,10 @@
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
+        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_select_dialog_material.xml"
     },
@@ -154,10 +158,6 @@
     {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_special_controls.xml",
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\layout\\fragment_special_controls.xml"
-    },
-    {
-        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\layout\\systemsetting_layout.xml",

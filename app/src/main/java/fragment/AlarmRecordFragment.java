@@ -46,6 +46,7 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment impleme
         view  = inflater.inflate(R.layout.alarmrecord_layout,container,false);
         initView();
 //        initData();
+
         return view;
     }
 
@@ -65,6 +66,7 @@ public class AlarmRecordFragment extends android.support.v4.app.Fragment impleme
         alarmrecord_btn_search = (Button) view.findViewById(R.id.alarmrecord_btn_search);
         alarmrecord_btn_search.setOnClickListener(this);
     }
+
     public void initData(){
         list = new ArrayList<>();
         SqlManager sqlManager = new SqlManager(getContext(),"history.db",null,1);
