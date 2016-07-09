@@ -208,7 +208,7 @@ public class TimeSeriesFragment extends Fragment implements View.OnClickListener
                         msg.setData(bundle);
                         msg.what = 1;
                         handler.sendMessage(msg);
-                        Thread.sleep(300);
+                        Thread.sleep(50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

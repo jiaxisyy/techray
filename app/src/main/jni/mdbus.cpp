@@ -1048,14 +1048,14 @@ int CMdBus::mdbus_write_real(int type, float *buf, unsigned int stadr, unsigned 
 	return 0;
 }
 
-static void thread_recv_func(void *data)
+static void thread_recv_func(void* data)
 {
 	static unsigned long mu32_RecStartTime =0;
 	static unsigned long mu32_RecUseTime =10;
 	static unsigned long mu32_RecFlag =0;
 	static int rdlen = 0;
 	static char buf[1024];
-	int fd = (int) data;
+	int fd = *((int *)data);
 	int ret = -1;
 	int isfram = 0;
 	int i;
@@ -1129,12 +1129,12 @@ static void thread_recv_func(void *data)
 	}
 }
 
-static void thread_send_func(void *data)
+static void thread_send_func(void* data)
 {
 	static unsigned long mu32_SendStartTime =0;
 	static unsigned long mu32_SendUseTime =0;
 	static unsigned long mu32_SdFlag =0;
-	int fd = (int) data;
+	int fd = *((int *)data);
 	struct tag_UartDcb *pdcb;
 
 	pdcb = &gat_UartDcb[0];
@@ -1161,9 +1161,9 @@ static void thread_send_func(void *data)
 	}
 }
 
-static void *thread_time_func(void *data)
+static void *thread_time_func(void* data)
 {	
-	int fd = (int) data;
+	int fd = *((int *)data);
 
 	LOGE ("Create time_thread ok! \n");
 	while(1) {

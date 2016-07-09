@@ -120,25 +120,25 @@ public class OxygenStateFragment extends Fragment implements View.OnTouchListene
                         e.printStackTrace();
                     }
                     //�ܽ�����
-                    byte[] y2 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 2, 1);
+                    byte[] y2 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 64, 1);
                     //A������
-                    byte[] y3 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 3, 1);
+                    byte[] y3 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 65, 1);
                     //B������
-                    byte[] y4 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 4, 1);
+                    byte[] y4 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 66, 1);
                     //A������
-                    byte[] y5 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 5, 1);
+                    byte[] y5 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 67, 1);
                     //B������
-                    byte[] y6 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 6, 1);
+                    byte[] y6 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 68, 1);
                     //�ܲ�����
-                    byte[] y7 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 7, 1);
+                    byte[] y7 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 69, 1);
                     //A������
-                    byte[] y10 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 8, 1);
+                    byte[] y10 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 70, 1);
                     //B������
-                    byte[] y11 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 9, 1);
+                    byte[] y11 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 71, 1);
                     //��ѹ��
-                    byte[] y12 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 10, 1);
+                    byte[] y12 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 12, 1);
                     //������
-                    byte[] y13 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 11, 1);
+                    byte[] y13 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 13, 1);
                     //��ѹ��
                     byte[] y0 = MyApplication.getInstance().mdbusreadbyte(Constants.Define.OP_BIT_Y, 0, 1);
                     //��ɻ�

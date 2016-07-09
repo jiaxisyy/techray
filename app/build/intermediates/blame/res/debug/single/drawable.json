@@ -48,12 +48,12 @@
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\drawable\\timeseries_date_layout.xml"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_btn_check_material.xml"
-    },
-    {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\alarm_solid.xml",
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\drawable\\alarm_solid.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_solenoid_valve_rectangle.xml",

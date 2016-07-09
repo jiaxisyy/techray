@@ -520,79 +520,80 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 final Map<String, String> user = new HashMap<>();
                 user.put("username", username);
                 user.put("password", password);
+      
 
-//                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
-//                    if (password.equals("admin2") && username.equals("admin1")) {
-//                        //一级用户
-//                        Message message = Message.obtain();
-//                        message.what = ONE;
-//                        handler.sendMessage(message);
-//
-//                    }
-//                    if (password.equals("admin5") && username.equals("admin2")) {
-//                        //二级用户
-//                        Message message = Message.obtain();
-//                        message.what = TWO;
-//                        handler.sendMessage(message);
-//                    }
-//                    if (password.equals("admin10") && username.equals("admin3")) {
-//                        //三级用户
-//                        Message message = Message.obtain();
-//                        message.what = MSG_LOGIN_SUCCEED;
-//                        handler.sendMessage(message);
-//                    }
-//
-//                }
-                //返回信息
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Httputils httputils = new Httputils(getApplicationContext());
-                        //判断网络
-                        if (isNetworkConnected()) {
-
-                            //有网络
-                            loginInfo = httputils.submitPostData(LOGIN_URL, user, "UTF-8");
-                            Log.d(TAG, loginInfo);
-                            Gson gson = new Gson();
-                            if (loginInfo != null) {
-                                if (!loginInfo.contains("\"error\"")) {
-                                    //登陆成功
-//                                    Message message = Message.obtain();
-//                                    message.what = MSG_LOGIN_SUCCEED;
-//                                    handler.sendMessage(message);
-                                    String id = gson.fromJson(loginInfo, LoginSucceedInfo.class).getRoles().get(0).getId().toString();
-                                    if (!TextUtils.isEmpty(id) && id.equals(USERID_ONE)) {
-                                        message.what = ONE;
-                                        handler.sendMessage(message);
-                                    } else if (!TextUtils.isEmpty(id) && id.equals(USERID_TWO)) {
-                                        message.what = TWO;
-                                        handler.sendMessage(message);
-
-                                    } else if (!TextUtils.isEmpty(id) && id.equals(USERID_THREE)) {
-                                        message.what = MSG_LOGIN_SUCCEED;
-                                        handler.sendMessage(message);
-                                    }
-                                } else {
-                                    //登陆失败
-                                    errorInfo = gson.fromJson(loginInfo, LoginErrorInfo.class).getError().toString();
-                                    message.what = MSG_LOGIN_ERROR;
-                                    handler.sendMessage(message);
-                                }
-                            }
-                        } else {
-                            //没有网络
-                            Message message = Message.obtain();
-                            message.what = NOINTERNET;
-                            handler.sendMessage(message);
-
-
-                        }
+                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
+                    if (password.equals("admin2") && username.equals("admin1")) {
+                        //一级用户
+                        Message message = Message.obtain();
+                        message.what = ONE;
+                        handler.sendMessage(message);
 
                     }
+                    if (password.equals("admin5") && username.equals("admin2")) {
+                        //二级用户
+                        Message message = Message.obtain();
+                        message.what = TWO;
+                        handler.sendMessage(message);
+                    }
+                    if (password.equals("admin10") && username.equals("admin3")) {
+                        //三级用户
+                        Message message = Message.obtain();
+                        message.what = MSG_LOGIN_SUCCEED;
+                        handler.sendMessage(message);
+                    }
 
-
-                }).start();
+                }
+//                //返回信息
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Httputils httputils = new Httputils(getApplicationContext());
+//                        //判断网络
+//                        if (isNetworkConnected()) {
+//
+//                            //有网络
+//                            loginInfo = httputils.submitPostData(LOGIN_URL, user, "UTF-8");
+//                            Log.d(TAG, loginInfo);
+//                            Gson gson = new Gson();
+//                            if (loginInfo != null) {
+//                                if (!loginInfo.contains("\"error\"")) {
+//                                    //登陆成功
+////                                    Message message = Message.obtain();
+////                                    message.what = MSG_LOGIN_SUCCEED;
+////                                    handler.sendMessage(message);
+//                                    String id = gson.fromJson(loginInfo, LoginSucceedInfo.class).getRoles().get(0).getId().toString();
+//                                    if (!TextUtils.isEmpty(id) && id.equals(USERID_ONE)) {
+//                                        message.what = ONE;
+//                                        handler.sendMessage(message);
+//                                    } else if (!TextUtils.isEmpty(id) && id.equals(USERID_TWO)) {
+//                                        message.what = TWO;
+//                                        handler.sendMessage(message);
+//
+//                                    } else if (!TextUtils.isEmpty(id) && id.equals(USERID_THREE)) {
+//                                        message.what = MSG_LOGIN_SUCCEED;
+//                                        handler.sendMessage(message);
+//                                    }
+//                                } else {
+//                                    //登陆失败
+//                                    errorInfo = gson.fromJson(loginInfo, LoginErrorInfo.class).getError().toString();
+//                                    message.what = MSG_LOGIN_ERROR;
+//                                    handler.sendMessage(message);
+//                                }
+//                            }
+//                        } else {
+//                            //没有网络
+//                            Message message = Message.obtain();
+//                            message.what = NOINTERNET;
+//                            handler.sendMessage(message);
+//
+//
+//                        }
+//
+//                    }
+//
+//
+//                }).start();
 
             }
         });

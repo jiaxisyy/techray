@@ -192,8 +192,10 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
         }
         if(y1[0]==1){
             paintRect2.setColor(Color.GREEN);
+            threadFlag = true;
         }else {
             paintRect2.setColor(Color.RED);
+            threadFlag = false;
         }
     }
 
@@ -253,9 +255,7 @@ public class AnimationSurfaceView extends SurfaceView implements SurfaceHolder.C
                if((list.get(i).getX()<=162 || list.get(i).getX()>=220)&&(list.get(i).getX()<=294||list.get(i).getX()>=360)&&(list.get(i).getX()<=410||list.get(i).getX()>=492)&&(list.get(i).getX()<=502||list.get(i).getX()>=596)){
                     canvas.drawCircle(list.get(i).getX(),list.get(i).getY(),4,paint);
                 }
-
           }
-
         }
     }
 }
