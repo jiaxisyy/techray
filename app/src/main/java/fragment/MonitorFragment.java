@@ -16,7 +16,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,6 +65,25 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                     }
                     momitor_btn_machine_a.setText(msg.getData().getString("d458") + "时");
+                    if (msg.getData().getStringArray("main")[0] != null && !msg.getData().getStringArray("main")[0].equals("")) {
+                        pressure_main.setText(msg.getData().getStringArray("main")[0]);
+                    }
+                    if (msg.getData().getStringArray("main")[1] != null && !msg.getData().getStringArray("main")[1].equals("")) {
+                        concentration_main.setText(msg.getData().getStringArray("main")[1]);
+                    }
+                    if (msg.getData().getStringArray("main")[2] != null && !msg.getData().getStringArray("main")[2].equals("")) {
+                        flow_main.setText(msg.getData().getStringArray("main")[2]);
+                    }
+                    if (msg.getData().getStringArray("main")[3] != null && !msg.getData().getStringArray("main")[3].equals("")) {
+                        totalflow_main.setText(msg.getData().getStringArray("main")[3]);
+                        if(Float.parseFloat(msg.getData().getStringArray("main")[3])<=50){
+                            System.out.println(((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-1)*150));
+                            animotion(((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-1)*150));
+                        }else {
+                            System.out.println((Float.parseFloat(msg.getData().getStringArray("main")[3])/100*150));
+                            animotion((Float.parseFloat(msg.getData().getStringArray("main")[3])/100*150));
+                        }
+                    }
                     break;
                 case 2:
                     //
@@ -93,7 +116,9 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
     private LinearLayout ll_main_warning;
     private TextView tv_main_warning;
     private StringBuffer stringBuffer;
-
+    private TextView pressure_main, concentration_main, flow_main, totalflow_main;
+    private ImageView needle;
+   private long begin=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -109,43 +134,48 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
      * �ؼ���ʼ��
      */
     public void initView() {
-        recyclerView1 = (RecyclerView) view.findViewById(R.id.main_recycleview_normal);
-        recyclerView2 = (RecyclerView) view.findViewById(R.id.main_recycleview_big);
-        recyclerView1.setLayoutManager(new GLayoutManager(getContext(), 3));
-        recyclerView2.setLayoutManager(new GLayoutManager(getContext(), 1));
-        mainRecycleView1 = new MainRecycleViewAdapter(getContext(), list1, true);
-        mainRecycleView2 = new MainRecycleViewAdapter(getContext(), list2, false);
-        recyclerView1.setAdapter(mainRecycleView1);
-        recyclerView2.setAdapter(mainRecycleView2);
+//        recyclerView1 = (RecyclerView) view.findViewById(R.id.main_recycleview_normal);
+//        recyclerView2 = (RecyclerView) view.findViewById(R.id.main_recycleview_big);
+//        recyclerView1.setLayoutManager(new GLayoutManager(getContext(), 3));
+//        recyclerView2.setLayoutManager(new GLayoutManager(getContext(), 1));
+//        mainRecycleView1 = new MainRecycleViewAdapter(getContext(), list1, true);
+//        mainRecycleView2 = new MainRecycleViewAdapter(getContext(), list2, false);
+//        recyclerView1.setAdapter(mainRecycleView1);
+//        recyclerView2.setAdapter(mainRecycleView2);
         ll_main_warning = (LinearLayout) view.findViewById(R.id.ll_main_warning);
         tv_main_warning = (TextView) view.findViewById(R.id.tv_main_warning);
-
+        pressure_main = (TextView) view.findViewById(R.id.pressure_main);
+        concentration_main = (TextView) view.findViewById(R.id.concentration_main);
+        flow_main = (TextView) view.findViewById(R.id.flow_main);
+        totalflow_main = (TextView) view.findViewById(R.id.totalflow_main);
+        needle = (ImageView) view.findViewById(R.id.needle);
+//
         momitor_btn_machine_a = (Button) view.findViewById(R.id.momitor_btn_machine_a);
         momitor_btn_start = (Button) view.findViewById(R.id.momitor_btn_start);
         momitor_btn_stop = (Button) view.findViewById(R.id.momitor_btn_stop);
         momitor_btn_stop.setOnTouchListener(this);
         momitor_btn_start.setOnTouchListener(this);
-
-        mainRecycleView1.setOnItemClickLitener(new MainRecycleViewAdapter.OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, final int position) {
-
-                if (Utils.isValidClick()) {
-                    List<MainRecycleViewItem> saveList = new ArrayList<MainRecycleViewItem>();
-                    saveList.add(list2.get(0));
-                    saveList.add(list1.get(position));
-                    mainRecycleView2.removeData(saveList.get(1));
-                    mainRecycleView1.removeData(position, saveList.get(0));
-                }
-
-
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
+//
+//        mainRecycleView1.setOnItemClickLitener(new MainRecycleViewAdapter.OnItemClickLitener() {
+//            @Override
+//            public void onItemClick(View view, final int position) {
+//
+//                if (Utils.isValidClick()) {
+//                    List<MainRecycleViewItem> saveList = new ArrayList<MainRecycleViewItem>();
+//                    saveList.add(list2.get(0));
+//                    saveList.add(list1.get(position));
+//                    mainRecycleView2.removeData(saveList.get(1));
+//                    mainRecycleView1.removeData(position, saveList.get(0));
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            public void onItemLongClick(View view, int position) {
+//
+//            }
+//        });
 
     }
 
@@ -154,50 +184,49 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
      */
 
     public void initData() {
-        list1 = new ArrayList<MainRecycleViewItem>();
-        list2 = new ArrayList<MainRecycleViewItem>();
-        MainRecycleViewItem mPressure = new MainRecycleViewItem();
-        MainRecycleViewItem mConcentration = new MainRecycleViewItem();
-        MainRecycleViewItem mFlow = new MainRecycleViewItem();
-        MainRecycleViewItem mTotalFlow = new MainRecycleViewItem();
-        mPressure.setBackground(getResources().getDrawable(R.drawable.pressure_normal));
-        mPressure.setBackgroundBig(getResources().getDrawable(R.drawable.pressure_big));
-        mPressure.setType("当前压力");
-        mPressure.setData("1111");
-        mPressure.setUnit("kg/cm²");
-        mPressure.setStr("212");
-
-        mConcentration.setBackground(getResources().getDrawable(R.drawable.concentration_normal));
-        mConcentration.setBackgroundBig(getResources().getDrawable(R.drawable.concentration_big));
-        mConcentration.setType("当前浓度");
-        mConcentration.setData("2222");
-        mConcentration.setUnit("%");
-
-        mConcentration.setStr("244");
-        mFlow.setBackground(getResources().getDrawable(R.drawable.flow_normal));
-        mFlow.setBackgroundBig(getResources().getDrawable(R.drawable.flow_big));
-        mFlow.setType("当前流量");
-        mFlow.setData("333");
-        mFlow.setUnit("L/min");
-
-        mFlow.setStr("228");
-        mTotalFlow.setBackground(getResources().getDrawable(R.drawable.totalflow_nromal));
-        mTotalFlow.setBackgroundBig(getResources().getDrawable(R.drawable.totalflow_big));
-        mTotalFlow.setType("累积流量");
-        mTotalFlow.setData("4444");
-        mTotalFlow.setUnit("m³");
-
-        mTotalFlow.setStr("264");
-        list1.add(mPressure);
-        list1.add(mConcentration);
-        list1.add(mTotalFlow);
-        list2.add(mFlow);
+//        list1 = new ArrayList<MainRecycleViewItem>();
+//        list2 = new ArrayList<MainRecycleViewItem>();
+//        MainRecycleViewItem mPressure = new MainRecycleViewItem();
+//        MainRecycleViewItem mConcentration = new MainRecycleViewItem();
+//        MainRecycleViewItem mFlow = new MainRecycleViewItem();
+//        MainRecycleViewItem mTotalFlow = new MainRecycleViewItem();
+//        mPressure.setBackground(getResources().getDrawable(R.drawable.pressure_normal));
+//        mPressure.setBackgroundBig(getResources().getDrawable(R.drawable.pressure_big));
+//        mPressure.setType("当前压力");
+//        mPressure.setData("1111");
+//        mPressure.setUnit("kg/cm²");
+//        mPressure.setStr("212");
+//
+//        mConcentration.setBackground(getResources().getDrawable(R.drawable.concentration_normal));
+//        mConcentration.setBackgroundBig(getResources().getDrawable(R.drawable.concentration_big));
+//        mConcentration.setType("当前浓度");
+//        mConcentration.setData("2222");
+//        mConcentration.setUn it("%");
+//
+//        mConcentration.setStr("244");
+//        mFlow.setBackground(getResources().getDrawable(R.drawable.flow_normal));
+//        mFlow.setBackgroundBig(getResources().getDrawable(R.drawable.flow_big));
+//        mFlow.setType("当前流量");
+//        mFlow.setData("333");
+//        mFlow.setUnit("L/min");
+//
+//        mFlow.setStr("228");
+//        mTotalFlow.setBackground(getResources().getDrawable(R.drawable.totalflow_nromal));
+//        mTotalFlow.setBackgroundBig(getResources().getDrawable(R.drawable.totalflow_big));
+//        mTotalFlow.setType("累积流量");
+//        mTotalFlow.setData("4444");
+//        mTotalFlow.setUnit("m³");
+//
+//        mTotalFlow.setStr("264");
+//        list1.add(mPressure);
+//        list1.add(mConcentration);
+//        list1.add(mTotalFlow);
+//        list2.add(mFlow);
     }
 
     /**
      * ���ݻ�ȡ
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void getData() {
 
     }
@@ -231,6 +260,9 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         float[] l = MyApplication.getInstance().mdbusreadreal(Constants.Define.OP_REAL_D, 244, 1);
                         float l1 = (float) (Math.round(l[0] * 100)) / 100;
                         //A������״̬
+                        int[] strID = {212, 333, 264, 244};
+                        String[] main = ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D, strID);
+
 
                         short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 700, 1);
                         Bundle bundle = new Bundle();
@@ -241,6 +273,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         bundle.putString("k1", String.valueOf(k1));
                         bundle.putString("l1", String.valueOf(l1));
                         bundle.putString("d458", String.valueOf(d458[0]));
+                        bundle.putStringArray("main", main);
                         if (d700.length > 0) {
                             bundle.putShort("d700", d700[0]);
                         }
@@ -337,5 +370,17 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                 break;
         }
         return false;
+    }
+
+    private void animotion(float degrees) {
+        AnimationSet animationSet = new AnimationSet(true);
+        /**
+         * 前两个参数定义旋转的起始和结束的度数，后两个参数定义圆心的位置
+         */
+        RotateAnimation rotateAnimation = new RotateAnimation(begin, degrees, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.88f);
+        rotateAnimation.setDuration(1000);
+        animationSet.addAnimation(rotateAnimation);
+        needle.startAnimation(animationSet);
+        begin = (long) degrees;
     }
 }

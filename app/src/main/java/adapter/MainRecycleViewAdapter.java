@@ -38,7 +38,6 @@ public class MainRecycleViewAdapter extends RecyclerView.Adapter<MainRecycleView
             switch (msg.what) {
                 case 1:
                     for (int i = 0; i <= list.size() - 1; i++) {
-
                         if (msg.getData().getString(list.get(i).getStr())!= null) {
                             float v = Float.parseFloat(msg.getData().get(list.get(i).getStr()).toString());
                             list.get(i).setData(String.valueOf((float) Math.round(v * 100) / 100));
