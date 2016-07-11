@@ -69,19 +69,16 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         pressure_main.setText(msg.getData().getStringArray("main")[0]);
                     }
                     if (msg.getData().getStringArray("main")[1] != null && !msg.getData().getStringArray("main")[1].equals("")) {
-                        concentration_main.setText(msg.getData().getStringArray("main")[1]);
+                        totalflow_main.setText(msg.getData().getStringArray("main")[1]);
                     }
                     if (msg.getData().getStringArray("main")[2] != null && !msg.getData().getStringArray("main")[2].equals("")) {
                         flow_main.setText(msg.getData().getStringArray("main")[2]);
                     }
                     if (msg.getData().getStringArray("main")[3] != null && !msg.getData().getStringArray("main")[3].equals("")) {
-                        totalflow_main.setText(msg.getData().getStringArray("main")[3]);
+                        concentration_main.setText(msg.getData().getStringArray("main")[3]);
+                        concentration_main_biaopan.setText(msg.getData().getStringArray("main")[3]);
                         if(Float.parseFloat(msg.getData().getStringArray("main")[3])<=50){
-                            System.out.println(((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-1)*150));
-                            animotion(((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-1)*150));
-                        }else {
-                            System.out.println((Float.parseFloat(msg.getData().getStringArray("main")[3])/100*150));
-                            animotion((Float.parseFloat(msg.getData().getStringArray("main")[3])/100*150));
+                            animotion((float) ((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-0.5)*150));
                         }
                     }
                     break;
@@ -116,7 +113,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
     private LinearLayout ll_main_warning;
     private TextView tv_main_warning;
     private StringBuffer stringBuffer;
-    private TextView pressure_main, concentration_main, flow_main, totalflow_main;
+    private TextView pressure_main, concentration_main, flow_main, totalflow_main,concentration_main_biaopan;
     private ImageView needle;
    private long begin=0;
 
@@ -148,6 +145,7 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
         concentration_main = (TextView) view.findViewById(R.id.concentration_main);
         flow_main = (TextView) view.findViewById(R.id.flow_main);
         totalflow_main = (TextView) view.findViewById(R.id.totalflow_main);
+        concentration_main_biaopan=(TextView)view.findViewById(R.id.concentration_main_biaopan);
         needle = (ImageView) view.findViewById(R.id.needle);
 //
         momitor_btn_machine_a = (Button) view.findViewById(R.id.momitor_btn_machine_a);
