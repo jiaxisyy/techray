@@ -65,21 +65,33 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         momitor_btn_machine_a.setBackground(getResources().getDrawable(R.drawable.waitting_lamp));
                     }
                     momitor_btn_machine_a.setText(msg.getData().getString("d458") + "时");
+
+
                     if (msg.getData().getStringArray("main")[0] != null && !msg.getData().getStringArray("main")[0].equals("")) {
                         pressure_main.setText(msg.getData().getStringArray("main")[0]);
                     }
                     if (msg.getData().getStringArray("main")[1] != null && !msg.getData().getStringArray("main")[1].equals("")) {
-                        totalflow_main.setText(msg.getData().getStringArray("main")[1]);
+                        flow_main.setText(msg.getData().getStringArray("main")[1]);
                     }
                     if (msg.getData().getStringArray("main")[2] != null && !msg.getData().getStringArray("main")[2].equals("")) {
-                        flow_main.setText(msg.getData().getStringArray("main")[2]);
+                        totalflow_main .setText(msg.getData().getStringArray("main")[2]);
+
                     }
                     if (msg.getData().getStringArray("main")[3] != null && !msg.getData().getStringArray("main")[3].equals("")) {
+
                         concentration_main.setText(msg.getData().getStringArray("main")[3]);
                         concentration_main_biaopan.setText(msg.getData().getStringArray("main")[3]);
-                        if(Float.parseFloat(msg.getData().getStringArray("main")[3])<=50){
-                            animotion((float) ((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-0.5)*150));
-                        }
+                            animotion((float) ((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-0.5)*300));
+//                        totalflow_main.setText(msg.getData().getStringArray("main")[3]);
+//                        if(Float.parseFloat(msg.getData().getStringArray("main")[3])<50){
+//                            System.out.println(((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-0.5)*300));
+//                            animotion(((Float.parseFloat(msg.getData().getStringArray("main")[3])/100-1)*150));
+//                        }else if(Float.parseFloat(msg.getData().getStringArray("main")[3])>50){
+//                            animotion(((float) (Float.parseFloat(msg.getData().getStringArray("main")[3])/100-0.5)*300));
+//                        }else {
+//                            animotion(0);
+//                        });
+
                     }
                     break;
                 case 2:
@@ -260,8 +272,6 @@ public class MonitorFragment extends Fragment implements View.OnTouchListener {
                         //A������״̬
                         int[] strID = {212, 333, 264, 244};
                         String[] main = ReadAndWrite.ReadJni(Constants.Define.OP_REAL_D, strID);
-
-
                         short[] d700 = MyApplication.getInstance().mdbusreadword(Constants.Define.OP_WORD_D, 700, 1);
                         Bundle bundle = new Bundle();
                         int[] d458 = MyApplication.getInstance().mdbusreaddword(Constants.Define.OP_DWORD_D, 458, 1);
