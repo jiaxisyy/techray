@@ -17,6 +17,14 @@ public class serialJNI {
 	
 	public native  float[] mdbusreadreal(int type, int stadr, int len);
 	public native  int mdbuswritereal(int type, float buf[],int stadr, int len);
-	
 	public native  void destory();
+	//*****************************************
+	public native boolean initSerialPort();
+	public native int mainloopSerialPort();
+	public native byte[] readSerialPort();
+	public native int writeSerialPort(byte buf[]);
+	public native int closeSerialPort();
+
+
+
 }

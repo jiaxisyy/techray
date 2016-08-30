@@ -33,7 +33,6 @@ public class AlarmLamp extends View{
     }
     public AlarmLamp(Context context,AttributeSet attrs, int defStyle){
         super(context,attrs,defStyle);
-
     }
     private void runDraw(){
         new Thread(new Runnable() {

@@ -63,7 +63,7 @@ int CMdBus::init_port()
 		LOGE("standard input is not a terminal device\n");
 		return -4;
 	}
-	
+	LOGE("Open Uart ok! ==============open11111\n");
 	//init data 
 	_yInitRobotVar();
 	_yInitModlinkVar();

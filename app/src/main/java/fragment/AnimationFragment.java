@@ -52,7 +52,6 @@ public class AnimationFragment extends Fragment{
     }
     private void initView(){
         animation_btn_switch=(Button) view.findViewById(R.id.animation_btn_switch);
-
     }
 
     private void setData(){

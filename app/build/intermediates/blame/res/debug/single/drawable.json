@@ -16,12 +16,12 @@
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\drawable\\momitor_btn_machine_a_selector.xml"
     },
     {
-        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\expandable_selector.xml",
-        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\drawable\\expandable_selector.xml"
-    },
-    {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
         "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\expandable_selector.xml",
+        "source": "D:\\AndroidStudioProjects\\serial5.0\\app\\src\\main\\res\\drawable\\expandable_selector.xml"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\serial5.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",

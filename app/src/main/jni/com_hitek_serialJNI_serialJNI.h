@@ -94,6 +94,45 @@ JNIEXPORT jint JNICALL Java_com_hitek_serialJNI_serialJNI_mdbuswritereal
  */
 JNIEXPORT void JNICALL Java_com_hitek_serialJNI_serialJNI_destory
   (JNIEnv *, jobject);
+/*
+ * Class:     com_hitek_serialJNI_serialJNI
+ * Method:    initSerialPort
+ * Signature: ()Z
+ */
+JNIEXPORT jboolean JNICALL Java_com_hitek_serialJNI_serialJNI_initSerialPort
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_hitek_serialJNI_serialJNI
+ * Method:    mainloopSerialPort
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_hitek_serialJNI_serialJNI_mainloopSerialPort
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_hitek_serialJNI_serialJNI
+ * Method:    readSerialPort
+ * Signature: ()[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_com_hitek_serialJNI_serialJNI_readSerialPort
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_hitek_serialJNI_serialJNI
+ * Method:    writeSerialPort
+ * Signature: ([B)I
+ */
+JNIEXPORT jint JNICALL Java_com_hitek_serialJNI_serialJNI_writeSerialPort
+  (JNIEnv *, jobject, jbyteArray);
+
+/*
+ * Class:     com_hitek_serialJNI_serialJNI
+ * Method:    closeSerialPort
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_hitek_serialJNI_serialJNI_closeSerialPort
+  (JNIEnv *, jobject);
 
 #ifdef __cplusplus
 }
